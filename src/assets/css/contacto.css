@@ -1,0 +1,96 @@
+/* Contenedor principal de la sección de contacto */
+.contacto-contenedor {
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+/* Parte izquierda donde está la información de contacto */
+.contacto-info {
+    width: 35%;
+}
+
+/* Parte derecha donde está el formulario */
+.formulario-contacto {
+    width: 85%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 25px;
+
+    /* Borde suave alrededor del formulario */
+    border: 1px solid #eadfe3;
+}
+
+
+/* Cada bloque de información: icono + texto */
+.info-item {
+    display: flex;
+    /* Alinea el icono con la parte superior del texto */
+    align-items: flex-start;
+    gap: 15px;
+    /* Separa cada bloque de información */
+    margin-bottom: 30px;
+}
+
+
+/* Tamaño de los iconos de contacto */
+.info-item img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+
+/* Títulos como Dirección, Teléfono, Email, etc. */
+.info-item h4 {
+    margin: 0 0 5px;
+}
+
+
+/* Texto que aparece debajo de cada título */
+.info-item p {
+    margin: 0;
+}
+
+
+/* Organiza los campos del formulario uno debajo del otro */
+.formulario-contacto form {
+    display: flex;
+    /* Cambia la dirección del flex para colocarlos verticalmente */
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+/* Estilo para los campos y el área del mensaje */
+.formulario-contacto input,
+.formulario-contacto textarea {
+    padding: 15px;
+    border: 1px solid #e5d5db;
+    border-radius: 12px;
+    outline: none;
+    /* Quita el borde negro que aparece al seleccionar el campo */
+}
+
+
+/* Cambia el borde cuando hacemos clic dentro de un campo */
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+    border-color: #f45b82;
+}
+
+
+/* Botón para enviar el formulario */
+.formulario-contacto button {
+    display: block;
+    margin: 10px auto 0;
+    background-color: #f45b82;
+    /* color boton contacto */
+    color: white;
+    /* Texto blanco */
+    border: none;
+    border-radius: 25px;
+    padding: 12px 35px;
+}

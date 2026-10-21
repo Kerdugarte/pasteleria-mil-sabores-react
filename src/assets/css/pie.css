@@ -1,0 +1,80 @@
+.footer-columna {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid #E4D5E8;
+    flex: 1;
+    padding: 20px;
+
+}
+
+
+
+.logo {
+    width: 300px;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+
+.footer-columna h3 {
+    text-align: center;
+}
+
+.footer-cols {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    padding: 15px 0;
+
+}
+
+
+
+.footer-bottom {
+    background-color: #5D4037;
+    text-align: center;
+    width: 100%;
+    padding: 5px 0;
+    color: white;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+
+
+
+
+
+.footer-columna ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-columna:last-child {
+    border-right: none;
+}
+
+.footer-columna li {
+    margin-bottom: 8px;
+}
+
+footer {
+    position: relative;
+    background-color: white;
+    margin-top: 70px;
+}
+
+
+
+
+
+.redes-sociales {
+    width: 120px;
+
+}
