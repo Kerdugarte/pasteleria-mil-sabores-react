@@ -1,3 +1,4 @@
+/* Contenedor del menú */
 .menu {
     display: flex;
     align-items: center;
@@ -15,6 +16,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    min-width: 0;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -32,9 +34,10 @@
 /* Logo */
 .menu .menu-logo {
     display: block;
-    width: 240px;
+    width: 230px;
     max-width: 100%;
     height: auto;
+    margin-right: 0;
 }
 
 /* Enlaces */
@@ -59,7 +62,7 @@
     color: #8c5045;
 }
 
-/* Página actual: NavLink agrega active */
+/* Página actual */
 .menu ul li a.active {
     background-color: #f2dcd5;
     color: #713f35;
@@ -80,14 +83,26 @@
     object-fit: contain;
 }
 
-/* Buscador */
+
+
+/* Regla general */
 .menu .buscador {
     min-width: 0;
     margin-left: auto;
 }
 
+
+
+/* Desplazamiento hacia la izquierda en escritorio */
+@media (min-width: 1200px) {
+    .menu .buscador {
+        margin-right: 30px;
+    }
+}
+
 .menu .buscador input {
-    width: 220px;
+    display: block;
+    width: 350px;
     max-width: 100%;
     padding: 14px 18px;
     box-sizing: border-box;
@@ -95,8 +110,7 @@
     border-radius: 12px;
     background-color: #fffafa;
     font-family: "Lato", sans-serif;
-    font-size: 17px;
-    color: #5d4037;
+    font-size: 21px;
 }
 
 .menu .buscador input:focus {
@@ -104,7 +118,7 @@
     outline-offset: 2px;
 }
 
-/* Menú adaptable */
+/* Pantallas medianas: buscador debajo del menú */
 @media (max-width: 1199px) {
     .menu {
         flex-direction: column;
@@ -113,15 +127,23 @@
     }
 
     .menu ul {
+        width: 100%;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+    }
+
+    .menu ul li {
+        padding: 0 8px;
+    }
+
+    .menu .menu-logo {
+        width: 185px;
     }
 
     .menu .buscador {
         width: 100%;
         max-width: 400px;
-        margin-left: 0;
+        margin: 0;
     }
 
     .menu .buscador input {
@@ -129,10 +151,18 @@
     }
 }
 
-/* Móviles */
-@media (max-width: 575px) {
+/* Tabletas: logo en su propia fila */
+@media (max-width: 991px) {
+    .menu {
+        gap: 14px;
+    }
+
+    .menu ul {
+        gap: 8px;
+    }
+
     .menu ul li {
-        padding: 0 4px;
+        padding: 0;
         border-right: none;
     }
 
@@ -148,12 +178,40 @@
     }
 
     .menu ul li a {
-        padding: 8px;
+        padding: 10px;
         font-size: 17px;
     }
 
     .menu .img-iconos {
         width: 30px;
         height: 30px;
+    }
+
+    .menu .buscador input {
+        min-width: 0;
+        padding: 12px 14px;
+        font-size: 16px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 575px) {
+    .menu {
+        padding: 14px 10px;
+        border-radius: 18px;
+    }
+
+    .menu ul {
+        gap: 6px;
+    }
+
+    .menu ul li a {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .menu .img-iconos {
+        width: 26px;
+        height: 26px;
     }
 }
