@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Cabecera() {
     return (
         <header>
-            <nav className="menu">
+            <nav className="menu" aria-label="Navegación principal">
                 <ul>
                     <li>
                         <img
@@ -13,36 +13,50 @@ function Cabecera() {
                         />
                     </li>
 
-                    <li>  <Link to="/" className="texto-general">Inicio</Link> </li>
-
+                    <li>
+                        <NavLink to="/" end className="texto-general">
+                            Inicio
+                        </NavLink>
+                    </li>
 
                     <li>
-                        <Link to="/productos" className="texto-general">
+                        <NavLink to="/productos" className="texto-general">
                             Productos
-                        </Link>
+                        </NavLink>
                     </li>
+
                     <li>
-                        <Link to="/contacto" className="texto-general">
+                        <NavLink to="/contacto" className="texto-general">
                             Contacto
-                        </Link>
+                        </NavLink>
                     </li>
+
                     <li>
-                        <Link to="/login" aria-label="Mi cuenta">
+                        <NavLink
+                            to="/login"
+                            className="texto-general"
+                            aria-label="Mi cuenta"
+                        >
                             <img
                                 src="/img/icono-perfil.png"
                                 className="img-iconos"
                                 alt=""
                             />
-                        </Link>
+                        </NavLink>
                     </li>
+
                     <li>
-                        <Link to="/carrito" aria-label="Carrito de compras">
+                        <NavLink
+                            to="/carrito"
+                            className="texto-general"
+                            aria-label="Carrito de compras"
+                        >
                             <img
                                 src="/img/icono-carro.png"
                                 className="img-iconos"
                                 alt=""
                             />
-                        </Link>
+                        </NavLink>
                     </li>
                 </ul>
 
@@ -54,7 +68,7 @@ function Cabecera() {
                     />
                 </div>
             </nav>
-        </header >
+        </header>
     );
 }
 

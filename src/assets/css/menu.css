@@ -1,73 +1,159 @@
-nav {
-    background-color: #ffffff;
-    border-radius: 25px;
-    width: 100%;
+.menu {
     display: flex;
     align-items: center;
-    padding: 12px 28px;
+    gap: 24px;
+    width: 100%;
+    padding: 18px 28px;
     box-sizing: border-box;
-
+    background-color: #ffffff;
+    border-radius: 25px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
-.menu-logo {
-    width: 150px;
-    margin-right: 30px;
-}
-
-nav ul {
-    list-style: none;
+/* Lista de navegación */
+.menu ul {
     display: flex;
     align-items: center;
     gap: 10px;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    padding: 0 20px;
+.menu ul li {
+    padding: 0 14px;
     border-right: 1px solid #eadde2;
 }
 
-nav ul li:last-child {
+.menu ul li:last-child {
     border-right: none;
 }
 
-nav ul li a {
+/* Logo */
+.menu .menu-logo {
+    display: block;
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Enlaces */
+.menu ul li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-family: "Lato", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #5d4037;
     text-decoration: none;
-    color: #5D4037;
     white-space: nowrap;
-    transition: 0.3s;
+    transition: background-color 0.2s, color 0.2s;
 }
 
-nav ul li a:hover {
-    color: #f45b82;
+/* Al pasar el cursor */
+.menu ul li a:hover {
+    background-color: #fff0ec;
+    color: #8c5045;
 }
 
-nav ul li a.activo {
-    color: #f45b82;
+/* Página actual: NavLink agrega active */
+.menu ul li a.active {
+    background-color: #f2dcd5;
+    color: #713f35;
+    box-shadow: inset 0 -3px 0 #a76f60;
 }
 
-.img-iconos {
-    width: 32px;
-    height: 32px;
+/* Navegación mediante teclado */
+.menu ul li a:focus-visible {
+    outline: 2px solid #a76f60;
+    outline-offset: 3px;
+}
+
+/* Iconos */
+.menu .img-iconos {
+    display: block;
+    width: 38px;
+    height: 38px;
     object-fit: contain;
 }
 
-.buscador {
+/* Buscador */
+.menu .buscador {
+    min-width: 0;
     margin-left: auto;
 }
 
-.buscador input {
+.menu .buscador input {
     width: 220px;
-    padding: 10px 18px;
+    max-width: 100%;
+    padding: 14px 18px;
+    box-sizing: border-box;
     border: 1px solid #e5dadd;
-    border-radius: 10px;
-    outline: none;
+    border-radius: 12px;
     background-color: #fffafa;
+    font-family: "Lato", sans-serif;
+    font-size: 17px;
+    color: #5d4037;
 }
 
-.buscador input:focus {
-    border-color: #e86f9a;
-    box-shadow: 0 0 5px #f3b6cb;
+.menu .buscador input:focus {
+    outline: 2px solid #a76f60;
+    outline-offset: 2px;
+}
+
+/* Menú adaptable */
+@media (max-width: 1199px) {
+    .menu {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .menu .buscador {
+        width: 100%;
+        max-width: 400px;
+        margin-left: 0;
+    }
+
+    .menu .buscador input {
+        width: 100%;
+    }
+}
+
+/* Móviles */
+@media (max-width: 575px) {
+    .menu ul li {
+        padding: 0 4px;
+        border-right: none;
+    }
+
+    .menu ul li:first-child {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .menu .menu-logo {
+        width: 160px;
+    }
+
+    .menu ul li a {
+        padding: 8px;
+        font-size: 17px;
+    }
+
+    .menu .img-iconos {
+        width: 30px;
+        height: 30px;
+    }
 }
