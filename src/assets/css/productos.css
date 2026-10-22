@@ -1,0 +1,344 @@
+/* Encabezado del catálogo */
+.encabezado-productos {
+    margin-bottom: 32px;
+    padding: 44px 24px;
+    background-color: #fffaf6;
+    border: 1px solid #eadde2;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.encabezado-productos h1 {
+    margin: 0 0 20px;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.3;
+}
+
+.encabezado-productos p {
+    margin: 0;
+    font-size: 22px;
+    color: #5d4037;
+}
+
+/* Barra del filtro y contador */
+.barra-catalogo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.contador-productos {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    font-size: 21px;
+    color: #5d4037;
+}
+
+/* Contenedor del filtro desplegable */
+.filtro-desplegable {
+    position: relative;
+    width: 340px;
+    max-width: 100%;
+}
+
+/* Botón Categorías */
+.boton-categorias {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    border: 1px solid #d8beb0;
+    border-radius: 14px;
+    background-color: #fffaf6;
+    color: #5d4037;
+    font-family: "Lato", sans-serif;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.boton-categorias:hover {
+    background-color: #f8eee7;
+}
+
+/* Opciones sobre el catálogo */
+.opciones-categorias {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #eadde2;
+    border-radius: 16px;
+    background-color: #fffaf6;
+    box-shadow: 0 8px 24px rgba(93, 64, 55, 0.15);
+}
+
+.opciones-categorias button {
+    display: block;
+    width: 100%;
+    padding: 16px 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #5d4037;
+    font-family: "Lato", sans-serif;
+    font-size: 21px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.opciones-categorias button:hover,
+.opciones-categorias button.activo {
+    background-color: #f2dcd5;
+}
+
+.opciones-categorias button.activo {
+    font-weight: 700;
+}
+
+/* Catálogo: tres tarjetas por fila */
+.tarjetas-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    margin: 0;
+}
+
+/* Tarjeta */
+.tarjetas-contenedor .card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 1px solid #eadde2;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #fffaf6;
+    box-shadow: 0 4px 12px rgba(93, 64, 55, 0.08);
+}
+
+/* Imagen */
+.tarjetas-contenedor .card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+/* Contenido */
+.tarjetas-contenedor .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: auto;
+    padding: 24px 18px;
+    text-align: center;
+}
+
+/* Nombre */
+.tarjetas-contenedor .card-title {
+    min-height: 0;
+    margin: 0 0 14px;
+    font-family: "Lato", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #5d4037;
+}
+
+/* Precio */
+.tarjetas-contenedor .card-body .precio-producto {
+    margin: 0 0 24px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: #5d4037;
+}
+
+/* Botones juntos */
+.tarjetas-contenedor .acciones-producto {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+/* Enlace de detalle y botón del carrito */
+.tarjetas-contenedor .boton-detalle,
+.tarjetas-contenedor .boton-agregar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    min-height: 58px;
+    padding: 16px 10px;
+    box-sizing: border-box;
+    border: 1px solid #5d4037;
+    border-radius: 35px;
+    background-color: #5d4037;
+    color: #ffffff;
+    font-family: "Lato", sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    white-space: normal;
+    cursor: pointer;
+}
+
+.tarjetas-contenedor .boton-detalle:hover,
+.tarjetas-contenedor .boton-agregar:hover:not(:disabled) {
+    background-color: #970b0b;
+    border-color: #970b0b;
+    color: #ffffff;
+}
+
+.tarjetas-contenedor .boton-agregar:disabled {
+    cursor: not-allowed;
+}
+
+/* Sin resultados */
+.tarjetas-contenedor .sin-resultados {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 28px;
+    border-radius: 18px;
+    background-color: #fffaf6;
+    color: #5d4037;
+    text-align: center;
+}
+
+/* Contenedor de paginación */
+.paginacion-productos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 40px auto 0;
+    padding: 18px 26px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 40px;
+}
+
+/* Botones de página */
+.paginacion-productos button {
+    min-width: 72px;
+    min-height: 64px;
+    padding: 16px 24px;
+    border: 1px solid #5d4037;
+    border-radius: 35px;
+    background-color: #fffaf6;
+    color: #5d4037;
+    font-family: "Lato", sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.paginacion-productos button:hover:not(:disabled),
+.paginacion-productos button.activo {
+    background-color: #970b0b;
+    color: #ffffff;
+}
+
+.paginacion-productos button:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* Foco visible al utilizar el teclado */
+.boton-categorias:focus-visible,
+.opciones-categorias button:focus-visible,
+.tarjetas-contenedor .boton-detalle:focus-visible,
+.tarjetas-contenedor .boton-agregar:focus-visible,
+.paginacion-productos button:focus-visible {
+    outline: 2px solid #a76f60;
+    outline-offset: 3px;
+}
+
+/* DISEÑO RESPONSIVO: tabletas
+     Dos tarjetas por fila */
+@media (max-width: 991px) {
+    .tarjetas-contenedor {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+/* DISEÑO RESPONSIVO: móviles
+     Filtro y contador separados; una tarjeta por fila */
+@media (max-width: 575px) {
+    .encabezado-productos {
+        padding: 30px 18px;
+    }
+
+    .encabezado-productos p {
+        font-size: 18px;
+    }
+
+    .barra-catalogo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filtro-desplegable {
+        width: 100%;
+    }
+
+    .boton-categorias {
+        font-size: 23px;
+    }
+
+    .contador-productos {
+        font-size: 18px;
+    }
+
+    .tarjetas-contenedor {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tarjetas-contenedor .card-body {
+        padding: 20px 16px;
+    }
+
+    .tarjetas-contenedor .card-title {
+        font-size: 20px;
+    }
+
+    .tarjetas-contenedor .boton-detalle,
+    .tarjetas-contenedor .boton-agregar {
+        padding: 14px 8px;
+        font-size: 16px;
+    }
+
+    .paginacion-productos {
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .paginacion-productos button {
+        min-width: 48px;
+        min-height: 48px;
+        padding: 10px 14px;
+        font-size: 20px;
+    }
+}
