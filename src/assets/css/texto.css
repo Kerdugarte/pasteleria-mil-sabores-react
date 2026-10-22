@@ -1,0 +1,22 @@
+.texto-general {
+    font-family: "lato", sans-serif;
+    line-height: 1.5;
+    text-align: center;
+
+}
+
+
+.letra-Titulos {
+    font-family: "Libre Baskerville", serif;
+    color: #5D4037;
+    text-align: center;
+}
+
+
+/* separador de los titulos */
+.separador {
+    border: 0;
+    border-top: 3px solid #5D4037;
+    margin: 10px 400px;
+
+}

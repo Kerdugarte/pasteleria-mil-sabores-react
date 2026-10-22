@@ -1,0 +1,93 @@
+/* Contenedor principal de login y registro */
+.acceso-contenedor {
+    width: 80%;
+    margin: 60px auto;
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+
+/* Tarjeta de iniciar sesión y crear cuenta */
+.acceso-card {
+    width: 50%;
+    background-color: white;
+    /* color  fondo */
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid #eadfe3;
+}
+
+
+/* Centra los títulos */
+.acceso-card h2,
+.acceso-card>p {
+    text-align: center;
+}
+
+
+/* Organiza los campos uno debajo del otro */
+.acceso-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+/* Espacio antes de cada etiqueta */
+.acceso-card label {
+    margin-top: 10px;
+    font-family: "Lato", sans-serif;
+}
+
+
+/* Diseño de los campos */
+.acceso-card input {
+    padding: 14px;
+    border: 1px solid #e5d5db;
+    border-radius: 12px;
+    outline: none;
+}
+
+/* Cuando hacemos clic dentro de un campo */
+.acceso-card input:focus {
+    border-color: #f45b82;
+}
+
+/* Enlace de recuperar contraseña */
+.recuperar {
+    text-align: right;
+    color: #f45b82;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+/* Botones principales */
+.boton-acceso {
+    margin-top: 20px;
+    background-color: #f45b82;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px;
+    font-size: 17px;
+}
+
+
+/* Efecto al pasar el mouse */
+.boton-acceso:hover {
+    background-color: #9a73c7;
+}
+
+
+/* Texto que aparece debajo del login */
+.texto-cuenta {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Enlace de registro */
+.texto-cuenta a {
+    color: #f45b82;
+    text-decoration: none;
+}
