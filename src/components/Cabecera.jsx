@@ -32,6 +32,12 @@ function Cabecera() {
                     </li>
 
                     <li>
+                        <NavLink to="/blog" className="texto-general">
+                            Blog
+                        </NavLink>
+                    </li>
+
+                    <li>
                         <NavLink
                             to="/login"
                             className="texto-general"

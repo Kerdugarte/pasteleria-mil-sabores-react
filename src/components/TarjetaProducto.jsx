@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function TarjetaProducto({ producto }) {
     return (
         <article className="card">
@@ -12,9 +14,26 @@ function TarjetaProducto({ producto }) {
                     {producto.nombre}
                 </h2>
 
-                <p className="texto-general">
+                <p className="precio-producto">
                     ${producto.precio.toLocaleString("es-CL")}
                 </p>
+
+                <div className="acciones-producto">
+                    <Link
+                        to={`/productos/${producto.id}`}
+                        className="boton-detalle"
+                    >
+                        Ver detalle
+                    </Link>
+
+                    <button
+                        type="button"
+                        className="boton-agregar"
+                        disabled
+                    >
+                        Agregar al carrito
+                    </button>
+                </div>
             </div>
         </article>
     );
