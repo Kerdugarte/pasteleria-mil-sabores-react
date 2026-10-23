@@ -3,9 +3,9 @@ import "../assets/css/contacto.css";
 function Contacto() {
   return (
     <main className="container py-5">
-      <div className="text-center mb-5">
-        <h1>Contáctanos</h1>
-        <p>
+      <div className="encabezado-contacto">
+        <h1 className="letra-Titulos">Contáctanos</h1>
+        <p className="texto-general">
           ¿Tienes alguna duda o un pedido especial?
           Estamos felices de ayudarte.
         </p>
