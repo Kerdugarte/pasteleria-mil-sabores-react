@@ -6,6 +6,7 @@
 @import url(contacto.css);
 @import url(login.css);
 @import url(carrito.css);
+@import url(admin.css);
 
 
 /* sección carrusel  */
@@ -107,7 +108,7 @@ body {
 .boton-ver-mas {
     display: inline-block;
     padding: 24px 80px;
-    border-radius: 45px;
+    border-radius: 20px;
     background-color: #5d4037;
     color: #ffffff;
     font-family: "Lato", sans-serif;
@@ -184,7 +185,7 @@ body {
     background-color: #5D4037;
     color: white;
 
-    border-radius: 30px;
+    border-radius: 20px;
     text-decoration: none;
 
     font-family: "Lato", sans-serif;
@@ -263,7 +264,7 @@ body {
     margin-top: 24px;
     padding: 16px 30px;
     box-sizing: border-box;
-    border-radius: 30px;
+    border-radius: 20px;
     background-color: #970b0b;
     color: white;
     font-family: "Lato", sans-serif;
