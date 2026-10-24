@@ -2,7 +2,7 @@
 import "../assets/css/contacto.css";
 function Contacto() {
   return (
-    <main className="container py-5">
+    <main className="pagina-contacto container py-5">
       <div className="text-center mb-5">
         <h1>Contáctanos</h1>
         <p>
@@ -103,7 +103,7 @@ function Contacto() {
 
               <div className="text-center">
                 <button
-                  type="button"
+                  type="submit"
                   className="contacto-boton"
                 >
                   Enviar mensaje

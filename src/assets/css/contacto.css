@@ -94,3 +94,15 @@
     border-radius: 25px;
     padding: 12px 35px;
 }
+
+/* Centrar el formulario */
+.formulario-contacto {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Centrar el título de la página */
+.pagina-contacto h1 {
+  text-align: center;
+}
