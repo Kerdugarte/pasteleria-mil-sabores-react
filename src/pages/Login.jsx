@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { buscarUsuario, guardarSesion } from "../assets/js/usuarios";
-
+import { Navigate, useNavigate } from "react-router-dom";
+import {
+    buscarUsuario,
+    guardarSesion,
+    obtenerSesion,
+} from "../assets/js/usuarios";
 
 function Login() {
     const [formulario, setFormulario] = useState({
@@ -37,7 +40,9 @@ function Login() {
         }
 
         if (usuario.rol !== "admin") {
-            setError("El acceso de clientes estará disponible al migrar Mi cuenta.");
+            setError(
+                "El acceso de clientes estará disponible al migrar Mi cuenta."
+            );
             return;
         }
 
@@ -45,8 +50,16 @@ function Login() {
             guardarSesion(usuario);
             navigate("/admin", { replace: true });
         } catch {
-            setError("No se pudo guardar la sesión en este navegador.");
+            setError(
+                "No se pudo guardar la sesión en este navegador."
+            );
         }
+    }
+
+    const usuarioActivo = obtenerSesion();
+
+    if (usuarioActivo?.rol === "admin") {
+        return <Navigate to="/admin" replace />;
     }
 
     return (
@@ -55,7 +68,8 @@ function Login() {
                 <h1 className="letra-Titulos">Bienvenido</h1>
 
                 <p className="texto-general">
-                    Ingresa a tu cuenta o regístrate en Pastelería Mil Sabores.
+                    Ingresa a tu cuenta o regístrate en
+                    Pastelería Mil Sabores.
                 </p>
             </header>
 
@@ -68,7 +82,10 @@ function Login() {
 
                         <form onSubmit={iniciarSesion}>
                             <div className="mb-4">
-                                <label htmlFor="emailLogin" className="form-label">
+                                <label
+                                    htmlFor="emailLogin"
+                                    className="form-label"
+                                >
                                     Correo electrónico
                                 </label>
 
@@ -86,7 +103,10 @@ function Login() {
                             </div>
 
                             <div className="mb-4">
-                                <label htmlFor="passwordLogin" className="form-label">
+                                <label
+                                    htmlFor="passwordLogin"
+                                    className="form-label"
+                                >
                                     Contraseña
                                 </label>
 
@@ -104,12 +124,18 @@ function Login() {
                             </div>
 
                             {error && (
-                                <p className="alert alert-danger" role="alert">
+                                <p
+                                    className="alert alert-danger"
+                                    role="alert"
+                                >
                                     {error}
                                 </p>
                             )}
 
-                            <button type="submit" className="boton-acceso w-100">
+                            <button
+                                type="submit"
+                                className="boton-acceso w-100"
+                            >
                                 Iniciar sesión
                             </button>
                         </form>
@@ -118,11 +144,16 @@ function Login() {
 
                 <div className="col-12 col-lg-5">
                     <section className="acceso-card">
-                        <h2 className="letra-Titulos mb-4">Crear cuenta</h2>
+                        <h2 className="letra-Titulos mb-4">
+                            Crear cuenta
+                        </h2>
 
                         <form>
                             <div className="mb-3">
-                                <label htmlFor="nombreRegistro" className="form-label">
+                                <label
+                                    htmlFor="nombreRegistro"
+                                    className="form-label"
+                                >
                                     Nombre completo
                                 </label>
 
@@ -138,7 +169,10 @@ function Login() {
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="emailRegistro" className="form-label">
+                                <label
+                                    htmlFor="emailRegistro"
+                                    className="form-label"
+                                >
                                     Correo electrónico
                                 </label>
 
@@ -154,7 +188,10 @@ function Login() {
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="fechaNacimiento" className="form-label">
+                                <label
+                                    htmlFor="fechaNacimiento"
+                                    className="form-label"
+                                >
                                     Fecha de nacimiento
                                 </label>
 
@@ -169,7 +206,10 @@ function Login() {
                             </div>
 
                             <div className="mb-4">
-                                <label htmlFor="passwordRegistro" className="form-label">
+                                <label
+                                    htmlFor="passwordRegistro"
+                                    className="form-label"
+                                >
                                     Contraseña
                                 </label>
 
