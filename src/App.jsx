@@ -21,7 +21,7 @@ function App() {
       </Route>
 
       <Route path="/admin" element={<LayoutAdmin />}>
-        <Route index element={<PanelAdmin />} />
+        <Route index element={<h1>Panel de administración en construcción</h1>} />
 
         <Route
           path="*"
