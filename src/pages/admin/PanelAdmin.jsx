@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { producto } from "../../assets/js/Datos";
+import { usuarios } from "../../assets/js/usuarios";
 
 function PanelAdmin() {
     return (
@@ -16,17 +18,20 @@ function PanelAdmin() {
 
             <div className="row g-4">
                 <div className="col-12 col-md-6 col-xl-4">
-                    <div className="card h-100 p-4">
+                    <div className="card resumen-admin h-100 p-4">
                         <h2 className="h4">Productos</h2>
 
+                        <p className="display-5 fw-bold">
+                            {producto.length}
+                        </p>
+
                         <p>
-                            Consulta y administra los productos
-                            de la pastelería.
+                            Productos disponibles en el catálogo.
                         </p>
 
                         <Link
                             to="/admin/productos"
-                            className="btn btn-outline-secondary mt-auto"
+                            className="boton-admin mt-auto"
                         >
                             Ver productos
                         </Link>
@@ -34,7 +39,7 @@ function PanelAdmin() {
                 </div>
 
                 <div className="col-12 col-md-6 col-xl-4">
-                    <div className="card h-100 p-4">
+                    <div className="card resumen-admin h-100 p-4">
                         <h2 className="h4">Categorías</h2>
 
                         <p>
@@ -43,7 +48,7 @@ function PanelAdmin() {
 
                         <Link
                             to="/admin/categorias"
-                            className="btn btn-outline-secondary mt-auto"
+                            className="boton-admin mt-auto"
                         >
                             Ver categorías
                         </Link>
@@ -51,17 +56,20 @@ function PanelAdmin() {
                 </div>
 
                 <div className="col-12 col-md-6 col-xl-4">
-                    <div className="card h-100 p-4">
+                    <div className="card resumen-admin h-100 p-4">
                         <h2 className="h4">Usuarios</h2>
 
+                        <p className="display-5 fw-bold">
+                            {usuarios.length}
+                        </p>
+
                         <p>
-                            Consulta y administra los usuarios
-                            registrados.
+                            Usuarios definidos en los datos de ejemplo.
                         </p>
 
                         <Link
                             to="/admin/usuarios"
-                            className="btn btn-outline-secondary mt-auto"
+                            className="boton-admin mt-auto"
                         >
                             Ver usuarios
                         </Link>
