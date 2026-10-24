@@ -144,3 +144,40 @@
   color: #ffffff;
 }
 
+
+/* Encabezado del Blog */
+.blog-encabezado {
+    background-color: #fff8f4;
+    border-radius: 20px;
+    padding: 40px 25px;
+    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.08);
+}
+
+/* Título principal */
+.blog-encabezado h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #5d4037;
+    margin-bottom: 20px;
+}
+
+/* Texto de bienvenida */
+.blog-introduccion {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.8;
+    color: #5d4037;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* Subtítulo de publicaciones */
+.pagina-blog section > h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: #5d4037;
+}
+
+
+.blog-modal p {
+    white-space: pre-line;
+    line-height: 1.8;
+}
+
