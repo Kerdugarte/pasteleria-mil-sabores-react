@@ -19,9 +19,6 @@ return(
 
 
 );
-
-
-}
-
+ }
 
 export default UsuariosAdmin;
