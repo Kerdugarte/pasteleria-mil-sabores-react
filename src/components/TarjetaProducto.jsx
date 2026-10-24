@@ -18,6 +18,13 @@ function TarjetaProducto({ producto, esAdmin = false }) {
                     ${producto.precio.toLocaleString("es-CL")}
                 </p>
 
+                {esAdmin && (
+                    <p className="stock-producto-admin">
+                        <strong>Stock:</strong>{" "}
+                        {producto.stock ?? "Sin registrar"}
+                    </p>
+                )}
+
                 <div className="acciones-producto">
                     {esAdmin ? (
                         <>

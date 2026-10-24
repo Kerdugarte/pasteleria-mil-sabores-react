@@ -5,6 +5,7 @@ export const producto = [
         precio: 45000,
         imagen: "/img/Torta Cuadrada de Chocolate.png",
         categoria: "tortas-cuadradas",
+        stock: 10,
     },
     {
         id: 15,
@@ -12,6 +13,7 @@ export const producto = [
         precio: 55000,
         imagen: "/img/Torta Especial de Cumpleaños.png",
         categoria: "tortas-especiales",
+        stock: 10,
     },
 
     {
@@ -20,6 +22,7 @@ export const producto = [
         precio: 40000,
         imagen: "/img/Torta Circular de Vainilla.png",
         categoria: "tortas-circulares",
+        stock: 4,
     },
     {
         id: 4,
@@ -27,6 +30,7 @@ export const producto = [
         precio: 42000,
         imagen: "/img/Torta Circular de Manjar.png",
         categoria: "tortas-circulares",
+        stock: 5,
     },
     {
         id: 5,
@@ -34,6 +38,7 @@ export const producto = [
         precio: 5000,
         imagen: "/img/Mousse de Chocolate.png",
         categoria: "postres-individuales",
+        stock: 10,
     },
     {
         id: 6,
@@ -41,6 +46,7 @@ export const producto = [
         precio: 5500,
         imagen: "/img/Tiramisú.png",
         categoria: "postres-individuales",
+        stock: 10,
     },
     {
         id: 7,
@@ -48,6 +54,7 @@ export const producto = [
         precio: 48000,
         imagen: "/img/Torta Sin Azúcar de Naranja.png",
         categoria: "postres-sin-azucar",
+        stock: 10,
     },
     {
         id: 8,
@@ -55,6 +62,7 @@ export const producto = [
         precio: 47000,
         imagen: "/img/Cheesecake.png",
         categoria: "postres-sin-azucar",
+        stock: 10,
     },
     {
         id: 9,
@@ -62,6 +70,7 @@ export const producto = [
         precio: 3000,
         imagen: "/img/empanada Manzana.png",
         categoria: "pasteleria-tradicional",
+        stock: 10,
     },
     {
         id: 10,
@@ -69,6 +78,7 @@ export const producto = [
         precio: 6000,
         imagen: "/img/Tarta de Santiago.png",
         categoria: "pasteleria-tradicional",
+        stock: 10,
     },
     {
         id: 11,
@@ -76,6 +86,7 @@ export const producto = [
         precio: 4000,
         imagen: "/img/Brownie Sin Gluten.png",
         categoria: "postres-sin-gluten",
+        stock: 10,
     },
     {
         id: 12,
@@ -83,6 +94,7 @@ export const producto = [
         precio: 3500,
         imagen: "/img/Pan Sin Gluten.png",
         categoria: "postres-sin-gluten",
+        stock: 10,
     },
     {
         id: 13,
@@ -90,6 +102,7 @@ export const producto = [
         precio: 50000,
         imagen: "/img/Torta Vegana de Chocolate.png",
         categoria: "postres-veganos",
+        stock: 10,
     },
     {
         id: 14,
@@ -97,6 +110,7 @@ export const producto = [
         precio: 4500,
         imagen: "/img/Galletas Veganas de Avena.png",
         categoria: "postres-veganos",
+        stock: 10,
     },
 
 
@@ -106,6 +120,7 @@ export const producto = [
         precio: 50000,
         imagen: "/img/torta cuadrada de frutas.png",
         categoria: "tortas-cuadradas",
+        stock: 10,
     },
 
     {
@@ -114,5 +129,7 @@ export const producto = [
         precio: 60000,
         imagen: "/img/Torta Especial de Boda.png",
         categoria: "tortas-especiales",
+        stock: 10,
     },
+
 ];

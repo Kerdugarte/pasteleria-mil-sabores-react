@@ -109,6 +109,26 @@ function NuevoProducto() {
 
                     <div className="col-12 col-md-6">
                         <label
+                            htmlFor="stockProducto"
+                            className="form-label"
+                        >
+                            Stock disponible
+                        </label>
+
+                        <input
+                            type="number"
+                            id="stockProducto"
+                            name="stock"
+                            className="form-control"
+                            placeholder="Cantidad de unidades"
+                            min="0"
+                            step="1"
+                            required
+                        />
+                    </div>
+
+                    <div className="col-12 col-md-6">
+                        <label
                             htmlFor="categoriaProducto"
                             className="form-label"
                         >
