@@ -1,28 +1,85 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function NuevoProducto() {
+    const [imagen, setImagen] = useState("");
+    const [errorImagen, setErrorImagen] = useState("");
+
+    function seleccionarImagen(event) {
+        const archivo = event.target.files[0];
+
+        setImagen("");
+        setErrorImagen("");
+
+        if (!archivo) {
+            return;
+        }
+
+        const formatosPermitidos = [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+        ];
+
+        if (!formatosPermitidos.includes(archivo.type)) {
+            setErrorImagen("Selecciona una imagen JPG, PNG o WebP.");
+            event.target.value = "";
+            return;
+        }
+
+        if (archivo.size > 2 * 1024 * 1024) {
+            setErrorImagen("La imagen debe pesar como máximo 2 MB.");
+            event.target.value = "";
+            return;
+        }
+
+        const lector = new FileReader();
+
+        lector.onload = () => {
+            setImagen(lector.result);
+        };
+
+        lector.onerror = () => {
+            setErrorImagen("No se pudo leer la imagen.");
+        };
+
+        lector.readAsDataURL(archivo);
+    }
+
     return (
-        <section>
-            <header className="mb-4">
+        <section className="formulario-producto-admin">
+            <header className="encabezado-producto-admin">
+                <Link
+                    to="/admin/productos"
+                    className="flecha-volver-admin"
+                    aria-label="Volver a productos"
+                    title="Volver a productos"
+                >
+                    <span aria-hidden="true">←</span>
+                </Link>
+
                 <h1 className="letra-Titulos">
                     Nuevo producto
                 </h1>
 
                 <p className="texto-general">
-                    Completa los datos del producto.
+                    Completa los datos y selecciona una foto.
                 </p>
             </header>
 
-            <form>
+            <form onSubmit={(event) => event.preventDefault()}>
                 <div className="row g-4">
                     <div className="col-12 col-md-6">
-                        <label htmlFor="nombre" className="form-label">
+                        <label
+                            htmlFor="nombreProducto"
+                            className="form-label"
+                        >
                             Nombre
                         </label>
 
                         <input
                             type="text"
-                            id="nombre"
+                            id="nombreProducto"
                             name="nombre"
                             className="form-control"
                             placeholder="Torta de Chocolate"
@@ -31,13 +88,16 @@ function NuevoProducto() {
                     </div>
 
                     <div className="col-12 col-md-6">
-                        <label htmlFor="precio" className="form-label">
+                        <label
+                            htmlFor="precioProducto"
+                            className="form-label"
+                        >
                             Precio
                         </label>
 
                         <input
                             type="number"
-                            id="precio"
+                            id="precioProducto"
                             name="precio"
                             className="form-control"
                             placeholder="45000"
@@ -48,12 +108,15 @@ function NuevoProducto() {
                     </div>
 
                     <div className="col-12 col-md-6">
-                        <label htmlFor="categoria" className="form-label">
+                        <label
+                            htmlFor="categoriaProducto"
+                            className="form-label"
+                        >
                             Categoría
                         </label>
 
                         <select
-                            id="categoria"
+                            id="categoriaProducto"
                             name="categoria"
                             className="form-select"
                             defaultValue=""
@@ -98,35 +161,52 @@ function NuevoProducto() {
                     </div>
 
                     <div className="col-12 col-md-6">
-                        <label htmlFor="imagen" className="form-label">
-                            Ruta de la imagen
+                        <label
+                            htmlFor="imagenProducto"
+                            className="form-label"
+                        >
+                            Foto del producto
                         </label>
 
                         <input
-                            type="text"
-                            id="imagen"
+                            type="file"
+                            id="imagenProducto"
                             name="imagen"
                             className="form-control"
-                            placeholder="/img/Torta de Chocolate.png"
+                            accept="image/jpeg,image/png,image/webp"
+                            onChange={seleccionarImagen}
                             required
                         />
+
+                        <p className="form-text">
+                            JPG, PNG o WebP. Máximo 2 MB.
+                        </p>
+
+                        {errorImagen && (
+                            <p className="text-danger" role="alert">
+                                {errorImagen}
+                            </p>
+                        )}
+
+                        {imagen && (
+                            <img
+                                src={imagen}
+                                alt="Vista previa del producto"
+                                className="foto-producto-admin mt-3"
+                            />
+                        )}
                     </div>
 
-                    <div className="col-12 d-flex flex-wrap gap-3">
-                        <button
-                            type="button"
-                            className="boton-admin"
-                            disabled
-                        >
-                            Guardar producto
-                        </button>
-
-                        <Link
-                            to="/admin/productos"
-                            className="boton-admin"
-                        >
-                            Cancelar
-                        </Link>
+                    <div className="col-12">
+                        <div className="acciones-formulario-admin">
+                            <button
+                                type="button"
+                                className="boton-admin"
+                                disabled
+                            >
+                                Guardar producto
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>

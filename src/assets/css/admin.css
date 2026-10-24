@@ -4,9 +4,10 @@
     flex-direction: column;
     min-height: calc(100vh - 48px);
     padding: 28px 18px;
-    background-color: #fffaf6;
     border: 1px solid #eadde2;
     border-radius: 28px;
+    background-color: #fffaf6;
+    color: #5d4037;
     box-shadow: 0 4px 15px rgba(93, 64, 55, 0.06);
 }
 
@@ -25,11 +26,10 @@
 
 .menu-admin-titulo {
     margin-bottom: 30px;
-    text-align: center;
     font-family: "Lato", sans-serif;
     font-size: 13px;
     letter-spacing: 3px;
-    color: #5d4037;
+    text-align: center;
     text-transform: uppercase;
 }
 
@@ -56,7 +56,7 @@
     font-size: 18px;
     text-align: left;
     text-decoration: none;
-    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
 }
 
 .menu-admin-enlaces a:hover,
@@ -71,12 +71,6 @@
     font-weight: bold;
 }
 
-.menu-admin a:focus-visible,
-.menu-admin button:focus-visible {
-    outline: 2px solid #970b0b;
-    outline-offset: 3px;
-}
-
 .menu-admin-inferior {
     display: flex;
     flex-direction: column;
@@ -85,42 +79,21 @@
     padding-top: 28px;
 }
 
-.menu-admin-inferior button {
-    cursor: pointer;
-}
-
-/* Contenido de las páginas administrativas */
+/* Contenido y botones generales */
 .contenido-admin {
     min-height: calc(100vh - 48px);
     padding: 36px;
-    background-color: #fffaf6;
     border: 1px solid #eadde2;
     border-radius: 28px;
+    background-color: #fffaf6;
     color: #5d4037;
     box-shadow: 0 4px 15px rgba(93, 64, 55, 0.06);
-}
-
-/* Ajustes para tabletas y móviles */
-@media (max-width: 991px) {
-    .menu-admin {
-        min-height: auto;
-    }
-
-    .menu-admin-inferior {
-        margin-top: 24px;
-        border-top: 1px solid #eadde2;
-    }
-
-    .contenido-admin {
-        min-height: auto;
-        padding: 24px;
-    }
 }
 
 .resumen-admin {
     border: 1px solid #eadde2;
     border-radius: 24px;
-    background-color: #ffffff;
+    background-color: white;
     color: #5d4037;
     box-shadow: 0 4px 12px rgba(93, 64, 55, 0.06);
 }
@@ -133,7 +106,7 @@
 .boton-admin {
     display: inline-block;
     padding: 16px 24px;
-    border: none;
+    border: 1px solid #5d4037;
     border-radius: 40px;
     background-color: #5d4037;
     color: white;
@@ -146,210 +119,352 @@
 }
 
 .boton-admin:hover {
+    border-color: #970b0b;
     background-color: #970b0b;
     color: white;
 }
 
-.boton-admin:focus-visible {
-    outline: 2px solid #970b0b;
-    outline-offset: 3px;
-}
-
-
-.imagen-tabla-admin {
-    width: 90px;
-    height: 75px;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
-/* Catálogo del administrador */
-.catalogo-admin header .letra-Titulos {
-    margin-bottom: 12px;
-    font-size: clamp(32px, 4vw, 48px);
-    text-align: left;
-}
-
-.catalogo-admin header .texto-general {
-    margin: 0;
-    color: #5d4037;
-    text-align: left;
-}
-
-.catalogo-admin .buscador-admin {
-    min-height: 58px;
-    padding: 14px 20px;
-    border: 1px solid #d8beb0;
-    border-radius: 18px;
-    background-color: white;
-    color: #5d4037;
-    font-family: "Lato", sans-serif;
-    font-size: 18px;
-}
-
-.catalogo-admin .buscador-admin:focus {
-    border-color: #5d4037;
-    box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
-}
-
-.catalogo-admin .filtro-desplegable {
-    position: relative;
-    width: 100%;
-}
-
-.catalogo-admin .boton-categorias {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    width: 100%;
-    min-height: 58px;
-    padding: 14px 20px;
-    border: 1px solid #d8beb0;
-    border-radius: 18px;
-    background-color: white;
-    color: #5d4037;
-    font-family: "Lato", sans-serif;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.catalogo-admin .opciones-categorias {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    min-width: 0;
-    max-height: 350px;
-    overflow-y: auto;
-    padding: 10px;
-    border: 1px solid #eadde2;
-    border-radius: 18px;
-    background-color: #fffaf6;
-    box-shadow: 0 8px 20px rgba(93, 64, 55, 0.12);
-}
-
-.catalogo-admin .opciones-categorias button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    background-color: transparent;
-    color: #5d4037;
-    font-size: 17px;
-    text-align: left;
-    cursor: pointer;
-}
-
-.catalogo-admin .opciones-categorias button:hover {
-    background-color: #f2e3dd;
-}
-
-.catalogo-admin .opciones-categorias button.activo {
-    background-color: #5d4037;
-    color: white;
-}
-
-.catalogo-admin .boton-admin {
-    min-height: 58px;
-    font-size: 18px;
-}
-
-.catalogo-admin button:disabled {
+button.boton-admin:disabled {
     opacity: 0.65;
     cursor: not-allowed;
 }
 
-.contador-admin {
-    margin-bottom: 20px;
-    color: #5d4037;
-    font-size: 17px;
+button.boton-admin:disabled:hover {
+    border-color: #5d4037;
+    background-color: #5d4037;
+    color: white;
 }
 
-/* Tarjetas dentro del administrador */
-.catalogo-admin .card {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    overflow: hidden;
+.menu-admin a:focus-visible,
+.menu-admin button:focus-visible,
+.boton-admin:focus-visible,
+.flecha-volver-admin:focus-visible {
+    outline: 2px solid #970b0b;
+    outline-offset: 3px;
+}
+
+/* Buscador y filtro */
+.encabezado-catalogo-admin {
+    position: relative;
+    margin-bottom: 32px;
+    padding: 85px 24px 44px;
     border: 1px solid #eadde2;
     border-radius: 24px;
-    background-color: #fffaf6;
-    box-shadow: 0 4px 12px rgba(93, 64, 55, 0.06);
+    background-color: white;
+    text-align: center;
 }
 
-.catalogo-admin .card-img-top {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 0;
+.encabezado-catalogo-admin h1 {
+    margin: 0 0 20px;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.3;
 }
 
-.catalogo-admin .card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 22px;
-    text-align: left;
-}
-
-.catalogo-admin .card-title {
-    min-height: 0;
+.encabezado-catalogo-admin p {
     margin: 0;
     color: #5d4037;
     font-size: 22px;
-    line-height: 1.4;
-    text-align: left;
+
 }
 
-.catalogo-admin .precio-producto {
-    margin: 0;
-    color: #5d4037;
-    font-size: 24px;
-    font-weight: bold;
-}
+    .catalogo-admin .buscador-admin,
+    .catalogo-admin .boton-categorias {
+        min-height: 58px;
+        padding: 14px 20px;
+        border: 1px solid #d8beb0;
+        border-radius: 18px;
+        background-color: white;
+        color: #5d4037;
+        font-family: "Lato", sans-serif;
+        font-size: 18px;
+    }
 
-.catalogo-admin .acciones-producto {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: auto;
-}
+    .catalogo-admin .buscador-admin:focus {
+        border-color: #5d4037;
+        box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
+    }
 
-.catalogo-admin .boton-detalle,
-.catalogo-admin .boton-agregar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    min-width: 0;
-    min-height: 48px;
-    padding: 12px 16px;
-    border: 1px solid #5d4037;
-    border-radius: 30px;
-    background-color: #5d4037;
-    color: white;
-    font-family: "Lato", sans-serif;
-    font-size: 17px;
-    font-weight: bold;
-    text-decoration: none;
-}
+    .catalogo-admin .filtro-desplegable {
+        position: relative;
+        width: 100%;
+    }
 
-.catalogo-admin .boton-agregar {
-    border-color: #970b0b;
-    background-color: transparent;
-    color: #970b0b;
-}
+    .catalogo-admin .boton-categorias {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        cursor: pointer;
+    }
 
-.sin-resultados-admin {
-    padding: 32px;
-    border: 1px solid #eadde2;
-    border-radius: 20px;
-    background-color: white;
-    color: #5d4037;
-    text-align: center;
-}
+    .catalogo-admin .opciones-categorias {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        min-width: 0;
+        max-height: 350px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #eadde2;
+        border-radius: 18px;
+        background-color: #fffaf6;
+        box-shadow: 0 8px 20px rgba(93, 64, 55, 0.12);
+    }
+
+    .catalogo-admin .opciones-categorias button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 12px;
+        background-color: transparent;
+        color: #5d4037;
+        font-size: 17px;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .catalogo-admin .opciones-categorias button:hover {
+        background-color: #f2e3dd;
+    }
+
+    .catalogo-admin .opciones-categorias button.activo {
+        background-color: #5d4037;
+        color: white;
+    }
+
+    .catalogo-admin .boton-admin {
+        min-height: 58px;
+    }
+
+    .contador-admin {
+        margin-bottom: 20px;
+        color: #5d4037;
+        font-size: 17px;
+    }
+
+    .sin-resultados-admin {
+        padding: 32px;
+        border: 1px solid #eadde2;
+        border-radius: 20px;
+        background-color: white;
+        color: #5d4037;
+        text-align: center;
+    }
+
+    /* Tarjetas del catálogo */
+    .catalogo-admin .card {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid #eadde2;
+        border-radius: 24px;
+        background-color: #fffaf6;
+        box-shadow: 0 4px 12px rgba(93, 64, 55, 0.06);
+    }
+
+    .catalogo-admin .card-img-top {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 0;
+    }
+
+    .catalogo-admin .card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 22px;
+        text-align: left;
+    }
+
+    .catalogo-admin .card-title {
+        min-height: 0;
+        margin: 0;
+        color: #5d4037;
+        font-size: 22px;
+        line-height: 1.4;
+        text-align: left;
+    }
+
+    .catalogo-admin .precio-producto {
+        margin: 0;
+        color: #5d4037;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .catalogo-admin .acciones-producto {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: auto;
+    }
+
+    .catalogo-admin .boton-detalle,
+    .catalogo-admin .boton-agregar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        min-width: 0;
+        min-height: 48px;
+        padding: 12px 16px;
+        border: 1px solid #5d4037;
+        border-radius: 30px;
+        background-color: #5d4037;
+        color: white;
+        font-family: "Lato", sans-serif;
+        font-size: 17px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .catalogo-admin .boton-agregar {
+        border-color: #970b0b;
+        background-color: transparent;
+        color: #970b0b;
+    }
+
+    .catalogo-admin .acciones-producto button:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+    }
+
+    /* Formulario de productos */
+    .formulario-producto-admin {
+        color: #5d4037;
+    }
+
+    .encabezado-producto-admin {
+        position: relative;
+        margin-bottom: 32px;
+        padding: 85px 24px 44px;
+        border: 1px solid #eadde2;
+        border-radius: 24px;
+        background-color: white;
+        text-align: center;
+    }
+
+    .encabezado-producto-admin h1 {
+        margin: 0 0 20px;
+        font-size: clamp(36px, 5vw, 60px);
+        line-height: 1.3;
+    }
+
+    .encabezado-producto-admin p {
+        margin: 0;
+        color: #5d4037;
+        font-size: 22px;
+    }
+
+    .flecha-volver-admin {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border: 1px solid #d8beb0;
+        border-radius: 50%;
+        background-color: #fffaf6;
+        color: #5d4037;
+        font-size: 32px;
+        line-height: 1;
+        text-decoration: none;
+    }
+
+    .flecha-volver-admin:hover {
+        background-color: #5d4037;
+        color: white;
+    }
+
+    .formulario-producto-admin .form-label {
+        margin-bottom: 12px;
+        color: #5d4037;
+        font-family: "Lato", sans-serif;
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .formulario-producto-admin .form-control,
+    .formulario-producto-admin .form-select {
+        min-height: 76px;
+        padding: 20px 24px;
+        border: 1px solid #d8beb0;
+        border-radius: 20px;
+        background-color: white;
+        color: #5d4037;
+        font-family: "Lato", sans-serif;
+        font-size: 20px;
+    }
+
+    .formulario-producto-admin .form-select {
+        padding-right: 48px;
+    }
+
+    .formulario-producto-admin .form-control:focus,
+    .formulario-producto-admin .form-select:focus {
+        border-color: #5d4037;
+        box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
+    }
+
+    .formulario-producto-admin .form-text {
+        margin-top: 12px;
+        color: #5d4037;
+        font-size: 16px;
+    }
+
+    .foto-producto-admin {
+        display: block;
+        width: 300px;
+        max-width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border: 1px solid #eadde2;
+        border-radius: 20px;
+    }
+
+    .acciones-formulario-admin {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .acciones-formulario-admin .boton-admin {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 280px;
+        max-width: 100%;
+        min-height: 72px;
+        padding: 20px 30px;
+        font-size: 22px;
+    }
+
+    /* Tabletas y móviles */
+    @media (max-width: 991px) {
+
+        .menu-admin,
+        .contenido-admin {
+            min-height: auto;
+        }
+
+        .menu-admin-inferior {
+            margin-top: 24px;
+            border-top: 1px solid #eadde2;
+        }
+
+        .contenido-admin {
+            padding: 24px;
+        }
+    }
