@@ -8,7 +8,6 @@ import Inicio from "./pages/Inicio";
 import Productos from "./pages/Productos";
 import Contacto from "./pages/Contacto";
 import Blog from "./pages/Blog";
-import PanelAdmin from "./pages/PanelAdmin";
 
 function App() {
   return (
