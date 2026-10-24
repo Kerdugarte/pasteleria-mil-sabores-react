@@ -34,7 +34,7 @@ function MenuAdmin({ alCerrarSesion }) {
 
                     <li>
                         <NavLink to="/admin/categorias">
-                            Categorías
+                            Categorias
                         </NavLink>
                     </li>
 
