@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-function TarjetaProducto({ producto }) {
+function TarjetaProducto({ producto, esAdmin = false }) {
     return (
-        <article className="card">
+        <article className="card h-100">
             <img
                 src={producto.imagen}
                 className="card-img-top"
@@ -18,21 +18,50 @@ function TarjetaProducto({ producto }) {
                     ${producto.precio.toLocaleString("es-CL")}
                 </p>
 
-                <div className="acciones-producto">
-                    <Link
-                        to={`/productos/${producto.id}`}
-                        className="boton-detalle"
-                    >
-                        Ver detalle
-                    </Link>
+                {esAdmin && (
+                    <p className="stock-producto-admin">
+                        <strong>Stock:</strong>{" "}
+                        {producto.stock ?? "Sin registrar"}
+                    </p>
+                )}
 
-                    <button
-                        type="button"
-                        className="boton-agregar"
-                        disabled
-                    >
-                        Agregar al carrito
-                    </button>
+                <div className="acciones-producto">
+                    {esAdmin ? (
+                        <>
+                            <button
+                                type="button"
+                                className="boton-detalle"
+                                disabled
+                            >
+                                Editar
+                            </button>
+
+                            <button
+                                type="button"
+                                className="boton-agregar"
+                                disabled
+                            >
+                                Eliminar
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link
+                                to={`/productos/${producto.id}`}
+                                className="boton-detalle"
+                            >
+                                Ver detalle
+                            </Link>
+
+                            <button
+                                type="button"
+                                className="boton-agregar"
+                                disabled
+                            >
+                                Agregar al carrito
+                            </button>
+                        </>
+                    )}
                 </div>
             </div>
         </article>
