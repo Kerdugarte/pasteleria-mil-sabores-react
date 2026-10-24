@@ -1,216 +1,118 @@
-/* Contenedor del menú */
-.menuAdmim {
-    gap: 24px;
-    width: 50%;
-    margin-right: 60px;
-    padding: 18px 28px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+/* Menú lateral */
+.menu-admin {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 48px);
+    padding: 28px 18px;
+    background-color: #fffaf6;
+    border: 1px solid #eadde2;
+    border-radius: 28px;
+    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.06);
 }
 
-/* Lista de navegación */
-.menuAdmim ul {
-
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menuAdmim ul li {
-    padding: 0 14px;
-    border-right: 1px solid #eadde2;
-}
-
-.menuAdmim ul li:last-child {
-    border-right: none;
-}
-
-/* Logo */
-.menuAdmim .menu-logo {
+.logo-admin {
     display: block;
-    width: 240px;
+    margin-bottom: 20px;
+}
+
+.logo-admin img {
+    display: block;
+    width: 200px;
     max-width: 100%;
     height: auto;
-    margin-right: 0;
+    margin: auto;
 }
 
-/* Enlaces */
-.menuAdmim ul li a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 14px;
-    border-radius: 12px;
+.menu-admin-titulo {
+    margin-bottom: 30px;
+    text-align: center;
     font-family: "Lato", sans-serif;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
     color: #5d4037;
+    text-transform: uppercase;
+}
+
+.menu-admin-enlaces {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu-admin-enlaces a,
+.menu-admin-inferior a,
+.menu-admin-inferior button {
+    display: block;
+    width: 100%;
+    padding: 15px 18px;
+    border: none;
+    border-radius: 18px;
+    background-color: transparent;
+    color: #5d4037;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    text-align: left;
     text-decoration: none;
-    white-space: nowrap;
     transition: background-color 0.2s, color 0.2s;
 }
 
-/* Al pasar el cursor */
-.menuAdmim ul li a:hover {
-    background-color: #fff0ec;
-    color: #8c5045;
+.menu-admin-enlaces a:hover,
+.menu-admin-inferior a:hover,
+.menu-admin-inferior button:hover {
+    background-color: #f2e3dd;
 }
 
-/* Página actual */
-.menuAdmim ul li a.active {
-    background-color: #f2dcd5;
-    color: #713f35;
-    box-shadow: inset 0 -3px 0 #a76f60;
+.menu-admin-enlaces a.active {
+    background-color: #5d4037;
+    color: white;
+    font-weight: bold;
 }
 
-/* Navegación mediante teclado */
-.menuAdmim ul li a:focus-visible {
-    outline: 2px solid #a76f60;
+.menu-admin a:focus-visible,
+.menu-admin button:focus-visible {
+    outline: 2px solid #970b0b;
     outline-offset: 3px;
 }
 
-/* Iconos */
-.menuAdmim .img-iconos {
-    display: block;
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
+.menu-admin-inferior {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 28px;
 }
 
-
-
-/* Regla general */
-.menu .buscador {
-    min-width: 0;
-    margin-left: auto;
+.menu-admin-inferior button {
+    cursor: pointer;
 }
 
-
-
-/* Desplazamiento hacia la izquierda en escritorio */
-@media (min-width: 1200px) {
-    .menu .buscador {
-        margin-right: 30px;
-    }
+/* Contenido de las páginas administrativas */
+.contenido-admin {
+    min-height: calc(100vh - 48px);
+    padding: 36px;
+    background-color: #fffaf6;
+    border: 1px solid #eadde2;
+    border-radius: 28px;
+    color: #5d4037;
+    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.06);
 }
 
-.menu .buscador input {
-    display: block;
-    width: 350px;
-    max-width: 100%;
-    padding: 14px 18px;
-    box-sizing: border-box;
-    border: 1px solid #e5dadd;
-    border-radius: 12px;
-    background-color: #fffafa;
-    font-family: "Lato", sans-serif;
-    font-size: 21px;
-}
-
-.menu .buscador input:focus {
-    outline: 2px solid #a76f60;
-    outline-offset: 2px;
-}
-
-/* Pantallas medianas: buscador debajo del menú */
-@media (max-width: 1199px) {
-    .menu {
-        flex-direction: column;
-        gap: 16px;
-        padding: 16px;
-    }
-
-    .menu ul {
-        width: 100%;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .menu ul li {
-        padding: 0 8px;
-    }
-
-    .menu .menu-logo {
-        width: 185px;
-    }
-
-    .menu .buscador {
-        width: 100%;
-        max-width: 400px;
-        margin: 0;
-    }
-
-    .menu .buscador input {
-        width: 100%;
-    }
-}
-
-/* Tabletas: logo en su propia fila */
+/* Ajustes para tabletas y móviles */
 @media (max-width: 991px) {
-    .menu {
-        gap: 14px;
+    .menu-admin {
+        min-height: auto;
     }
 
-    .menu ul {
-        gap: 8px;
+    .menu-admin-inferior {
+        margin-top: 24px;
+        border-top: 1px solid #eadde2;
     }
 
-    .menu ul li {
-        padding: 0;
-        border-right: none;
-    }
-
-    .menu ul li:first-child {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 8px;
-    }
-
-    .menu .menu-logo {
-        width: 160px;
-    }
-
-    .menu ul li a {
-        padding: 10px;
-        font-size: 17px;
-    }
-
-    .menu .img-iconos {
-        width: 30px;
-        height: 30px;
-    }
-
-    .menu .buscador input {
-        min-width: 0;
-        padding: 12px 14px;
-        font-size: 16px;
-    }
-}
-
-/* Móviles */
-@media (max-width: 575px) {
-    .menu {
-        padding: 14px 10px;
-        border-radius: 18px;
-    }
-
-    .menu ul {
-        gap: 6px;
-    }
-
-    .menu ul li a {
-        padding: 8px;
-        font-size: 16px;
-    }
-
-    .menu .img-iconos {
-        width: 26px;
-        height: 26px;
+    .contenido-admin {
+        min-height: auto;
+        padding: 24px;
     }
 }
