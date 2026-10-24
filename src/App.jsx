@@ -6,6 +6,13 @@ import Productos from "./pages/Productos";
 import Contacto from "./pages/Contacto";
 import Login from "./pages/Login";
 import PanelAdmin from "./pages/admin/PanelAdmin";
+import ProductosAdmin from "./pages/admin/ProductosAdmin";
+import NuevoProducto from "./pages/admin/NuevoProducto";
+import UsuariosAdmin from "./pages/admin/UsuariosAdmin";
+import NuevoUsuario from "./pages/admin/NuevoUsuario";
+import CategoriasAdmin from "./pages/admin/CategoriasAdmin";
+import NuevaCategoria from "./pages/admin/NuevaCategoria";
+
 
 function App() {
   return (
@@ -25,6 +32,13 @@ function App() {
 
       <Route path="/admin" element={<LayoutAdmin />}>
         <Route index element={<PanelAdmin />} />
+        <Route path="productos" element={<ProductosAdmin />} />
+        <Route path="productos/nuevo" element={<NuevoProducto />} />
+        <Route path="usuarios" element={<UsuariosAdmin />} />
+        <Route path="usuarios/nuevo" element={<NuevoUsuario />} />
+        <Route path="categorias" element={<CategoriasAdmin />} />
+        <Route path="categorias/nueva" element={<NuevaCategoria />}
+        />
         <Route path="*" element={
           <section>
             <h1 className="letra-Titulos">Página no disponible</h1>
