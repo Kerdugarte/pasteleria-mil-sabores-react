@@ -7,7 +7,7 @@ const publicaciones = [
     categoria: "Consejos",
     descripcion:
       "Descubre algunos consejos para preparar tortas suaves, esponjosas y deliciosas.",
-    imagen: "/blog/torta.jpg"
+    imagen: "/img/torta.jpg"
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const publicaciones = [
     categoria: "Vida saludable",
     descripcion:
       "Conoce alternativas para disfrutar de deliciosos postres sin azúcar añadida.",
-    imagen: "/blog/sin-azucar.jpg"
+    imagen: "/img/sin-azucar.jpg"
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const publicaciones = [
     categoria: "Repostería",
     descripcion:
       "Aprende ideas sencillas para decorar cupcakes y sorprender en tus celebraciones.",
-    imagen: "/blog/cupcakes.jpg"
+    imagen: "/img/cupcakes.jpg"
   }
 ];
 
