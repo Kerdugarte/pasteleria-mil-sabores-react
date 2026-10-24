@@ -47,7 +47,7 @@ function ProductosAdmin() {
 
     return (
         <section className="catalogo-admin">
-            <header className="encabezado-catalogo-admin">
+            <header className="encabezado-admin">
                 <h1 className="letra-Titulos">
                     Administrar productos
                 </h1>

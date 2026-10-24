@@ -144,28 +144,6 @@ button.boton-admin:disabled:hover {
 }
 
 /* Buscador y filtro */
-.encabezado-catalogo-admin {
-    position: relative;
-    margin-bottom: 32px;
-    padding: 85px 24px 44px;
-    border: 1px solid #eadde2;
-    border-radius: 24px;
-    background-color: white;
-    text-align: center;
-}
-
-.encabezado-catalogo-admin h1 {
-    margin: 0 0 20px;
-    font-size: clamp(36px, 5vw, 60px);
-    line-height: 1.3;
-}
-
-.encabezado-catalogo-admin p {
-    margin: 0;
-    color: #5d4037;
-    font-size: 22px;
-
-}
 
     .catalogo-admin .buscador-admin,
     .catalogo-admin .boton-categorias {
@@ -343,7 +321,9 @@ button.boton-admin:disabled:hover {
         color: #5d4037;
     }
 
-    .encabezado-producto-admin {
+ /* Encabezados Admin */
+
+    .encabezado-admin {
         position: relative;
         margin-bottom: 32px;
         padding: 85px 24px 44px;
@@ -353,13 +333,13 @@ button.boton-admin:disabled:hover {
         text-align: center;
     }
 
-    .encabezado-producto-admin h1 {
+    .encabezado-admin h1 {
         margin: 0 0 20px;
         font-size: clamp(36px, 5vw, 60px);
         line-height: 1.3;
     }
 
-    .encabezado-producto-admin p {
+    .encabezado-admin p {
         margin: 0;
         color: #5d4037;
         font-size: 22px;

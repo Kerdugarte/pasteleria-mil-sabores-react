@@ -48,7 +48,7 @@ function NuevoProducto() {
 
     return (
         <section className="formulario-producto-admin">
-            <header className="encabezado-producto-admin">
+            <header className="encabezado-admin">
                 <Link
                     to="/admin/productos"
                     className="flecha-volver-admin"

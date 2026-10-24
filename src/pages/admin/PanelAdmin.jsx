@@ -5,7 +5,7 @@ import { usuarios } from "../../assets/js/usuarios";
 function PanelAdmin() {
     return (
         <section>
-            <header className="mb-4">
+            <header className="encabezado-admin">
                 <h1 className="letra-Titulos">
                     Panel de administración
                 </h1>

@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import PanelAdmin from "./pages/admin/PanelAdmin";
 import ProductosAdmin from "./pages/admin/ProductosAdmin";
 import NuevoProducto from "./pages/admin/NuevoProducto";
+import UsuariosAdmin from "./pages/admin/UsuariosAdmin";
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route index element={<PanelAdmin />} />
         <Route path="productos" element={<ProductosAdmin />} />
         <Route path="productos/nuevo" element={<NuevoProducto />} />
+        <Route path="usuarios" element={<UsuariosAdmin />} />
         <Route path="*" element={
           <section>
             <h1 className="letra-Titulos">Página no disponible</h1>
