@@ -6,6 +6,7 @@ import Categorias from "./components/Categorias";
 import Carrusel from "./components/Carrusel";
 import Footer from "./components/Footer";
 import Contacto from "./pages/Contacto";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Inicio />} />
         <Route path="/productos" element={<Productos />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
 
       <Footer />
