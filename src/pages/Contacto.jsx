@@ -199,10 +199,15 @@ const enviarFormulario = (event) => {
       </p>
 
       <div className="contacto-modal-botones">
+        
         <button
-          type="button"
-          onClick={() => navigate("/")}
+        type="button"
+        onClick={() => {
+            navigate("/");
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }}
         >
+
           Volver al inicio
         </button>
 
