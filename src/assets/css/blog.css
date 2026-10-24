@@ -106,3 +106,39 @@
 .blog-modal h2 {
   margin: 15px 0;
 }
+
+/* FILTROS: TODOS, BLOG Y NOTICIAS */
+
+.blog-filtros {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0 auto 35px;
+}
+
+.blog-filtro {
+  background-color: #f8dfe5;
+  color: #63453b;
+  border: 1px solid #ead0d7;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.blog-filtro:hover {
+  background-color: #edc7d1;
+  transform: translateY(-2px);
+}
+
+.blog-filtro.activo {
+  background-color: #63453b;
+  color: white;
+  border-color: #63453b;
+  box-shadow: 0 4px 12px rgba(99, 69, 59, 0.2);
+}
+
