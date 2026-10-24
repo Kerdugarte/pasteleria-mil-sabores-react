@@ -2,7 +2,7 @@ import { useState } from "react";
 import TarjetaProducto from "../components/TarjetaProducto";
 import Paginacion from "../components/Paginacion";
 import FiltroProductos from "../components/FiltroProductos";
-import { producto } from "../js/Datos.js";
+import { producto } from "../assets/js/Datos";
 
 function Productos() {
     const [paginaActual, setPaginaActual] = useState(1);
