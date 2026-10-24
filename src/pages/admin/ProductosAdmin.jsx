@@ -2,6 +2,7 @@ import { useState } from "react";
 import TarjetaProducto from "../../components/TarjetaProducto";
 import FiltroProductos from "../../components/FiltroProductos";
 import { producto } from "../../assets/js/Datos";
+import { Link } from "react-router-dom";
 
 function ProductosAdmin() {
     const [busqueda, setBusqueda] = useState("");
@@ -60,13 +61,12 @@ function ProductosAdmin() {
                 </div>
 
                 <div className="col-12 col-lg-3">
-                    <button
-                        type="button"
+                    <Link
+                        to="/admin/productos/nuevo"
                         className="boton-admin w-100"
-                        disabled
                     >
                         + Nuevo producto
-                    </button>
+                    </Link>
                 </div>
             </div>
 
