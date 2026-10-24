@@ -103,7 +103,7 @@
 /* Cambia el borde cuando hacemos clic dentro de un campo */
 .formulario-contacto input:focus,
 .formulario-contacto textarea:focus {
-    border-color: #f45b82;
+    border-color: #5d4037;
 }
 
 
@@ -111,11 +111,103 @@
 .formulario-contacto button {
     display: block;
     margin: 10px auto 0;
-    background-color: #f45b82;
+    background-color: #5d4037;
     /* color boton contacto */
     color: white;
     /* Texto blanco */
     border: none;
     border-radius: 25px;
     padding: 12px 35px;
+}
+
+/* Centrar el formulario */
+.formulario-contacto {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Centrar el título de la página */
+.pagina-contacto h1 {
+  text-align: center;
+}
+
+/* Fondo oscuro detrás de la ventana */
+.contacto-modal-fondo {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(50, 30, 25, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* Ventana de confirmación */
+.contacto-modal {
+  background-color: #fffaf8;
+  border: 1px solid #eadfe3;
+  border-radius: 25px;
+  padding: 40px 30px;
+  max-width: 470px;
+  width: 100%;
+  text-align: center;
+  color: #63453b;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Círculo con el símbolo de confirmación */
+.contacto-modal-icono {
+  background-color: #e5f5e8;
+  color: #36864b;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  font-size: 45px;
+  line-height: 75px;
+  margin: 0 auto 20px;
+}
+
+.contacto-modal h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.contacto-modal p {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+/* Organización de los botones */
+.contacto-modal-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* Botón Volver al inicio */
+.contacto-modal-botones button {
+  background-color: #63453b;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Efecto al pasar el mouse */
+.contacto-modal-botones button:hover {
+  background-color: #970b0b;
+}
+
+/* Botón Seguir comprando */
+.contacto-modal-botones button:last-child {
+  background-color: #5d4037;
+}
+
+.contacto-modal-botones button:last-child:hover {
+  background-color: #970b0b;
 }
