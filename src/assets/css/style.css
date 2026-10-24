@@ -1,0 +1,303 @@
+@import url(menu.css);
+@import url(texto.css);
+@import url(pie.css);
+@import url(productos.css);
+@import url(cuenta.css);
+@import url(contacto.css);
+@import url(login.css);
+@import url(carrito.css);
+@import url(admin.css);
+
+
+/* sección carrusel  */
+.mi-carrusel {
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.mi-carrusel img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+/* Sección de categorías */
+.categorias {
+    padding: 40px 0;
+}
+
+.categorias h2 {
+    margin-bottom: 28px;
+    font-size: 45px;
+}
+
+/* Tarjeta */
+.categorias .card {
+    border: 1px solid #eadde2;
+    border-radius: 18px;
+    overflow: hidden;
+    background-color: #fffaf7;
+    box-shadow: 0 4px 12px rgba(93, 64, 55, 0.08);
+}
+
+/* Enlace de la imagen */
+.categorias .card>a {
+    display: block;
+    overflow: hidden;
+}
+
+/* Imagen */
+.categorias .card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+/* Texto */
+.categorias .card-body {
+    display: block;
+    flex: none;
+    height: auto;
+    min-height: 0;
+    padding: 18px 12px;
+    text-align: center;
+}
+
+.categorias .card-title {
+    min-height: 0;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #5d4037;
+}
+
+body {
+    background-color: #fffaf6;
+
+    background-image:
+        repeating-linear-gradient(0deg,
+            rgba(197, 145, 137, 0.12) 0,
+            rgba(197, 145, 137, 0.12) 40px,
+            transparent 40px,
+            transparent 80px),
+        repeating-linear-gradient(90deg,
+            rgba(197, 145, 137, 0.12) 0,
+            rgba(197, 145, 137, 0.12) 40px,
+            transparent 40px,
+            transparent 80px);
+}
+
+/* Enlace al catálogo */
+
+
+.boton-ver-mas:hover {
+    background-color: #970b0b;
+    color: #ffffff;
+}
+
+.boton-ver-mas {
+    display: inline-block;
+    padding: 24px 80px;
+    border-radius: 20px;
+    background-color: #5d4037;
+    color: #ffffff;
+    font-family: "Lato", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+/* sección Historia */
+
+
+.historia-inicio {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    margin: 70px auto;
+    gap: 60px;
+}
+
+
+/* LADO IZQUIERDO */
+
+.historia-texto {
+    width: 45%;
+}
+
+.historia-mini {
+    letter-spacing: 6px;
+    font-size: 14px;
+    color: #5D4037;
+    margin-bottom: 15px;
+}
+
+.historia-texto h2 {
+    font-family: "Libre Baskerville", serif;
+    color: #5D4037;
+    font-size: 55px;
+    font-weight: normal;
+    text-align: left;
+    line-height: 1.2;
+    margin: 20px 0;
+
+}
+
+.linea-historia {
+    width: 80px;
+    height: 4px;
+    background-color: #970b0b;
+    margin: 25px 0;
+}
+
+
+.historia-texto h2 {
+    font-family: "Pacifico", cursive;
+    color: #5D4037;
+    font-size: 55px;
+    font-weight: normal;
+}
+
+.historia-texto p {
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* BOTÓN */
+
+.boton-visitanos {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 35px;
+
+    background-color: #5D4037;
+    color: white;
+
+    border-radius: 20px;
+    text-decoration: none;
+
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.boton-visitanos:hover {
+    background-color: #970b0b;
+    color: white;
+}
+
+
+/* LADO DERECHO */
+
+.historia-imagen {
+    width: 55%;
+}
+
+.historia-imagen img {
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+
+    border-radius: 30px;
+}
+
+
+/* Bloque de contacto centrado */
+.ContactoWhat {
+    width: 90%;
+    max-width: 1320px;
+    margin: 40px auto;
+    padding: 40px 24px;
+    box-sizing: border-box;
+    background-color: #fffaf6;
+    border: 1px solid #eadde2;
+    border-radius: 40px;
+    text-align: center;
+}
+
+/* Icono centrado */
+.ContactoWhat img {
+    display: block;
+    width: 120px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 24px;
+    padding: 0;
+}
+
+/* Título */
+.ContactoWhat h2 {
+    margin: 0 0 20px;
+    padding: 0;
+    font-size: clamp(28px, 4vw, 52px);
+    line-height: 1.3;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+/* Descripción */
+.ContactoWhat p {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.6;
+    color: #5d4037;
+    text-align: center;
+}
+
+/* Botón */
+.boton-ContactoWhat {
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 24px;
+    padding: 16px 30px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #970b0b;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: normal;
+}
+
+.boton-ContactoWhat:hover {
+    background-color: #5d4037;
+    color: white;
+}
+
+/* DISEÑO RESPONSIVO: móviles */
+@media (max-width: 575px) {
+    .ContactoWhat {
+        padding: 28px 18px;
+        border-radius: 24px;
+    }
+
+    .ContactoWhat img {
+        width: 90px;
+    }
+
+    .ContactoWhat p {
+        font-size: 18px;
+    }
+
+    .boton-ContactoWhat {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+    }
+}

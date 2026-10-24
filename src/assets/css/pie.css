@@ -1,0 +1,116 @@
+/* Contenedor del footer */
+footer {
+    margin-top: 70px;
+    background-color: #ffffff;
+
+}
+
+/* Cuatro columnas en escritorio */
+.footer-cols {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    padding: 32px 24px;
+    box-sizing: border-box;
+}
+
+/* Contenido de cada columna */
+.footer-columna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    min-width: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    border-right: 1px solid #e4d5e8;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.footer-columna:last-child {
+    border-right: none;
+}
+
+.footer-columna h3,
+.footer-columna p {
+    margin: 0;
+}
+
+/* Logo más grande, limitado al ancho de su columna */
+.footer-columna .logo {
+    display: block;
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Listas */
+.footer-columna ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-columna li {
+    margin-bottom: 8px;
+}
+
+.footer-columna li:last-child {
+    margin-bottom: 0;
+}
+
+/* Redes sociales */
+.footer-columna .redes-sociales {
+    display: block;
+    width: 140px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Franja inferior */
+.footer-bottom {
+    padding: 16px;
+    background-color: #5d4037;
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* DISEÑO RESPONSIVO: tabletas, dos columnas */
+@media (max-width: 991px) {
+    .footer-cols {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .footer-columna {
+        border-right: none;
+    }
+}
+
+/* DISEÑO RESPONSIVO: móviles, una columna */
+@media (max-width: 575px) {
+    .footer-cols {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 20px 16px;
+    }
+
+    .footer-columna {
+        padding: 24px 12px;
+        border-bottom: 1px solid #eadde2;
+    }
+
+    .footer-columna:last-child {
+        border-bottom: none;
+    }
+
+    .footer-columna .logo {
+        width: 220px;
+    }
+}

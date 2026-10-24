@@ -1,0 +1,118 @@
+export const producto = [
+    {
+        id: 1,
+        nombre: "Torta Cuadrada de Chocolate",
+        precio: 45000,
+        imagen: "/img/Torta Cuadrada de Chocolate.png",
+        categoria: "tortas-cuadradas",
+    },
+    {
+        id: 15,
+        nombre: "Torta Especial de Cumpleaños",
+        precio: 55000,
+        imagen: "/img/Torta Especial de Cumpleaños.png",
+        categoria: "tortas-especiales",
+    },
+
+    {
+        id: 3,
+        nombre: "Torta Circular de Vainilla",
+        precio: 40000,
+        imagen: "/img/Torta Circular de Vainilla.png",
+        categoria: "tortas-circulares",
+    },
+    {
+        id: 4,
+        nombre: "Torta Circular de Manjar",
+        precio: 42000,
+        imagen: "/img/Torta Circular de Manjar.png",
+        categoria: "tortas-circulares",
+    },
+    {
+        id: 5,
+        nombre: "Mousse de Chocolate",
+        precio: 5000,
+        imagen: "/img/Mousse de Chocolate.png",
+        categoria: "postres-individuales",
+    },
+    {
+        id: 6,
+        nombre: "Tiramisú Clásico",
+        precio: 5500,
+        imagen: "/img/Tiramisú.png",
+        categoria: "postres-individuales",
+    },
+    {
+        id: 7,
+        nombre: "Torta Sin Azúcar de Naranja",
+        precio: 48000,
+        imagen: "/img/Torta Sin Azúcar de Naranja.png",
+        categoria: "postres-sin-azucar",
+    },
+    {
+        id: 8,
+        nombre: "Cheesecake Sin Azúcar",
+        precio: 47000,
+        imagen: "/img/Cheesecake.png",
+        categoria: "postres-sin-azucar",
+    },
+    {
+        id: 9,
+        nombre: "Empanada de Manzana",
+        precio: 3000,
+        imagen: "/img/empanada Manzana.png",
+        categoria: "pasteleria-tradicional",
+    },
+    {
+        id: 10,
+        nombre: "Tarta de Santiago",
+        precio: 6000,
+        imagen: "/img/Tarta de Santiago.png",
+        categoria: "pasteleria-tradicional",
+    },
+    {
+        id: 11,
+        nombre: "Brownie Sin Gluten",
+        precio: 4000,
+        imagen: "/img/Brownie Sin Gluten.png",
+        categoria: "postres-sin-gluten",
+    },
+    {
+        id: 12,
+        nombre: "Pan Sin Gluten",
+        precio: 3500,
+        imagen: "/img/Pan Sin Gluten.png",
+        categoria: "postres-sin-gluten",
+    },
+    {
+        id: 13,
+        nombre: "Torta Vegana de Chocolate",
+        precio: 50000,
+        imagen: "/img/Torta Vegana de Chocolate.png",
+        categoria: "postres-veganos",
+    },
+    {
+        id: 14,
+        nombre: "Galletas Veganas de Avena",
+        precio: 4500,
+        imagen: "/img/Galletas Veganas de Avena.png",
+        categoria: "postres-veganos",
+    },
+
+
+    {
+        id: 2,
+        nombre: "Torta Cuadrada de Frutas",
+        precio: 50000,
+        imagen: "/img/torta cuadrada de frutas.png",
+        categoria: "tortas-cuadradas",
+    },
+
+    {
+        id: 16,
+        nombre: "Torta Especial de Boda",
+        precio: 60000,
+        imagen: "/img/Torta Especial de Boda.png",
+        categoria: "tortas-especiales",
+    },
+];
