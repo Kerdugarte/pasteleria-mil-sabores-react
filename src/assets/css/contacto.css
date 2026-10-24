@@ -78,7 +78,7 @@
 /* Cambia el borde cuando hacemos clic dentro de un campo */
 .formulario-contacto input:focus,
 .formulario-contacto textarea:focus {
-    border-color: #f45b82;
+    border-color: #5d4037;
 }
 
 
@@ -86,7 +86,7 @@
 .formulario-contacto button {
     display: block;
     margin: 10px auto 0;
-    background-color: #f45b82;
+    background-color: #5d4037;
     /* color boton contacto */
     color: white;
     /* Texto blanco */
@@ -175,14 +175,14 @@
 
 /* Efecto al pasar el mouse */
 .contacto-modal-botones button:hover {
-  background-color: #876257;
+  background-color: #970b0b;
 }
 
 /* Botón Seguir comprando */
 .contacto-modal-botones button:last-child {
-  background-color: #f45b82;
+  background-color: #5d4037;
 }
 
 .contacto-modal-botones button:last-child:hover {
-  background-color: #d9446c;
+  background-color: #970b0b;
 }
