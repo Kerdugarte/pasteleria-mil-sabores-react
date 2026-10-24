@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../assets/css/blog.css";
 
 const publicaciones = [
@@ -27,7 +28,7 @@ const publicaciones = [
   }
 ];
 
-function TarjetaBlog({ publicacion }) {
+function TarjetaBlog({ publicacion , onLeerMas}) {
   return (
     <div className="col-12 col-md-6 col-lg-4">
       <article className="blog-tarjeta">
@@ -46,9 +47,13 @@ function TarjetaBlog({ publicacion }) {
 
           <p>{publicacion.descripcion}</p>
 
-          <button type="button" className="blog-boton">
+          <button
+            type="button"
+            className="blog-boton"
+            onClick={onLeerMas}
+            >
             Leer más
-          </button>
+            </button>
         </div>
       </article>
     </div>
@@ -57,6 +62,7 @@ function TarjetaBlog({ publicacion }) {
 
 
 function Blog() {
+    const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
   return (
     <main className="pagina-blog container py-5">
       <div className="text-center mb-5">
@@ -78,10 +84,48 @@ function Blog() {
             <TarjetaBlog
                 key={publicacion.id}
                 publicacion={publicacion}
+                onLeerMas={() => setArticuloSeleccionado(publicacion)}
             />
             ))}
         </div>
         </section>
+        
+        {articuloSeleccionado && (
+        <div className="blog-modal-fondo">
+            <div
+            className="blog-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="blog-modal-titulo"
+            >
+            <button
+                type="button"
+                className="blog-modal-cerrar"
+                aria-label="Cerrar artículo"
+                onClick={() => setArticuloSeleccionado(null)}
+            >
+                ×
+            </button>
+
+            <img
+                src={articuloSeleccionado.imagen}
+                alt={articuloSeleccionado.titulo}
+                className="blog-modal-imagen"
+            />
+
+            <span className="blog-categoria">
+                {articuloSeleccionado.categoria}
+            </span>
+
+            <h2 id="blog-modal-titulo">
+                {articuloSeleccionado.titulo}
+            </h2>
+
+            <p>{articuloSeleccionado.descripcion}</p>
+            </div>
+        </div>
+        )}
+
     </main>
   );
 }
