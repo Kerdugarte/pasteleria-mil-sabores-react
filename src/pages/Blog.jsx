@@ -1,3 +1,4 @@
+import "../assets/css/blog.css";
 
 const publicaciones = [
   {
