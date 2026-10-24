@@ -11,7 +11,7 @@ import NuevoProducto from "./pages/admin/NuevoProducto";
 import UsuariosAdmin from "./pages/admin/UsuariosAdmin";
 import NuevoUsuario from "./pages/admin/NuevoUsuario";
 import CategoriasAdmin from "./pages/admin/CategoriasAdmin";
-import NuevaCategoria from "./pages/admin/NuevaCategoria";
+import NuevaCategoria from "./pages/admin/NuevaCategoria"
 
 
 function App() {
