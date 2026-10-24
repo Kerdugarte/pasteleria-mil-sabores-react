@@ -1,6 +1,9 @@
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import MenuAdmin from "../components/MenuAdmin";
-import { obtenerSesion, cerrarSesion } from "../assets/js/usuarios";
+import {
+  obtenerSesion,
+  cerrarSesion,
+} from "../assets/js/usuarios";
 
 function LayoutAdmin() {
   const navigate = useNavigate();
@@ -16,12 +19,19 @@ function LayoutAdmin() {
   }
 
   return (
-    <>
-      <MenuAdmin alCerrarSesion={salir} />
-      <main className="container py-4">
-        <Outlet />
-      </main>
-    </>
+    <div className="container-fluid p-3 p-lg-4">
+      <div className="row g-4">
+        <div className="col-12 col-lg-3 col-xl-2">
+          <MenuAdmin alCerrarSesion={salir} />
+        </div>
+
+        <main className="col-12 col-lg-9 col-xl-10">
+          <div className="contenido-admin">
+            <Outlet />
+          </div>
+        </main>
+      </div>
+    </div>
   );
 }
 
