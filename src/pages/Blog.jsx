@@ -4,6 +4,7 @@ import "../assets/css/blog.css";
 const publicaciones = [
   {
     id: 1,
+    tipo: "Blog",
     titulo: "Secretos para una torta perfecta",
     categoria: "Consejos",
     descripcion:
@@ -12,6 +13,7 @@ const publicaciones = [
   },
   {
     id: 2,
+    tipo: "Blog",
     titulo: "Postres sin azúcar",
     categoria: "Vida saludable",
     descripcion:
@@ -20,6 +22,7 @@ const publicaciones = [
   },
   {
     id: 3,
+    tipo: "Blog",
     titulo: "El arte de decorar cupcakes",
     categoria: "Repostería",
     descripcion:
@@ -28,7 +31,8 @@ const publicaciones = [
   }
 ];
 
-function TarjetaBlog({ publicacion , onLeerMas}) {
+
+function TarjetaBlog({ publicacion, onLeerMas }) {
   return (
     <div className="col-12 col-md-6 col-lg-4">
       <article className="blog-tarjeta">
@@ -51,9 +55,9 @@ function TarjetaBlog({ publicacion , onLeerMas}) {
             type="button"
             className="blog-boton"
             onClick={onLeerMas}
-            >
+          >
             Leer más
-            </button>
+          </button>
         </div>
       </article>
     </div>
@@ -61,8 +65,14 @@ function TarjetaBlog({ publicacion , onLeerMas}) {
 }
 
 
+
 function Blog() {
     const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
+    const [filtro, setFiltro] = useState("Todos");
+    const publicacionesFiltradas = publicaciones.filter(
+  (publicacion) =>
+    filtro === "Todos" || publicacion.tipo === filtro
+);
   return (
     <main className="pagina-blog container py-5">
       <div className="text-center mb-5">
@@ -78,9 +88,25 @@ function Blog() {
         <h2 className="text-center mb-4">
             Nuestras publicaciones
         </h2>
+        
+        <div className="blog-filtros">
+        {["Todos", "Blog", "Noticias"].map((tipo) => (
+            <button
+            key={tipo}
+            type="button"
+            className={`blog-filtro ${
+                filtro === tipo ? "activo" : ""
+            }`}
+            onClick={() => setFiltro(tipo)}
+            >
+            {tipo}
+            </button>
+        ))}
+        </div>
+
 
         <div className="row g-4">
-            {publicaciones.map((publicacion) => (
+            {publicacionesFiltradas.map((publicacion) => (
             <TarjetaBlog
                 key={publicacion.id}
                 publicacion={publicacion}
@@ -88,6 +114,13 @@ function Blog() {
             />
             ))}
         </div>
+
+        {publicacionesFiltradas.length === 0 && (
+        <p className="text-center mt-4">
+            Próximamente compartiremos nuevas publicaciones.
+        </p>
+        )}
+        
         </section>
         
         {articuloSeleccionado && (
