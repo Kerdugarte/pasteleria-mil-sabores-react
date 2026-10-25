@@ -127,6 +127,14 @@
     overflow: hidden;
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(93, 64, 55, 0.08);
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+/* Animación al pasar el cursor o usar los botones con teclado */
+.tarjetas-contenedor .card:hover,
+.tarjetas-contenedor .card:focus-within {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(93, 64, 55, 0.18);
 }
 
 /* Imagen */
@@ -340,5 +348,271 @@
         min-height: 48px;
         padding: 10px 14px;
         font-size: 20px;
+    }
+}
+/* Ventana para elegir la cantidad antes de agregar al carrito */
+.ventana-cantidad-producto {
+    width: 480px;
+    max-width: calc(100% - 32px);
+    max-height: calc(100dvh - 40px);
+    margin: auto;
+    padding: 32px;
+    border: 1px solid #eadde2;
+    border-radius: 24px;
+    background: #fffaf6;
+    color: #5d4037;
+    font-family: "Lato", sans-serif;
+}
+
+.ventana-cantidad-producto::backdrop {
+    background: rgba(45, 26, 20, 0.5);
+}
+
+.ventana-cantidad-producto h2 {
+    font-size: 26px;
+    margin-bottom: 18px;
+}
+
+.titulo-cantidad-producto {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.control-cantidad-producto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px;
+    border: 1px solid #d8beb0;
+    border-radius: 18px;
+    background: white;
+}
+
+.control-cantidad-producto output {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.ventana-cantidad-producto .control-cantidad-producto button {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    font-size: 30px;
+}
+
+.ventana-cantidad-producto button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.acciones-cantidad-producto {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.ventana-cantidad-producto button {
+    padding: 12px 24px;
+    border: 1px solid #5d4037;
+    border-radius: 30px;
+    background: #fffaf6;
+    color: #5d4037;
+    font-weight: bold;
+}
+
+.ventana-cantidad-producto button[type="submit"] {
+    background: #5d4037;
+    color: white;
+}
+
+.ventana-cantidad-producto button:hover {
+    background: #eadde2;
+    color: #5d4037;
+}
+
+/* Productos destacados: tarjeta completa enlazada al detalle */
+.categorias .enlace-destacado {
+    color: #5d4037;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.categorias .enlace-destacado:hover,
+.categorias .enlace-destacado:focus-visible {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px rgba(93, 64, 55, 0.18);
+}
+
+.categorias .enlace-destacado:focus-visible {
+    outline: 3px solid #5d4037;
+    outline-offset: 4px;
+}
+
+.detalle-producto-tarjeta {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detalle-producto-tarjeta .card {
+    overflow: hidden;
+    border-radius: 24px;
+    color: #5d4037;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    background: #fffaf6;
+}
+
+.detalle-producto-tarjeta .card-img-top {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.detalle-producto-tarjeta .card-body {
+    min-width: 0;
+    padding: 40px;
+    align-self: center;
+    text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .categorias .enlace-destacado,
+    .tarjetas-contenedor .card,
+    .tarjetas-contenedor .card:hover,
+    .tarjetas-contenedor .card:focus-within {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* Botones del detalle, independientes de la cuadrícula del catálogo */
+.detalle-producto > .boton-detalle,
+.detalle-producto-tarjeta .boton-agregar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 14px 28px;
+    border: 1px solid #5d4037;
+    border-radius: 30px;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+.detalle-producto > .boton-detalle {
+    color: #5d4037;
+    background: #fffaf6;
+}
+
+.detalle-producto-tarjeta .boton-agregar {
+    color: white;
+    background: #5d4037;
+    margin-top: 12px;
+}
+
+.detalle-producto > .boton-detalle:hover,
+.detalle-producto-tarjeta .boton-agregar:hover {
+    background: #970b0b;
+    border-color: #970b0b;
+    color: white;
+}
+
+.detalle-producto > .boton-detalle:focus-visible,
+.detalle-producto-tarjeta .boton-agregar:focus-visible {
+    outline: 3px solid #5d4037;
+    outline-offset: 4px;
+}
+
+.detalle-producto-tarjeta .precio-producto {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.detalle-producto-tarjeta .acciones-producto {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Información y cantidad en el detalle */
+.tamano-detalle-producto {
+    display: inline-block;
+    margin: 16px 0;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: #f5e7df;
+    font-weight: bold;
+}
+
+.descripcion-detalle-producto {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.cantidad-detalle-producto {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 12px;
+    padding: 8px;
+    border: 1px solid #d8beb0;
+    border-radius: 32px;
+    background: #fffaf6;
+}
+
+.cantidad-detalle-producto button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid #5d4037;
+    border-radius: 50%;
+    background: white;
+    color: #5d4037;
+    font-size: 26px;
+}
+
+.cantidad-detalle-producto button:hover:not(:disabled) {
+    background: #5d4037;
+    color: white;
+}
+
+.cantidad-detalle-producto button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.cantidad-detalle-producto output {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.detalle-producto-tarjeta .card-title {
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.3;
+}
+
+
+@media (max-width: 767px) {
+    .detalle-producto-tarjeta .card {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .detalle-producto-tarjeta .card-img-top {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+    }
+
+    .detalle-producto-tarjeta .card-body {
+        padding: 24px;
     }
 }

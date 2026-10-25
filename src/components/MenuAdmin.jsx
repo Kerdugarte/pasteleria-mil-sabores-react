@@ -21,10 +21,12 @@ function MenuAdmin({ alCerrarSesion }) {
                     </li>
 
                     <li>
-                        <NavLink to="/admin/ordenes">
-                            Órdenes y boletas
+                        <NavLink to="/admin/pedidos">
+                            Pedidos
                         </NavLink>
                     </li>
+
+
 
                     <li>
                         <NavLink to="/admin/productos">

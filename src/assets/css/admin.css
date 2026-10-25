@@ -305,10 +305,48 @@ button.boton-admin:disabled:hover {
     cursor: pointer;
 }
 
-.catalogo-admin .boton-agregar {
+.catalogo-admin .boton-detalle {
+    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.catalogo-admin .boton-detalle:hover,
+.catalogo-admin .boton-detalle:focus-visible {
+    transform: translateY(-3px);
+    background-color: #402a23;
+    border-color: #402a23;
+    box-shadow: 0 6px 14px rgba(93, 64, 55, 0.2);
+    color: white;
+}
+
+.catalogo-admin .boton-detalle:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.catalogo-admin .boton-agregar,
+.boton-admin.boton-eliminar-producto {
     border-color: #970b0b;
-    background-color: transparent;
-    color: #970b0b;
+    background-color: #970b0b;
+    color: white;
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.catalogo-admin .boton-agregar:hover,
+.boton-admin.boton-eliminar-producto:hover {
+    transform: translateY(-3px);
+    border-color: #760808;
+    background-color: #760808;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .catalogo-admin .boton-detalle,
+    .catalogo-admin .boton-detalle:hover,
+    .catalogo-admin .boton-detalle:focus-visible,
+    .catalogo-admin .boton-agregar,
+    .boton-admin.boton-eliminar-producto {
+        transition: none;
+        transform: none;
+    }
 }
 
 .catalogo-admin .acciones-producto button:disabled {
@@ -525,14 +563,352 @@ button.boton-admin:disabled:hover {
     font-size: 18px;
 }
 
-.acciones-categoria-admin .boton-eliminar-categoria {
-    border-color: #970b0b;
-    background-color: transparent;
-    color: #970b0b;
+.boton-admin.boton-eliminar-categoria {
+    border-color: #5d4037;
+    background-color: #5d4037;
+    color: white;
+    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
 }
 
-.acciones-categoria-admin .boton-eliminar-categoria:disabled:hover {
-    border-color: #970b0b;
-    background-color: transparent;
-    color: #970b0b;
+.boton-admin.boton-eliminar-categoria:hover {
+    transform: translateY(-3px);
+    border-color: #402a23;
+    background-color: #402a23;
+    box-shadow: 0 6px 14px rgba(93, 64, 55, 0.2);
+}
+
+.boton-admin.boton-eliminar-categoria:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .boton-admin.boton-eliminar-categoria {
+        transition: none;
+    }
+    .boton-admin.boton-eliminar-categoria:hover {
+        transform: none;
+    }
+}
+
+/* Inicio del administrador */
+.inicio-admin {
+    color: #5d4037;
+    font-family: "Lato", sans-serif;
+}
+
+.inicio-admin .bienvenida-inicio-admin {
+    overflow: hidden;
+    border: 1px solid #eadde2;
+    border-radius: 28px;
+    background-color: #ffffff;
+}
+
+.inicio-admin .texto-inicio-admin {
+    padding: 38px;
+}
+
+.inicio-admin .etiqueta-inicio-admin {
+    margin: 0 0 18px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.inicio-admin .saludo-inicio-admin {
+    margin: 0 0 20px;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.inicio-admin .descripcion-inicio-admin {
+    max-width: 720px;
+    margin-bottom: 24px;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.inicio-admin .titulo-seccion-inicio-admin {
+    margin: 32px 0 18px;
+}
+
+.inicio-admin .titulo-seccion-inicio-admin h2 {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.inicio-admin .titulo-seccion-inicio-admin p {
+    margin: 0;
+    color: #80645a;
+    font-size: 16px;
+}
+
+.inicio-admin .numero-inicio-admin {
+    display: block;
+    padding: 26px;
+    border: 1px solid #eadde2;
+    border-radius: 24px;
+    background-color: white;
+    color: #5d4037;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(93, 64, 55, 0.04);
+}
+
+.inicio-admin .numero-inicio-admin h3,
+.inicio-admin .acceso-inicio-admin h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.inicio-admin .flecha-inicio-admin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: #f5e7df;
+    font-size: 22px;
+}
+
+.inicio-admin .cantidad-inicio-admin {
+    margin: 8px 0;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.inicio-admin .detalle-inicio-admin {
+    margin: 0;
+    color: #80645a;
+    font-size: 16px;
+}
+
+.inicio-admin .acceso-inicio-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid #eadde2;
+    border-radius: 20px;
+    background-color: #fffaf6;
+    color: #5d4037;
+    text-decoration: none;
+}
+
+.inicio-admin .acceso-inicio-admin p {
+    margin: 10px 0 0;
+    color: #80645a;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.inicio-admin .acceso-inicio-admin>span {
+    font-size: 26px;
+}
+
+.inicio-admin .numero-inicio-admin:hover,
+.inicio-admin .acceso-inicio-admin:hover {
+    border-color: #b98e7c;
+    background-color: #fbf1eb;
+}
+
+.inicio-admin .numero-inicio-admin:focus-visible,
+.inicio-admin .acceso-inicio-admin:focus-visible {
+    outline: 2px solid #970b0b;
+    outline-offset: 3px;
+}
+
+@media (max-width: 991px) {
+    .inicio-admin .texto-inicio-admin {
+        padding: 28px;
+    }
+}
+
+
+/* Avisos de pedidos y ventas en Inicio */
+.inicio-admin .aviso-inicio-admin {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 28px;
+    padding: 26px;
+    border: 1px solid #d8beb0;
+    border-left: 5px solid #5d4037;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+.inicio-admin .aviso-inicio-admin h2 {
+    margin: 0 0 8px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.inicio-admin .aviso-inicio-admin p {
+    margin: 0;
+    font-size: 18px;
+}
+
+
+.inicio-admin .logo-bienvenida-inicio-admin {
+    padding: 4px;
+    text-align: center;
+}
+
+.inicio-admin .logo-bienvenida-inicio-admin img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+/* Confirmación de eliminación */
+.ventana-admin {
+    width: 480px;
+    max-width: calc(100% - 32px);
+    max-height: calc(100dvh - 40px);
+    margin: auto;
+    padding: 32px;
+    border: 1px solid #eadde2;
+    border-radius: 24px;
+    background: #fffaf6;
+    color: #5d4037;
+    text-align: center;
+}
+
+.ventana-admin::backdrop {
+    background: rgba(45, 26, 20, 0.5);
+}
+
+.ventana-admin h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.avatar-perfil-admin {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: #f5e7df;
+    color: #5d4037;
+    font-size: 48px;
+    line-height: 100px;
+}
+
+.logo-boleta-admin {
+    width: 240px;
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+@media print {
+    .layout-admin {
+        background: white;
+    }
+
+    .layout-admin .columna-menu-admin,
+    .boleta-admin .encabezado-admin,
+    .acciones-boleta-admin {
+        display: none;
+    }
+
+    .layout-admin main {
+        width: 100%;
+    }
+
+    .layout-admin .contenido-admin {
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+}
+
+/* Tablas de pedidos y reportes */
+.tabla-admin {
+    border: 1px solid #eadde2;
+    border-radius: 24px;
+    overflow: auto;
+    background: white;
+}
+
+.tabla-admin .table {
+    margin-bottom: 0;
+    --bs-table-color: #5d4037;
+    --bs-table-border-color: #eadde2;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+    padding: 16px;
+}
+
+.tabla-admin thead {
+    --bs-table-bg: #f5e7df;
+}
+
+.tabla-admin tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabla-admin .form-select {
+    border-radius: 16px;
+}
+
+/* Alinear los botones de stock, pedidos y ventas */
+.inicio-admin .tabla-stock-inicio th:last-child,
+.inicio-admin .tabla-stock-inicio td:last-child:not([colspan]) {
+    width: 230px;
+    padding-right: 26px;
+    text-align: right;
+}
+
+.inicio-admin .tabla-stock-inicio .boton-admin,
+.inicio-admin .aviso-inicio-admin > .boton-admin {
+    width: 190px;
+    max-width: 100%;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.inicio-admin .aviso-inicio-admin > .boton-admin {
+    margin-left: auto;
+}
+
+/* Filtro de fechas de reportes */
+.filtro-fechas-admin .form-label {
+    margin-bottom: 12px;
+    color: #5d4037;
+    font-weight: bold;
+}
+
+.filtro-fechas-admin .form-control {
+    width: 100%;
+    min-width: 0;
+    min-height: 60px;
+    padding: 16px 20px;
+    border: 1px solid #d8beb0;
+    border-radius: 20px;
+    background-color: white;
+    color: #5d4037;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    color-scheme: light;
+}
+
+.filtro-fechas-admin .form-control:focus {
+    border-color: #5d4037;
+    box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
+}
+
+.filtro-fechas-admin input::-webkit-date-and-time-value {
+    text-align: left;
 }

@@ -1,80 +1,139 @@
 import { Link } from "react-router-dom";
-import { producto } from "../../assets/js/Datos";
-import { usuarios } from "../../assets/js/usuarios";
+import { obtenerPedidos } from "../../assets/js/pedidos";
+import { obtenerProductos } from "../../assets/js/Datos";
+import { obtenerCategorias } from "../../assets/js/categorias";
+import { obtenerUsuarios, obtenerSesion } from "../../assets/js/usuarios";
 
 function PanelAdmin() {
-    return (
-        <section>
-            <header className="encabezado-admin">
-                <h1 className="letra-Titulos">
-                    Panel de administración
-                </h1>
+    const producto = obtenerProductos();
+    const productosCriticos = producto
+        .filter((item) => item.stock <= 5)
+        .sort((a, b) => a.stock - b.stock);
+    const categorias = obtenerCategorias();
+    const usuarios = obtenerUsuarios();
+    const usuario = obtenerSesion();
+    const pedidosNuevos = obtenerPedidos().filter(
+        (pedido) => pedido.estado === "pendiente"
+    );
+    const administradores = usuarios.filter(
+        (item) => item.rol === "admin"
+    );
 
-                <p className="texto-general">
-                    Bienvenido a Pastelería Mil Sabores.
-                    Selecciona una sección para comenzar.
-                </p>
+    const resumen = [
+        { nombre: "Productos", cantidad: producto.length, ruta: "/admin/productos" },
+        { nombre: "Categorías", cantidad: categorias.length, ruta: "/admin/categorias" },
+        { nombre: "Administradores", cantidad: administradores.length, ruta: "/admin/usuarios" },
+    ];
+
+
+    return (
+        <section className="inicio-admin">
+            <header className="bienvenida-inicio-admin">
+                <div className="row g-0 align-items-center">
+                    <div className="col-12 col-lg-6">
+                        <div className="texto-inicio-admin">
+                            <h1 className="saludo-inicio-admin">
+                                Hola, {usuario?.nombre || "Administrador"}.
+                            </h1>
+                            <p className="descripcion-inicio-admin">
+                                Tu pastelería, organizada en un solo lugar.
+                                Gestiona el catálogo y encuentra lo que necesitas para comenzar.
+                            </p>
+                            <Link to="/admin/productos/nuevo" className="boton-admin">
+                                + Nuevo producto
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="col-12 col-lg-6">
+                        <div className="logo-bienvenida-inicio-admin">
+                            <img src="/img/logoLetra.png" alt="Pastelería Mil Sabores" />
+                        </div>
+                    </div>
+                </div>
             </header>
 
+            <div className="titulo-seccion-inicio-admin">
+                <h2>Resumen general</h2>
+            </div>
+
             <div className="row g-4">
-                <div className="col-12 col-md-6 col-xl-4">
-                    <div className="card resumen-admin h-100 p-4">
-                        <h2 className="h4">Productos</h2>
-
-                        <p className="display-5 fw-bold">
-                            {producto.length}
-                        </p>
-
-                        <p>
-                            Productos disponibles en el catálogo.
-                        </p>
-
-                        <Link
-                            to="/admin/productos"
-                            className="boton-admin mt-auto"
-                        >
-                            Ver productos
+                {resumen.map((item) => (
+                    <div className="col-12 col-md-6 col-xl-4" key={item.nombre}>
+                        <Link to={item.ruta} className="numero-inicio-admin h-100">
+                            <div className="d-flex justify-content-between align-items-start gap-3">
+                                <h3>{item.nombre}</h3>
+                                <span className="flecha-inicio-admin" aria-hidden="true">↗</span>
+                            </div>
+                            <p className="cantidad-inicio-admin">{item.cantidad}</p>
                         </Link>
                     </div>
+                ))}
+            </div>
+
+
+            <section className="mt-4" aria-label="Productos con stock crítico">
+                <div className="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+                    <h2 className="h4 mb-0">Productos con stock crítico</h2>
+                    <span>5 unidades o menos</span>
                 </div>
-
-                <div className="col-12 col-md-6 col-xl-4">
-                    <div className="card resumen-admin h-100 p-4">
-                        <h2 className="h4">Categorías</h2>
-
-                        <p>
-                            Organiza las categorías del catálogo.
-                        </p>
-
-                        <Link
-                            to="/admin/categorias"
-                            className="boton-admin mt-auto"
-                        >
-                            Ver categorías
-                        </Link>
-                    </div>
+                <div className="table-responsive tabla-admin">
+                    <table className="table align-middle tabla-stock-inicio" aria-label="Stock crítico">
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {productosCriticos.map((item) => (
+                                <tr key={item.id}>
+                                    <td>{item.nombre}</td>
+                                    <td>{item.stock}</td>
+                                    <td>{item.stock === 0 ? "Agotado" : "Stock bajo"}</td>
+                                    <td>
+                                        <Link to={`/admin/productos/${item.id}/editar`} className="boton-admin">
+                                            Actualizar stock
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))}
+                            {productosCriticos.length === 0 && (
+                                <tr>
+                                    <td colSpan={4} className="text-center py-4">
+                                        No hay productos con stock crítico.
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
+            </section>
 
-                <div className="col-12 col-md-6 col-xl-4">
-                    <div className="card resumen-admin h-100 p-4">
-                        <h2 className="h4">Usuarios</h2>
-
-                        <p className="display-5 fw-bold">
-                            {usuarios.length}
-                        </p>
-
-                        <p>
-                            Usuarios definidos en los datos de ejemplo.
-                        </p>
-
-                        <Link
-                            to="/admin/usuarios"
-                            className="boton-admin mt-auto"
-                        >
-                            Ver usuarios
-                        </Link>
-                    </div>
+            <div className="aviso-inicio-admin">
+                <div role="status">
+                    <h2>Pedidos nuevos</h2>
+                    <p>
+                        {pedidosNuevos.length > 0
+                            ? `Tienes ${pedidosNuevos.length} pedido(s) pendiente(s) por atender.`
+                            : "No tienes pedidos nuevos."}
+                    </p>
                 </div>
+                <Link to="/admin/pedidos" className="boton-admin">
+                    Ver pedidos
+                </Link>
+            </div>
+
+
+            <div className="aviso-inicio-admin">
+                <div>
+                    <h2>Ventas</h2>
+                    <p>Accede a los reportes de la pastelería.</p>
+                </div>
+                <Link to="/admin/reportes" className="boton-admin">
+                    Ver ventas
+                </Link>
             </div>
         </section>
     );

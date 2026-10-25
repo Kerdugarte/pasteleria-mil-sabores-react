@@ -1,6 +1,38 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import { obtenerUsuarios, guardarUsuarios } from "../../assets/js/usuarios";
 
 function NuevoUsuario() {
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
+
+    function guardarUsuario(event) {
+        event.preventDefault();
+        const datos = new FormData(event.currentTarget);
+        const nombre = datos.get("nombre").trim();
+        const email = datos.get("email").trim().toLowerCase();
+        const password = datos.get("password");
+        const usuarios = obtenerUsuarios();
+
+        if (!nombre || password.trim().length < 8) {
+            setError("Completa el nombre y una contraseña de al menos 8 caracteres.");
+            return;
+        }
+
+        if (usuarios.some((item) => item.email.toLowerCase() === email)) {
+            setError("Este correo ya está registrado.");
+            return;
+        }
+
+        try {
+            guardarUsuarios([...usuarios, { nombre, email, password, rol: "admin" }]);
+            navigate("/admin/usuarios");
+        } catch {
+            setError("No se pudo guardar el administrador. Inténtalo nuevamente.");
+        }
+    }
+
     return (
         <section className="formulario-producto-admin">
             <header className="encabezado-admin">
@@ -22,7 +54,8 @@ function NuevoUsuario() {
                 </p>
             </header>
 
-            <form onSubmit={(event) => event.preventDefault()}>
+            {error && <p className="alert alert-danger" role="alert">{error}</p>}
+            <form onSubmit={guardarUsuario}>
                 <div className="row g-4">
                     <div className="col-12 col-md-6">
                         <label
@@ -89,9 +122,8 @@ function NuevoUsuario() {
                     <div className="col-12">
                         <div className="acciones-formulario-admin">
                             <button
-                                type="button"
+                                type="submit"
                                 className="boton-admin"
-                                disabled
                             >
                                 Guardar administrador
                             </button>

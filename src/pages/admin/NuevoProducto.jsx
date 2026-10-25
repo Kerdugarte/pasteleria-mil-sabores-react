@@ -1,8 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+import { obtenerProductos, guardarProductos } from "../../assets/js/Datos";
+import { obtenerCategorias } from "../../assets/js/categorias";
 
 function NuevoProducto() {
-    const [imagen, setImagen] = useState("");
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const productos = obtenerProductos();
+    const categorias = obtenerCategorias();
+    const actual = productos.find((item) => item.id === Number(id));
+    const [imagen, setImagen] = useState(actual ? actual.imagen : "");
+    const [error, setError] = useState("");
+    const [leyendoImagen, setLeyendoImagen] = useState(false);
     const [errorImagen, setErrorImagen] = useState("");
 
     function seleccionarImagen(event) {
@@ -35,15 +45,61 @@ function NuevoProducto() {
 
         const lector = new FileReader();
 
+        setLeyendoImagen(true);
+
         lector.onload = () => {
+            setLeyendoImagen(false);
             setImagen(lector.result);
         };
 
         lector.onerror = () => {
+            setLeyendoImagen(false);
             setErrorImagen("No se pudo leer la imagen.");
         };
 
         lector.readAsDataURL(archivo);
+    }
+
+    function guardarProducto(event) {
+        event.preventDefault();
+        setError("");
+        const datos = new FormData(event.currentTarget);
+        const nombre = datos.get("nombre").trim();
+        const precio = Number(datos.get("precio"));
+        const stock = Number(datos.get("stock"));
+        const categoria = datos.get("categoria");
+
+        if (!nombre || !Number.isInteger(precio) || precio < 1 ||
+            !Number.isInteger(stock) || stock < 0 || !imagen || leyendoImagen || errorImagen ||
+            !categorias.some((item) => item.valor === categoria)) {
+            setError("Revisa los datos y selecciona una foto válida.");
+            return;
+        }
+
+        const nuevo = {
+            id: actual ? actual.id : new Date().getTime(),
+            nombre,
+            precio,
+            stock,
+            categoria,
+            imagen,
+            tamano: datos.get("tamano").trim(),
+            descripcion: datos.get("descripcion").trim(),
+        };
+        const actualizados = actual
+            ? productos.map((item) => item.id === actual.id ? nuevo : item)
+            : [...productos, nuevo];
+
+        try {
+            guardarProductos(actualizados);
+            navigate("/admin/productos");
+        } catch {
+            setError("No se pudo guardar. Si la foto es muy grande, prueba una más pequeña.");
+        }
+    }
+
+    if (id && !actual) {
+        return <p>Producto no encontrado. <Link to="/admin/productos">Volver a productos</Link></p>;
     }
 
     return (
@@ -59,7 +115,7 @@ function NuevoProducto() {
                 </Link>
 
                 <h1 className="letra-Titulos">
-                    Nuevo producto
+                    {actual ? "Editar producto" : "Nuevo producto"}
                 </h1>
 
                 <p className="texto-general">
@@ -67,7 +123,8 @@ function NuevoProducto() {
                 </p>
             </header>
 
-            <form onSubmit={(event) => event.preventDefault()}>
+            {error && <p className="alert alert-danger" role="alert">{error}</p>}
+            <form onSubmit={guardarProducto}>
                 <div className="row g-4">
                     <div className="col-12 col-md-6">
                         <label
@@ -81,6 +138,7 @@ function NuevoProducto() {
                             type="text"
                             id="nombreProducto"
                             name="nombre"
+                            defaultValue={actual ? actual.nombre : ""}
                             className="form-control"
                             placeholder="Torta de Chocolate"
                             required
@@ -99,6 +157,7 @@ function NuevoProducto() {
                             type="number"
                             id="precioProducto"
                             name="precio"
+                            defaultValue={actual ? actual.precio : ""}
                             className="form-control"
                             placeholder="45000"
                             min="1"
@@ -119,6 +178,7 @@ function NuevoProducto() {
                             type="number"
                             id="stockProducto"
                             name="stock"
+                            defaultValue={actual ? actual.stock : ""}
                             className="form-control"
                             placeholder="Cantidad de unidades"
                             min="0"
@@ -139,44 +199,18 @@ function NuevoProducto() {
                             id="categoriaProducto"
                             name="categoria"
                             className="form-select"
-                            defaultValue=""
+                            defaultValue={actual ? actual.categoria : ""}
                             required
                         >
                             <option value="" disabled>
                                 Selecciona una categoría
                             </option>
 
-                            <option value="tortas-cuadradas">
-                                Tortas cuadradas
-                            </option>
-
-                            <option value="tortas-circulares">
-                                Tortas circulares
-                            </option>
-
-                            <option value="postres-individuales">
-                                Postres individuales
-                            </option>
-
-                            <option value="postres-sin-azucar">
-                                Sin azúcar
-                            </option>
-
-                            <option value="pasteleria-tradicional">
-                                Pastelería tradicional
-                            </option>
-
-                            <option value="postres-sin-gluten">
-                                Sin gluten
-                            </option>
-
-                            <option value="postres-veganos">
-                                Veganos
-                            </option>
-
-                            <option value="tortas-especiales">
-                                Tortas especiales
-                            </option>
+                            {categorias.map((categoria) => (
+                                <option key={categoria.id} value={categoria.valor}>
+                                    {categoria.nombre}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
@@ -195,7 +229,7 @@ function NuevoProducto() {
                             className="form-control"
                             accept="image/jpeg,image/png,image/webp"
                             onChange={seleccionarImagen}
-                            required
+                            required={!actual}
                         />
 
                         <p className="form-text">
@@ -217,12 +251,35 @@ function NuevoProducto() {
                         )}
                     </div>
 
+                    <div className="col-12 col-md-6">
+                        <label htmlFor="tamanoProducto" className="form-label">Tamaño o presentación</label>
+                        <input
+                            id="tamanoProducto"
+                            name="tamano"
+                            className="form-control"
+                            defaultValue={actual ? actual.tamano : ""}
+                            placeholder="Mediana · 12 personas o por unidad"
+                            required
+                        />
+                    </div>
+                    <div className="col-12">
+                        <label htmlFor="descripcionProducto" className="form-label">Descripción</label>
+                        <textarea
+                            id="descripcionProducto"
+                            name="descripcion"
+                            className="form-control"
+                            rows={4}
+                            defaultValue={actual ? actual.descripcion : ""}
+                            required
+                        />
+                    </div>
+
                     <div className="col-12">
                         <div className="acciones-formulario-admin">
                             <button
-                                type="button"
+                                type="submit"
                                 className="boton-admin"
-                                disabled
+                                disabled={leyendoImagen}
                             >
                                 Guardar producto
                             </button>

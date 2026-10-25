@@ -20,7 +20,7 @@ export const usuarios = [
 ];
 
 export function buscarUsuario(email, password) {
-    return usuarios.find(
+    return obtenerUsuarios().find(
         (usuario) =>
             usuario.email.toLowerCase() === email.trim().toLowerCase() &&
             usuario.password === password
@@ -47,4 +47,18 @@ export function obtenerSesion() {
 
 export function cerrarSesion() {
     localStorage.removeItem("usuarioActivo");
+}
+
+
+export function obtenerUsuarios() {
+    try {
+        const guardados = JSON.parse(localStorage.getItem("usuarios"));
+        return Array.isArray(guardados) ? guardados : usuarios;
+    } catch {
+        return usuarios;
+    }
+}
+
+export function guardarUsuarios(actualizados) {
+    localStorage.setItem("usuarios", JSON.stringify(actualizados));
 }

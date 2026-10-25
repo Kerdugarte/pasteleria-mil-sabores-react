@@ -1,8 +1,40 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { categorias } from "../../assets/js/categorias";
+import ConfirmarEliminar from "../../components/ConfirmarEliminar";
+import { obtenerProductos } from "../../assets/js/Datos";
+import { obtenerCategorias, guardarCategorias } from "../../assets/js/categorias";
 
 function CategoriasAdmin() {
+    const [categorias, setCategorias] = useState(obtenerCategorias);
+    const [seleccionada, setSeleccionada] = useState(null);
+    const [error, setError] = useState("");
+    const ventana = useRef(null);
+    const aviso = useRef(null);
+
+    function confirmarEliminar(categoria) {
+        setError("");
+        if (obtenerProductos().some((item) => item.categoria === categoria.valor)) {
+            setError("Esta categoría tiene productos. Cambia su categoría o elimínalos antes de continuar.");
+            aviso.current.showModal();
+            return;
+        }
+        setSeleccionada(categoria);
+        ventana.current.showModal();
+    }
+
+    function eliminarCategoria() {
+        const actualizadas = categorias.filter((item) => item.id !== seleccionada.id);
+        try {
+            guardarCategorias(actualizadas);
+            setCategorias(actualizadas);
+            ventana.current.close();
+        } catch {
+            ventana.current.close();
+            setError("No se pudo eliminar la categoría. Inténtalo nuevamente.");
+            aviso.current.showModal();
+        }
+    }
+
     const [busqueda, setBusqueda] = useState("");
 
     const categoriasFiltradas = categorias.filter((categoria) => {
@@ -79,16 +111,8 @@ function CategoriasAdmin() {
                             <div className="acciones-categoria-admin mt-auto">
                                 <button
                                     type="button"
-                                    className="boton-admin"
-                                    disabled
-                                >
-                                    Editar
-                                </button>
-
-                                <button
-                                    type="button"
                                     className="boton-admin boton-eliminar-categoria"
-                                    disabled
+                                    onClick={() => confirmarEliminar(categoria)}
                                 >
                                     Eliminar
                                 </button>
@@ -103,6 +127,18 @@ function CategoriasAdmin() {
                     No hay categorías que coincidan con tu búsqueda.
                 </p>
             )}
+            <dialog ref={aviso} className="ventana-admin" aria-label="No se puede eliminar la categoría">
+                <h2>No se pudo eliminar</h2>
+                <p role="alert">{error}</p>
+                <button type="button" className="boton-admin" onClick={() => aviso.current.close()}>
+                    Entendido
+                </button>
+            </dialog>
+            <ConfirmarEliminar
+                ventana={ventana}
+                nombre={seleccionada ? seleccionada.nombre : ""}
+                eliminar={eliminarCategoria}
+            />
         </section>
     );
 }

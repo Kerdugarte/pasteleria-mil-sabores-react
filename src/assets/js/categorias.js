@@ -40,3 +40,16 @@ export const categorias = [
         valor: "tortas-especiales",
     },
 ];
+
+export function obtenerCategorias() {
+    try {
+        const guardadas = JSON.parse(localStorage.getItem("categorias"));
+        return Array.isArray(guardadas) ? guardadas : categorias;
+    } catch {
+        return categorias;
+    }
+}
+
+export function guardarCategorias(actualizadas) {
+    localStorage.setItem("categorias", JSON.stringify(actualizadas));
+}

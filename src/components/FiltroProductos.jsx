@@ -1,18 +1,9 @@
 import { useState } from "react";
 
-const categorias = [
-    { valor: "", nombre: "Todos los productos" },
-    { valor: "tortas-cuadradas", nombre: "Tortas cuadradas" },
-    { valor: "tortas-circulares", nombre: "Tortas circulares" },
-    { valor: "postres-individuales", nombre: "Postres individuales" },
-    { valor: "postres-sin-azucar", nombre: "Sin azúcar" },
-    { valor: "pasteleria-tradicional", nombre: "Pastelería tradicional" },
-    { valor: "postres-sin-gluten", nombre: "Sin gluten" },
-    { valor: "postres-veganos", nombre: "Veganos" },
-    { valor: "tortas-especiales", nombre: "Tortas especiales" },
-];
+import { obtenerCategorias } from "../assets/js/categorias";
 
 function FiltroProductos({ categoriaActual, cambiarCategoria }) {
+    const categorias = [{ valor: "", nombre: "Todos los productos" }, ...obtenerCategorias()];
     const [abierto, setAbierto] = useState(false);
 
     function seleccionarCategoria(valor) {

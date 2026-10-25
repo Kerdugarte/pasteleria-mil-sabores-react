@@ -1,11 +1,36 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import TarjetaProducto from "../../components/TarjetaProducto";
 import FiltroProductos from "../../components/FiltroProductos";
 import Paginacion from "../../components/Paginacion";
-import { producto } from "../../assets/js/Datos";
+import ConfirmarEliminar from "../../components/ConfirmarEliminar";
+import { obtenerProductos, guardarProductos } from "../../assets/js/Datos";
 
 function ProductosAdmin() {
+    const [productos, setProductos] = useState(obtenerProductos);
+    const [seleccionado, setSeleccionado] = useState(null);
+    const [error, setError] = useState("");
+    const ventana = useRef(null);
+
+    function confirmarEliminar(item) {
+        setSeleccionado(item);
+        ventana.current.showModal();
+    }
+
+    function eliminarProducto() {
+        const actualizados = productos.filter((item) => item.id !== seleccionado.id);
+        try {
+            guardarProductos(actualizados);
+            setProductos(actualizados);
+            setPaginaActual(1);
+            setError("");
+            ventana.current.close();
+        } catch {
+            ventana.current.close();
+            setError("No se pudo eliminar el producto. Inténtalo nuevamente.");
+        }
+    }
+
     const [busqueda, setBusqueda] = useState("");
     const [categoriaActual, setCategoriaActual] = useState("");
     const [paginaActual, setPaginaActual] = useState(1);
@@ -22,7 +47,7 @@ function ProductosAdmin() {
         setPaginaActual(1);
     }
 
-    const productosFiltrados = producto.filter((item) => {
+    const productosFiltrados = productos.filter((item) => {
         const coincideNombre = item.nombre
             .toLowerCase()
             .includes(busqueda.trim().toLowerCase());
@@ -57,6 +82,7 @@ function ProductosAdmin() {
                 </p>
             </header>
 
+            {error && <p className="alert alert-danger" role="alert">{error}</p>}
             <div className="row g-3 align-items-center mb-4">
                 <div className="col-12 col-lg-5">
                     <label
@@ -103,6 +129,7 @@ function ProductosAdmin() {
                         <TarjetaProducto
                             producto={item}
                             esAdmin={true}
+                            alEliminar={() => confirmarEliminar(item)}
                         />
                     </div>
                 ))}
@@ -121,6 +148,12 @@ function ProductosAdmin() {
                     cambiarPagina={setPaginaActual}
                 />
             )}
+            <ConfirmarEliminar
+                ventana={ventana}
+                nombre={seleccionado ? seleccionado.nombre : ""}
+                eliminar={eliminarProducto}
+                esProducto
+            />
         </section>
     );
 }

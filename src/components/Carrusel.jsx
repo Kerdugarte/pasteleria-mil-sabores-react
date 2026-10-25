@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Carrusel() {
     //carrusel de bootstrap
     //aqui cambian las clases y la ruta de imagenes y cerrar las etiquetas />
@@ -39,6 +41,9 @@ function Carrusel() {
                         className="d-block w-100"
                         alt="Promoción Pastelería Mil Sabores"
                     />
+                    <Link to="/ofertas" className="boton-ofertas-carrusel">
+                        Ver ofertas →
+                    </Link>
                 </div>
 
                 <div className="carousel-item">
@@ -47,6 +52,9 @@ function Carrusel() {
                         className="d-block w-100"
                         alt="Promoción Pastelería Mil Sabores"
                     />
+                    <Link to="/ofertas" className="boton-ofertas-carrusel">
+                        Ver ofertas →
+                    </Link>
                 </div>
 
                 <div className="carousel-item">
@@ -55,6 +63,9 @@ function Carrusel() {
                         className="d-block w-100"
                         alt="Promoción Pastelería Mil Sabores"
                     />
+                    <Link to="/ofertas" className="boton-ofertas-carrusel">
+                        Ver ofertas →
+                    </Link>
                 </div>
             </div>
 

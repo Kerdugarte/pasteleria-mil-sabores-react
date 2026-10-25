@@ -19,9 +19,9 @@ function LayoutAdmin() {
   }
 
   return (
-    <div className="container-fluid p-3 p-lg-4">
+    <div className="container-fluid p-3 p-lg-4 layout-admin">
       <div className="row g-4">
-        <div className="col-12 col-lg-3 col-xl-2">
+        <div className="col-12 col-lg-3 col-xl-2 columna-menu-admin">
           <MenuAdmin alCerrarSesion={salir} />
         </div>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 import {
     buscarUsuario,
     guardarSesion,
@@ -14,6 +14,8 @@ function Login() {
 
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const location = useLocation();
+    const destinoCliente = location.state?.volver === "/pago" ? "/pago" : "/mi-cuenta";
 
     function cambiarCampo(event) {
         const { name, value } = event.target;
@@ -39,16 +41,10 @@ function Login() {
             return;
         }
 
-        if (usuario.rol !== "admin") {
-            setError(
-                "El acceso de clientes estará disponible al migrar Mi cuenta."
-            );
-            return;
-        }
-
         try {
             guardarSesion(usuario);
-            navigate("/admin", { replace: true });
+            const destino = usuario.rol === "admin" ? "/admin" : destinoCliente;
+            navigate(destino, { replace: true });
         } catch {
             setError(
                 "No se pudo guardar la sesión en este navegador."
@@ -60,6 +56,10 @@ function Login() {
 
     if (usuarioActivo?.rol === "admin") {
         return <Navigate to="/admin" replace />;
+    }
+
+    if (usuarioActivo?.rol === "cliente") {
+        return <Navigate to={destinoCliente} replace />;
     }
 
     return (

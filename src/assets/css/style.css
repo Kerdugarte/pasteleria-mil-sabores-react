@@ -11,8 +11,9 @@
 
 /* sección carrusel  */
 .mi-carrusel {
-    width: 100%;
-    margin: 10px auto;
+    width: calc(100% - 32px);
+    max-width: 1440px;
+    margin: 16px auto;
     border-radius: 25px;
     overflow: hidden;
 }
@@ -21,6 +22,8 @@
     display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 2134 / 737;
+    object-fit: contain;
 }
 
 
@@ -299,5 +302,52 @@ body {
         width: 100%;
         padding: 14px;
         font-size: 16px;
+    }
+}
+/* Botón de cada promoción */
+.boton-ofertas-carrusel {
+    position: absolute;
+    left: 8%;
+    bottom: 3%;
+    z-index: 2;
+    display: inline-block;
+    padding: 10px 26px;
+    border-radius: 30px;
+    background-color: #970b0b;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.boton-ofertas-carrusel:hover,
+.boton-ofertas-carrusel:focus-visible {
+    background-color: #5d4037;
+    color: white;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+    .boton-ofertas-carrusel {
+        position: static;
+        margin: 12px 0 28px 8%;
+        font-size: 16px;
+    }
+
+    .mi-carrusel .carousel-indicators {
+        margin-bottom: 8px;
+    }
+
+    .mi-carrusel .carousel-indicators button {
+        background-color: #5d4037;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .boton-ofertas-carrusel {
+        transition: none;
+        transform: none;
     }
 }
