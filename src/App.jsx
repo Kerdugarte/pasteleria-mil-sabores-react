@@ -1,4 +1,4 @@
-
+import HistorialCompras from "./components/HistorialCompras";
 import { Routes, Route, Link } from "react-router-dom";
 import LayoutPublico from "./layouts/LayoutPublico";
 import LayoutAdmin from "./layouts/LayoutAdmin";
@@ -45,7 +45,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="*" element={
           <main className="container py-5 text-center">
-            <h1 className="letra-Titulos">Página no encontrada</h1>
+            <h1 className="letra-titulos">Página no encontrada</h1>
             <Link to="/">Volver al inicio</Link>
           </main>
         } />
@@ -58,9 +58,9 @@ function App() {
         <Route path="productos/:id/editar" element={<NuevoProducto />} />
         <Route path="usuarios" element={<UsuariosAdmin />} />
         <Route path="usuarios/nuevo" element={<NuevoUsuario />} />
+        <Route path="historial" element={<HistorialCompras esAdmin />} />
         <Route path="categorias" element={<CategoriasAdmin />} />
         <Route path="categorias/nueva" element={<NuevaCategoria />} />
-        <Route path="categorias/:id/editar" element={<NuevaCategoria />} />
         <Route path="pedidos" element={<PedidosAdmin />} />
         <Route path="pedidos/:id/boleta" element={<BoletaAdmin />} />
         <Route path="reportes" element={<ReportesAdmin />} />
@@ -68,7 +68,7 @@ function App() {
 
         <Route path="*" element={
           <section>
-            <h1 className="letra-Titulos">Página no disponible</h1>
+            <h1 className="letra-titulos">Página no disponible</h1>
             <p className="texto-general">Esta sección administrativa todavía no está creada.</p>
             <Link to="/admin">Volver al panel</Link>
           </section>

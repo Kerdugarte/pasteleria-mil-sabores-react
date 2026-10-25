@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CantidadProducto from "./CantidadProducto";
 import { agregarProducto, obtenerCarrito } from "../assets/js/carrito";
 
-function TarjetaProducto({ producto, esAdmin = false, esDetalle = false, alEliminar }) {
+function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
     const ventana = useRef(null);
     const confirmacion = useRef(null);
     const [cantidadAgregada, setCantidadAgregada] = useState(0);
@@ -54,7 +54,7 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false, alElimi
                 alt={producto.nombre}
             />
 
-            <div className="card-body">
+            <div className="card-body texto-general">
                 <h2 className="card-title texto-general">
                     {producto.nombre}
                 </h2>
@@ -97,13 +97,9 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false, alElimi
                                 Editar
                             </Link>
 
-                            <button
-                                type="button"
-                                className="boton-agregar"
-                                onClick={alEliminar}
-                            >
-                                Eliminar
-                            </button>
+                            <Link to={`/productos/${producto.id}`} className="boton-agregar">
+                                Ver detalle
+                            </Link>
                         </>
                     ) : (
                         <>
@@ -158,7 +154,7 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false, alElimi
                     <h2>¿Cuántas unidades quieres agregar?</h2>
                     <p>{producto.nombre}</p>
                     {disponibles > 0 ? (
-                        <form onSubmit={agregarAlCarrito}>
+                        <form className="texto-general" onSubmit={agregarAlCarrito}>
                             <p className="titulo-cantidad-producto">Cantidad</p>
                             <CantidadProducto
                                 cantidad={cantidad}

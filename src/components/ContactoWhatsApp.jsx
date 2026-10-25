@@ -6,7 +6,7 @@ function ContactoWhatsApp() {
 
                 <img src="/img/ContactoWhat.png" alt="img Contacto What" />
 
-                <h2 className="letra-Titulos">
+                <h2 className="letra-titulos">
                     ¿Tienes un pedido especial o dudas?
                 </h2>
 

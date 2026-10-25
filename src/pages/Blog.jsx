@@ -1,25 +1,57 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import RecetasComunidad from "../components/RecetasComunidad";
 import TarjetaBlog from "../components/TarjetaBlog";
-import { publicaciones } from "../assets/js/publicaciones";
 import "../assets/css/blog.css";
 
+const publicaciones = [
+    {
+        id: 1,
+        tipo: "Blog",
+        titulo: "Secretos para una torta perfecta",
+        categoria: "Consejos",
+        descripcion:
+            "Descubre algunos consejos para preparar tortas suaves, esponjosas y deliciosas.",
+        imagen: "/img/torta.jpg"
+    },
+    {
+        id: 2,
+        tipo: "Blog",
+        titulo: "Postres sin azúcar",
+        categoria: "Vida saludable",
+        descripcion:
+            "Conoce alternativas para disfrutar de deliciosos postres sin azúcar añadida.",
+        imagen: "/img/sin-azucar.jpg"
+    },
+    {
+        id: 3,
+        tipo: "Blog",
+        titulo: "El arte de decorar cupcakes",
+        categoria: "Repostería",
+        descripcion:
+            "Aprende ideas sencillas para decorar cupcakes y sorprender en tus celebraciones.",
+        imagen: "/img/cupcakes.jpg"
+    },
+    {
+        id: 4,
+        tipo: "Noticias",
+        titulo: "¡Mil Sabores llega a un nuevo lugar!",
+        categoria: "Nueva sucursal",
+        descripcion:
+            "Estamos preparando una nueva sucursal para estar más cerca de ti y compartir nuestros dulces favoritos.",
+        imagen: "/img/pasteleria2.png",
+    }
+];
+
 function Blog() {
-    const ventanaArticulo = useRef(null);
-    const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
     const [filtro, setFiltro] = useState("Todos");
     const publicacionesFiltradas = publicaciones.filter(
         (publicacion) =>
             filtro === "Todos" || publicacion.tipo === filtro
     );
-    function leerArticulo(publicacion) {
-        setArticuloSeleccionado(publicacion);
-        ventanaArticulo.current.showModal();
-    }
-
     return (
         <main className="pagina-blog container py-5">
             <header className="encabezado-productos">
-                <h1 className="letra-Titulos">El rincón dulce</h1>
+                <h1 className="letra-titulos">El rincón dulce</h1>
                 <p className="texto-general">
                     Bienvenidos al blog de Pastelería Mil Sabores.
                     Descubre recetas, consejos de repostería
@@ -28,7 +60,7 @@ function Blog() {
             </header>
 
             <section>
-                <h2 className="text-center mb-4">
+                <h2 className="letra-titulos mb-4">
                     Nuestras publicaciones
                 </h2>
 
@@ -52,7 +84,6 @@ function Blog() {
                         <TarjetaBlog
                             key={publicacion.id}
                             publicacion={publicacion}
-                            leerMas={() => leerArticulo(publicacion)}
                         />
                     ))}
                 </div>
@@ -65,33 +96,9 @@ function Blog() {
 
             </section>
 
-            <dialog
-                ref={ventanaArticulo}
-                className="blog-modal"
-                aria-label="Artículo del blog"
-            >
-                <button
-                    type="button"
-                    className="blog-modal-cerrar"
-                    aria-label="Cerrar artículo"
-                    onClick={() => ventanaArticulo.current.close()}
-                >
-                    ×
-                </button>
+            <RecetasComunidad />
 
-                {articuloSeleccionado && (
-                    <>
-                        <img
-                            src={articuloSeleccionado.imagen}
-                            alt={articuloSeleccionado.titulo}
-                            className="blog-modal-imagen"
-                        />
-                        <span className="blog-categoria">{articuloSeleccionado.categoria}</span>
-                        <h2>{articuloSeleccionado.titulo}</h2>
-                        <p>{articuloSeleccionado.descripcion}</p>
-                    </>
-                )}
-            </dialog>
+
         </main>
     );
 }

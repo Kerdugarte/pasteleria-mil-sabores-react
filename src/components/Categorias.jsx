@@ -9,14 +9,14 @@ function Categorias() {
 
     return (
         <section className="categorias">
-            <h2 className="letra-Titulos">Productos destacados</h2>
+            <h2 className="letra-titulos">Productos destacados</h2>
             <div className="container">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
                     {destacados.map((item) => (
                         <div className="col" key={item.id}>
                             <Link to={`/productos/${item.id}`} className="card h-100 enlace-destacado">
                                 <img src={item.imagen} className="card-img-top" alt={item.nombre} />
-                                <div className="card-body">
+                                <div className="card-body texto-general">
                                     <p className="card-title texto-general">{item.nombre}</p>
                                 </div>
                             </Link>

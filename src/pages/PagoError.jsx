@@ -5,7 +5,7 @@ function PagoError() {
         <main className="container py-5 pagina-pago">
             <section className="panel-pago-cliente resultado-pago-cliente">
                 <div className="icono-resultado-pago icono-error-pago" aria-hidden="true">×</div>
-                <h1 className="letra-Titulos">Pago con error</h1>
+                <h1 className="letra-titulos">Pago con error</h1>
                 <p>No se completó el pago simulado.</p>
                 <p>Tus productos siguen en el carrito. Puedes revisar la compra e intentarlo nuevamente.</p>
                 <p>No se creó ningún pedido ni se realizó ningún cobro.</p>

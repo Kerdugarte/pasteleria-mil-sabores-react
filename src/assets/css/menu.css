@@ -83,15 +83,11 @@
     object-fit: contain;
 }
 
-
-
 /* Regla general */
 .menu .buscador {
     min-width: 0;
     margin-left: auto;
 }
-
-
 
 /* Desplazamiento hacia la izquierda en escritorio */
 @media (min-width: 1200px) {
@@ -214,4 +210,13 @@
         width: 26px;
         height: 26px;
     }
+}
+
+.menu { flex-wrap: wrap; }
+.menu ul { flex-wrap: wrap; flex: 1; }
+.menu ul li { padding: 0 4px; }
+.menu ul li a { padding: 10px; font-size: 18px; }
+.menu .buscador { flex: 0 1 280px; }
+@media (max-width: 1199px) {
+    .menu .buscador { flex: auto; }
 }

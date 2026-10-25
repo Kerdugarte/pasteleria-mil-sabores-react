@@ -10,7 +10,7 @@ function DetalleProducto() {
     if (!seleccionado) {
         return (
             <main className="container py-5 text-center">
-                <h1 className="letra-Titulos">Producto no encontrado</h1>
+                <h1 className="letra-titulos">Producto no encontrado</h1>
                 <Link to="/productos">Volver a productos</Link>
             </main>
         );
@@ -19,7 +19,7 @@ function DetalleProducto() {
     return (
         <main className="container py-5 detalle-producto">
             <header className="encabezado-productos">
-                <h1 className="letra-Titulos">Detalle del producto</h1>
+                <h1 className="letra-titulos">Detalle del producto</h1>
             </header>
 
             <Link to="/productos" className="boton-detalle mb-4">

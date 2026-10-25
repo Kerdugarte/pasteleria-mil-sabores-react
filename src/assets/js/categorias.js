@@ -49,7 +49,3 @@ export function obtenerCategorias() {
         return categorias;
     }
 }
-
-export function guardarCategorias(actualizadas) {
-    localStorage.setItem("categorias", JSON.stringify(actualizadas));
-}

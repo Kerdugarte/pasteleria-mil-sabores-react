@@ -30,7 +30,7 @@ function PedidosAdmin() {
     return (
         <section>
             <header className="encabezado-admin">
-                <h1 className="letra-Titulos">
+                <h1 className="letra-titulos">
                     Pedidos
                 </h1>
 

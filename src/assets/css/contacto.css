@@ -28,9 +28,7 @@
     box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
 }
 
-.contacto-boton,
-.contacto-modal-botones button,
-.contacto-modal-botones a {
+.contacto-boton {
     display: inline-block;
     padding: 12px 28px;
     border: 1px solid #5d4037;
@@ -41,59 +39,13 @@
     text-decoration: none;
 }
 
-.contacto-boton:hover,
-.contacto-modal-botones button:hover,
-.contacto-modal-botones a:hover {
+.contacto-boton:hover {
     background: #970b0b;
     border-color: #970b0b;
     color: white;
 }
 
 /* Confirmación del formulario */
-.contacto-modal {
-    width: 470px;
-    max-width: calc(100% - 32px);
-    max-height: calc(100dvh - 40px);
-    margin: auto;
-    padding: 32px;
-    border: 1px solid #eadde2;
-    border-radius: 24px;
-    background: #fffaf6;
-    color: #5d4037;
-    text-align: center;
-}
-
-.contacto-modal::backdrop {
-    background: rgba(45, 26, 20, 0.5);
-}
-
-.contacto-modal-icono {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    background: #5d4037;
-    color: white;
-    font-size: 36px;
-    line-height: 64px;
-}
-
-.contacto-modal h2 {
-    font-size: 26px;
-    margin-bottom: 16px;
-}
-
-.contacto-modal-botones {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 24px;
-}
-
-.contacto-modal-botones button {
-    background: transparent;
-    color: #5d4037;
-}
 
 @media (max-width: 575px) {
     .formulario-contacto {

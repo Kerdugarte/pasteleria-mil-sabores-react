@@ -1,66 +1,15 @@
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import "../assets/css/contacto.css";
+import { useState } from "react";
 
 function Contacto() {
-    const confirmacion = useRef(null);
-    const [errorEnvio, setErrorEnvio] = useState("");
-
-    function enviarFormulario(event) {
-        event.preventDefault();
-        setErrorEnvio("");
-
-        const formulario = event.currentTarget;
-
-        if (!formulario.checkValidity()) {
-            formulario.reportValidity();
-            return;
-        }
-
-        const datos = new FormData(formulario);
-
-        const mensaje = {
-            id: crypto.randomUUID(),
-            nombre: datos.get("nombre").trim(),
-            correo: datos.get("correo").trim(),
-            telefono: datos.get("telefono").trim(),
-            asunto: datos.get("asunto"),
-            mensaje: datos.get("mensaje").trim(),
-            fecha: new Date().toISOString()
-        };
-
-        if (!mensaje.nombre || !mensaje.mensaje) {
-            setErrorEnvio("Completa los campos obligatorios.");
-            return;
-        }
-
-        try {
-            const guardados = JSON.parse(
-                localStorage.getItem("mensajesContacto") || "[]"
-            );
-
-            if (!Array.isArray(guardados)) {
-                throw new Error("Datos almacenados inválidos");
-            }
-
-            localStorage.setItem(
-                "mensajesContacto",
-                JSON.stringify([...guardados, mensaje])
-            );
-
-            formulario.reset();
-            confirmacion.current.showModal();
-        } catch {
-            setErrorEnvio(
-                "No pudimos guardar tu mensaje. Inténtalo nuevamente."
-            );
-        }
+    const [formulario, setFormulario] = useState({ nombre: "", correo: "", telefono: "", asunto: "", mensaje: "" });
+    function cambiarCampo(evento) {
+        setFormulario({ ...formulario, [evento.target.name]: evento.target.value });
     }
 
     return (
         <main className="pagina-contacto container py-5">
             <header className="encabezado-productos">
-                <h1 className="letra-Titulos">Contáctanos</h1>
+                <h1 className="letra-titulos">Contáctanos</h1>
                 <p className="texto-general">
                     ¿Tienes alguna duda o un pedido especial?
                     Estamos felices de ayudarte.
@@ -70,9 +19,10 @@ function Contacto() {
             <div className="row justify-content-center">
                 <div className="col-12 col-lg-10">
                     <section className="formulario-contacto">
-                        <h2 className="mb-4">Envíanos un mensaje</h2>
+                        <h2 className="letra-titulos mb-4">Envíanos un mensaje</h2>
+                        <p className="texto-general">Formulario de diseño para esta etapa.</p>
 
-                        <form onSubmit={enviarFormulario}>
+                        <form className="texto-general" onSubmit={(evento) => evento.preventDefault()}>
                             <div className="mb-3">
                                 <label htmlFor="nombre" className="form-label">
                                     Nombre completo *
@@ -81,6 +31,8 @@ function Contacto() {
                                     type="text"
                                     id="nombre"
                                     name="nombre"
+                                    value={formulario.nombre}
+                                    onChange={cambiarCampo}
                                     className="form-control"
                                     placeholder="Ingresa tu nombre"
                                     required
@@ -95,6 +47,8 @@ function Contacto() {
                                     type="email"
                                     id="correo"
                                     name="correo"
+                                    value={formulario.correo}
+                                    onChange={cambiarCampo}
                                     className="form-control"
                                     placeholder="ejemplo@correo.cl"
                                     required
@@ -109,6 +63,8 @@ function Contacto() {
                                     type="tel"
                                     id="telefono"
                                     name="telefono"
+                                    value={formulario.telefono}
+                                    onChange={cambiarCampo}
                                     className="form-control"
                                     placeholder="+56 9 1234 5678"
                                 />
@@ -121,8 +77,9 @@ function Contacto() {
                                 <select
                                     id="asunto"
                                     name="asunto"
+                                    value={formulario.asunto}
+                                    onChange={cambiarCampo}
                                     className="form-select"
-                                    defaultValue=""
                                     required
                                 >
                                     <option value="" disabled>
@@ -150,6 +107,8 @@ function Contacto() {
                                 <textarea
                                     id="mensaje"
                                     name="mensaje"
+                                    value={formulario.mensaje}
+                                    onChange={cambiarCampo}
                                     className="form-control"
                                     rows="5"
                                     placeholder="Escribe aquí tu mensaje..."
@@ -160,6 +119,7 @@ function Contacto() {
                             <div className="text-center">
                                 <button
                                     type="submit"
+                                    disabled
                                     className="contacto-boton"
                                 >
                                     Enviar mensaje
@@ -170,28 +130,6 @@ function Contacto() {
                 </div>
             </div>
 
-            {errorEnvio && (
-                <div className="alert alert-danger mt-3" role="alert">
-                    {errorEnvio}
-                </div>
-            )}
-
-            <dialog
-                ref={confirmacion}
-                className="contacto-modal"
-                aria-labelledby="titulo-confirmacion"
-            >
-                <div className="contacto-modal-icono" aria-hidden="true">✓</div>
-                <h2 id="titulo-confirmacion">Mensaje guardado</h2>
-                <p>Tu mensaje quedó guardado en este navegador.</p>
-                <div className="contacto-modal-botones">
-                    <button type="button" onClick={() => confirmacion.current.close()}>
-                        Cerrar
-                    </button>
-                    <Link to="/">Volver al inicio</Link>
-                    <Link to="/productos">Seguir comprando</Link>
-                </div>
-            </dialog>
         </main>
     );
 }

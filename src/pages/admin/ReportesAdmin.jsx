@@ -41,7 +41,7 @@ function ReportesAdmin() {
     return (
         <section>
             <header className="encabezado-admin">
-                <h1 className="letra-Titulos">Ventas y pedidos</h1>
+                <h1 className="letra-titulos">Ventas y pedidos</h1>
                 <p>Resumen de los pedidos y las ventas simuladas de la pastelería.</p>
             </header>
 
@@ -84,7 +84,7 @@ function ReportesAdmin() {
                         <tr>
                             <th scope="col">Producto</th>
                             <th scope="col">Unidades vendidas</th>
-                            <th scope="col">Total vendido</th>
+                            <th scope="col">Importe antes de descuentos</th>
                         </tr>
                     </thead>
                     <tbody>

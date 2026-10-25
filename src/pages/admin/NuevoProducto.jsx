@@ -1,290 +1,93 @@
 import { useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
 import { obtenerProductos, guardarProductos } from "../../assets/js/Datos";
 import { obtenerCategorias } from "../../assets/js/categorias";
 
 function NuevoProducto() {
     const { id } = useParams();
-    const navigate = useNavigate();
-    const productos = obtenerProductos();
+    const actual = obtenerProductos().find((item) => item.id === Number(id));
     const categorias = obtenerCategorias();
-    const actual = productos.find((item) => item.id === Number(id));
-    const [imagen, setImagen] = useState(actual ? actual.imagen : "");
-    const [error, setError] = useState("");
-    const [leyendoImagen, setLeyendoImagen] = useState(false);
-    const [errorImagen, setErrorImagen] = useState("");
+    const [formulario, setFormulario] = useState({
+        nombre: actual?.nombre || "",
+        precio: actual?.precio || "",
+        stock: actual?.stock ?? "",
+        categoria: actual?.categoria || "",
+        tamano: actual?.tamano || "",
+        descripcion: actual?.descripcion || ""
+    });
 
-    function seleccionarImagen(event) {
-        const archivo = event.target.files[0];
+    const [mensaje, setMensaje] = useState("");
 
-        setImagen("");
-        setErrorImagen("");
-
-        if (!archivo) {
-            return;
-        }
-
-        const formatosPermitidos = [
-            "image/jpeg",
-            "image/png",
-            "image/webp",
-        ];
-
-        if (!formatosPermitidos.includes(archivo.type)) {
-            setErrorImagen("Selecciona una imagen JPG, PNG o WebP.");
-            event.target.value = "";
-            return;
-        }
-
-        if (archivo.size > 2 * 1024 * 1024) {
-            setErrorImagen("La imagen debe pesar como máximo 2 MB.");
-            event.target.value = "";
-            return;
-        }
-
-        const lector = new FileReader();
-
-        setLeyendoImagen(true);
-
-        lector.onload = () => {
-            setLeyendoImagen(false);
-            setImagen(lector.result);
-        };
-
-        lector.onerror = () => {
-            setLeyendoImagen(false);
-            setErrorImagen("No se pudo leer la imagen.");
-        };
-
-        lector.readAsDataURL(archivo);
+    function cambiarCampo(evento) {
+        const { name, value } = evento.target;
+        setFormulario({ ...formulario, [name]: value });
     }
 
-    function guardarProducto(event) {
-        event.preventDefault();
-        setError("");
-        const datos = new FormData(event.currentTarget);
-        const nombre = datos.get("nombre").trim();
-        const precio = Number(datos.get("precio"));
-        const stock = Number(datos.get("stock"));
-        const categoria = datos.get("categoria");
-
-        if (!nombre || !Number.isInteger(precio) || precio < 1 ||
-            !Number.isInteger(stock) || stock < 0 || !imagen || leyendoImagen || errorImagen ||
-            !categorias.some((item) => item.valor === categoria)) {
-            setError("Revisa los datos y selecciona una foto válida.");
+    function guardarStock(evento) {
+        evento.preventDefault();
+        if (!actual) return;
+        const stock = Number(formulario.stock);
+        if (String(formulario.stock).trim() === "" || !Number.isInteger(stock) || stock < 0) {
+            setMensaje("Ingresa un stock entero igual o mayor a cero.");
             return;
         }
-
-        const nuevo = {
-            id: actual ? actual.id : new Date().getTime(),
-            nombre,
-            precio,
-            stock,
-            categoria,
-            imagen,
-            tamano: datos.get("tamano").trim(),
-            descripcion: datos.get("descripcion").trim(),
-        };
-        const actualizados = actual
-            ? productos.map((item) => item.id === actual.id ? nuevo : item)
-            : [...productos, nuevo];
-
         try {
-            guardarProductos(actualizados);
-            navigate("/admin/productos");
+            const productos = obtenerProductos().map((item) => item.id === actual.id ? { ...item, stock } : item);
+            guardarProductos(productos);
+            setMensaje("Stock actualizado correctamente.");
         } catch {
-            setError("No se pudo guardar. Si la foto es muy grande, prueba una más pequeña.");
+            setMensaje("No se pudo guardar el stock.");
         }
     }
 
     if (id && !actual) {
-        return <p>Producto no encontrado. <Link to="/admin/productos">Volver a productos</Link></p>;
+        return <p>Registro no encontrado. <Link to="/admin/productos">Volver</Link></p>;
     }
 
     return (
         <section className="formulario-producto-admin">
             <header className="encabezado-admin">
-                <Link
-                    to="/admin/productos"
-                    className="flecha-volver-admin"
-                    aria-label="Volver a productos"
-                    title="Volver a productos"
-                >
-                    <span aria-hidden="true">←</span>
-                </Link>
-
-                <h1 className="letra-Titulos">
-                    {actual ? "Editar producto" : "Nuevo producto"}
-                </h1>
-
-                <p className="texto-general">
-                    Completa los datos y selecciona una foto.
-                </p>
+                <h1 className="letra-titulos">{actual ? "Editar producto" : "Nuevo producto"}</h1>
+                <p className="texto-general">{actual ? "Actualiza el stock del producto. Los demás datos son de consulta en esta etapa." : "Vista de diseño: los cambios no se guardan en esta etapa."}</p>
             </header>
-
-            {error && <p className="alert alert-danger" role="alert">{error}</p>}
-            <form onSubmit={guardarProducto}>
+            <form className="texto-general" onSubmit={guardarStock}>
                 <div className="row g-4">
                     <div className="col-12 col-md-6">
-                        <label
-                            htmlFor="nombreProducto"
-                            className="form-label"
-                        >
-                            Nombre
-                        </label>
-
-                        <input
-                            type="text"
-                            id="nombreProducto"
-                            name="nombre"
-                            defaultValue={actual ? actual.nombre : ""}
-                            className="form-control"
-                            placeholder="Torta de Chocolate"
-                            required
-                        />
+                        <label htmlFor="nombre" className="form-label">Nombre</label>
+                        <input id="nombre" disabled={Boolean(actual)} name="nombre" type="text" className="form-control" value={formulario.nombre} onChange={cambiarCampo} />
                     </div>
-
                     <div className="col-12 col-md-6">
-                        <label
-                            htmlFor="precioProducto"
-                            className="form-label"
-                        >
-                            Precio
-                        </label>
-
-                        <input
-                            type="number"
-                            id="precioProducto"
-                            name="precio"
-                            defaultValue={actual ? actual.precio : ""}
-                            className="form-control"
-                            placeholder="45000"
-                            min="1"
-                            step="1"
-                            required
-                        />
+                        <label htmlFor="precio" className="form-label">Precio</label>
+                        <input id="precio" disabled={Boolean(actual)} name="precio" type="number" className="form-control" value={formulario.precio} onChange={cambiarCampo} />
                     </div>
-
                     <div className="col-12 col-md-6">
-                        <label
-                            htmlFor="stockProducto"
-                            className="form-label"
-                        >
-                            Stock disponible
-                        </label>
-
-                        <input
-                            type="number"
-                            id="stockProducto"
-                            name="stock"
-                            defaultValue={actual ? actual.stock : ""}
-                            className="form-control"
-                            placeholder="Cantidad de unidades"
-                            min="0"
-                            step="1"
-                            required
-                        />
+                        <label htmlFor="stock" className="form-label">Stock</label>
+                        <input id="stock" name="stock" min="0" step="1" required type="number" className="form-control" value={formulario.stock} onChange={cambiarCampo} />
                     </div>
-
                     <div className="col-12 col-md-6">
-                        <label
-                            htmlFor="categoriaProducto"
-                            className="form-label"
-                        >
-                            Categoría
-                        </label>
-
-                        <select
-                            id="categoriaProducto"
-                            name="categoria"
-                            className="form-select"
-                            defaultValue={actual ? actual.categoria : ""}
-                            required
-                        >
-                            <option value="" disabled>
-                                Selecciona una categoría
-                            </option>
-
-                            {categorias.map((categoria) => (
-                                <option key={categoria.id} value={categoria.valor}>
-                                    {categoria.nombre}
-                                </option>
-                            ))}
-                        </select>
+                        <label htmlFor="categoria" className="form-label">Categoría</label>
+                        <select id="categoria" disabled={Boolean(actual)} name="categoria" className="form-select" value={formulario.categoria} onChange={cambiarCampo}>
+                                <option value="">Selecciona una categoría</option>
+                                {categorias.map((categoria) => <option key={categoria.id} value={categoria.valor}>{categoria.nombre}</option>)}
+                            </select>
                     </div>
-
                     <div className="col-12 col-md-6">
-                        <label
-                            htmlFor="imagenProducto"
-                            className="form-label"
-                        >
-                            Foto del producto
-                        </label>
-
-                        <input
-                            type="file"
-                            id="imagenProducto"
-                            name="imagen"
-                            className="form-control"
-                            accept="image/jpeg,image/png,image/webp"
-                            onChange={seleccionarImagen}
-                            required={!actual}
-                        />
-
-                        <p className="form-text">
-                            JPG, PNG o WebP. Máximo 2 MB.
-                        </p>
-
-                        {errorImagen && (
-                            <p className="text-danger" role="alert">
-                                {errorImagen}
-                            </p>
-                        )}
-
-                        {imagen && (
-                            <img
-                                src={imagen}
-                                alt="Vista previa del producto"
-                                className="foto-producto-admin mt-3"
-                            />
-                        )}
+                        <label htmlFor="imagen" className="form-label">Foto del producto</label>
+                        <input id="imagen" disabled={Boolean(actual)} type="file" className="form-control" accept="image/*" />
                     </div>
-
                     <div className="col-12 col-md-6">
-                        <label htmlFor="tamanoProducto" className="form-label">Tamaño o presentación</label>
-                        <input
-                            id="tamanoProducto"
-                            name="tamano"
-                            className="form-control"
-                            defaultValue={actual ? actual.tamano : ""}
-                            placeholder="Mediana · 12 personas o por unidad"
-                            required
-                        />
+                        <label htmlFor="tamano" className="form-label">Tamaño</label>
+                        <input id="tamano" disabled={Boolean(actual)} name="tamano" type="text" className="form-control" value={formulario.tamano} onChange={cambiarCampo} />
                     </div>
-                    <div className="col-12">
-                        <label htmlFor="descripcionProducto" className="form-label">Descripción</label>
-                        <textarea
-                            id="descripcionProducto"
-                            name="descripcion"
-                            className="form-control"
-                            rows={4}
-                            defaultValue={actual ? actual.descripcion : ""}
-                            required
-                        />
+                    <div className="col-12 col-md-6">
+                        <label htmlFor="descripcion" className="form-label">Descripción</label>
+                        <textarea id="descripcion" disabled={Boolean(actual)} name="descripcion" className="form-control" rows={4} value={formulario.descripcion} onChange={cambiarCampo} />
                     </div>
-
-                    <div className="col-12">
-                        <div className="acciones-formulario-admin">
-                            <button
-                                type="submit"
-                                className="boton-admin"
-                                disabled={leyendoImagen}
-                            >
-                                Guardar producto
-                            </button>
-                        </div>
-                    </div>
+                </div>
+                <p role="status" className="mt-3">{mensaje}</p>
+                <div className="acciones-formulario-admin mt-4">
+                    <Link to="/admin/productos" className="boton-admin">Volver</Link>
+                    <button type="submit" className="boton-admin" disabled={!actual}>{actual ? "Guardar stock" : "Guardar"}</button>
                 </div>
             </form>
         </section>

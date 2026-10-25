@@ -30,7 +30,7 @@ function PagoCorrecto() {
         <main className="container py-5 pagina-pago">
             <section className="panel-pago-cliente resultado-pago-cliente">
                 <div className="icono-resultado-pago" aria-hidden="true">✓</div>
-                <h1 className="letra-Titulos">Pago correcto</h1>
+                <h1 className="letra-titulos">Pago correcto</h1>
                 <p>Tu pedido de prueba fue registrado correctamente.</p>
                 <div className="datos-resultado-pago">
                     <p><strong>Pedido:</strong> {pedido.numero}</p>
@@ -38,6 +38,11 @@ function PagoCorrecto() {
                     <p><strong>Total:</strong> ${pedido.total.toLocaleString("es-CL")}</p>
                     <p><strong>Estado:</strong> {estados[pedido.estado] || pedido.estado}</p>
                 </div>
+                {pedido.entrega && <div className="mb-3">
+                    <p><strong>Entrega:</strong> {pedido.entrega.tipo === "retiro" ? "Retiro en tienda" : `${pedido.entrega.direccion}, ${pedido.entrega.comuna}`}</p>
+                    <p><strong>Recibe:</strong> {pedido.entrega.nombre} — {pedido.entrega.telefono}</p>
+                    <p>Productos: ${pedido.subtotal.toLocaleString("es-CL")} · Descuento: ${pedido.descuento.toLocaleString("es-CL")} · Envío: ${pedido.costoEnvio.toLocaleString("es-CL")}</p>
+                </div>}
                 <p>Pago simulado: no se realizó ningún cobro real.</p>
                 <div className="d-flex justify-content-center flex-wrap gap-3 mt-4">
                     <Link to="/mi-cuenta" className="boton-cliente">Ir a mi cuenta</Link>

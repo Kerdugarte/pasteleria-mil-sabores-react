@@ -8,6 +8,7 @@ import {
 
 function PerfilAdmin() {
     const [usuario, setUsuario] = useState(obtenerSesion);
+    const [formulario, setFormulario] = useState(() => ({ nombre: obtenerSesion()?.nombre || "", email: obtenerSesion()?.email || "" }));
     const [error, setError] = useState("");
     const [mensaje, setMensaje] = useState("");
 
@@ -15,10 +16,8 @@ function PerfilAdmin() {
         event.preventDefault();
         setError("");
         setMensaje("");
-        const formulario = event.currentTarget;
-        const datos = new FormData(formulario);
-        const nombre = datos.get("nombre").trim();
-        const email = datos.get("email").trim().toLowerCase();
+        const nombre = formulario.nombre.trim();
+        const email = formulario.email.trim().toLowerCase();
         const usuarios = obtenerUsuarios();
         const actual = usuarios.find((item) => item.email === usuario.email);
 
@@ -49,7 +48,7 @@ function PerfilAdmin() {
                 throw errorSesion;
             }
             setUsuario({ nombre, email, rol: actualizado.rol });
-            formulario.reset();
+            setFormulario({ nombre, email });
             setMensaje("Tus datos fueron actualizados.");
         } catch {
             setError("No se pudieron guardar los cambios. Inténtalo nuevamente.");
@@ -63,7 +62,7 @@ function PerfilAdmin() {
     return (
         <section className="formulario-producto-admin">
             <header className="encabezado-admin">
-                <h1 className="letra-Titulos">Mi perfil</h1>
+                <h1 className="letra-titulos">Mi perfil</h1>
                 <p className="texto-general">Consulta y actualiza tus datos.</p>
             </header>
 
@@ -84,14 +83,14 @@ function PerfilAdmin() {
                         <h2 className="h4 mb-4">Información personal</h2>
                         {error && <p className="alert alert-danger" role="alert">{error}</p>}
                         {mensaje && <p className="alert alert-success" role="status">{mensaje}</p>}
-                        <form onSubmit={guardarPerfil} key={usuario.email + usuario.nombre}>
+                        <form className="texto-general" onSubmit={guardarPerfil}>
                             <div className="mb-3">
                                 <label htmlFor="perfilNombre" className="form-label">Nombre completo</label>
-                                <input id="perfilNombre" name="nombre" className="form-control" defaultValue={usuario.nombre} autoComplete="name" required />
+                                <input id="perfilNombre" name="nombre" className="form-control" value={formulario.nombre} onChange={(evento) => setFormulario({ ...formulario, nombre: evento.target.value })} autoComplete="name" required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="perfilEmail" className="form-label">Correo electrónico</label>
-                                <input id="perfilEmail" type="email" name="email" className="form-control" defaultValue={usuario.email} autoComplete="email" required />
+                                <input id="perfilEmail" type="email" name="email" className="form-control" value={formulario.email} onChange={(evento) => setFormulario({ ...formulario, email: evento.target.value })} autoComplete="email" required />
                             </div>
                             <div className="acciones-formulario-admin">
                                 <button type="submit" className="boton-admin">Guardar cambios</button>

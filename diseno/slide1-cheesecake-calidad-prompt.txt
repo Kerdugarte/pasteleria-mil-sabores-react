@@ -1,4 +1,0 @@
-Modo: image_gen integrado, mejora de nitidez
-Resolución entregada: 2134 x 737 px
-
-Quality enhancement ONLY of the supplied approved banner. Upscale to 3840 x 1326 pixels, retaining the exact wide aspect ratio. Preserve identical composition, positions, crop, objects, all lettering and typography, lighting and colors. Improve fine photographic detail and clean sharpness of cheesecake, berries, crumb base, woven fabric, wood and text edges. Keep natural depth of field. Do not redesign, add objects, change text or increase saturation. All text must remain exactly: PASTELERÍA MIL SABORES / Tu primera compra, más dulce. / 10% / DE DESCUENTO / En tu primera compra. Keep bottom left free of flowers as in source. Output highest resolution possible.

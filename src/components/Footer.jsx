@@ -13,7 +13,7 @@ function Footer() {
                 </div>
 
                 <div className="footer-columna">
-                    <h3 className="letra-Titulos">Horarios</h3>
+                    <h3 className="letra-titulos">Horarios</h3>
 
                     <ul className="texto-general">
                         <li>Lunes a viernes: 09:00 - 19:00</li>
@@ -23,7 +23,7 @@ function Footer() {
                 </div>
 
                 <div className="footer-columna">
-                    <h3 className="letra-Titulos">Contacto</h3>
+                    <h3 className="letra-titulos">Contacto</h3>
 
                     <ul className="texto-general">
                         <li>+56 9 1234 5678</li>
@@ -33,7 +33,7 @@ function Footer() {
                 </div>
 
                 <div className="footer-columna">
-                    <h3 className="letra-Titulos">Síguenos</h3>
+                    <h3 className="letra-titulos">Síguenos</h3>
 
                     <div>
                         <img

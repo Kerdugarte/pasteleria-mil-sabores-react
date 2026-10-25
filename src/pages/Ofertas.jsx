@@ -17,7 +17,7 @@ function Ofertas() {
     return (
         <main className="container py-5 pagina-ofertas">
             <header className="encabezado-productos">
-                <h1 className="letra-Titulos">Ofertas y beneficios</h1>
+                <h1 className="letra-titulos">Ofertas y beneficios</h1>
                 <p className="texto-general">Más motivos para disfrutar de Mil Sabores.</p>
             </header>
 
@@ -25,10 +25,10 @@ function Ofertas() {
                 <div className="col-12 col-sm-6 col-xl-3">
                     <article className="tarjeta-oferta h-100">
                         <img src="/img/OfertaHallo.png" alt="Oferta pastel " />
-                        <div className="contenido-oferta">
+                        <div className="contenido-oferta texto-general">
                             <span className="etiqueta-oferta">Especial de temporada</span>
                             <p className="descuento-oferta">30% <span>de descuento</span></p>
-                            <h2>Especial de Halloween</h2>
+                            <h2 className="texto-general">Especial de Halloween</h2>
                             <p>Este Halloween, comparte tus dulces favoritos con un 30% de descuento.</p>
                             <a href="https://w.app/znl9mc" className="boton-cliente" target="_blank" rel="noopener noreferrer">
                                 Consultar por WhatsApp
@@ -40,11 +40,11 @@ function Ofertas() {
                 <div className="col-12 col-sm-6 col-xl-3">
                     <article className="tarjeta-oferta h-100">
                         <img src="/img/OfertaPrimer.png" alt="Primera Compra" />
-                        <div className="contenido-oferta">
+                        <div className="contenido-oferta texto-general">
                             <span className="etiqueta-oferta">Te damos la bienvenida</span>
                             <p className="descuento-oferta">10% <span>de descuento</span></p>
-                            <h2>Tu primera compra</h2>
-                            <p>Prueba tus primeros sabores de la pastelería con un 10% de descuento en tu primera compra.</p>
+                            <h2 className="texto-general">Tu primera compra</h2>
+                            <p>Recibe un 10% automático en tu primera compra. No acumulable con otros descuentos.</p>
                             <Link to="/productos" className="boton-cliente">Elegir mis favoritos</Link>
                         </div>
                     </article>
@@ -53,11 +53,11 @@ function Ofertas() {
                 <div className="col-12 col-sm-6 col-xl-3">
                     <article className="tarjeta-oferta h-100">
                         <img src="/img/OfertaDuoc.png" alt="Descuento Duoc" />
-                        <div className="contenido-oferta">
+                        <div className="contenido-oferta texto-general">
                             <span className="etiqueta-oferta">Beneficio estudiantil</span>
                             <p className="descuento-oferta">40% <span>de descuento</span></p>
-                            <h2>Estudiantes Duoc UC</h2>
-                            <p>Si eres estudiante de Duoc UC, obtén un 40% de descuento con este código promocional.</p>
+                            <h2 className="texto-general">Estudiantes Duoc UC</h2>
+                            <p>Ingresa DUOC40 al confirmar tu compra para obtener un 40% de descuento. No acumulable.</p>
                             <div className="codigo-oferta">
                                 <span>Código promocional</span>
                                 <strong>DUOC40</strong>
@@ -73,10 +73,10 @@ function Ofertas() {
                 <div className="col-12 col-sm-6 col-xl-3">
                     <article className="tarjeta-oferta h-100">
                         <img src="/img/OfertaEnvio.png" alt="Envio Gratis" />
-                        <div className="contenido-oferta">
+                        <div className="contenido-oferta texto-general">
                             <span className="etiqueta-oferta">Hasta tu puerta</span>
                             <p className="descuento-oferta">Envío gratis</p>
-                            <h2>En compras sobre $60.000</h2>
+                            <h2 className="texto-general">En compras sobre $60.000</h2>
                             <p>Reúne tus productos favoritos y recibe tu pedido con envío gratis por compras superiores a $60.000.</p>
                             <Link to="/productos" className="boton-cliente">Comenzar mi compra</Link>
                         </div>

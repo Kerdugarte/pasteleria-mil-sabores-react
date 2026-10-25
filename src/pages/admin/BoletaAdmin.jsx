@@ -15,7 +15,7 @@ function BoletaAdmin() {
     if (!pedido) {
         return (
             <section>
-                <h1 className="letra-Titulos">Pedido no encontrado</h1>
+                <h1 className="letra-titulos">Pedido no encontrado</h1>
                 <Link to="/admin/pedidos">Volver a pedidos</Link>
             </section>
         );
@@ -24,7 +24,7 @@ function BoletaAdmin() {
     return (
         <section className="boleta-admin">
             <header className="encabezado-admin">
-                <h1 className="letra-Titulos">Boleta del pedido</h1>
+                <h1 className="letra-titulos">Boleta del pedido</h1>
                 <p className="texto-general">Comprobante de compra simulada.</p>
             </header>
             <div className="d-flex justify-content-between flex-wrap gap-3 mb-4 acciones-boleta-admin">
@@ -62,6 +62,11 @@ function BoletaAdmin() {
                         </tbody>
                     </table>
                 </div>
+                {pedido.entrega && <div className="mb-3">
+                    <p><strong>Entrega:</strong> {pedido.entrega.tipo === "retiro" ? "Retiro en tienda" : `${pedido.entrega.direccion}, ${pedido.entrega.comuna}`}</p>
+                    <p><strong>Recibe:</strong> {pedido.entrega.nombre} — {pedido.entrega.telefono}</p>
+                    <p>Productos: ${pedido.subtotal.toLocaleString("es-CL")} · Descuento: ${pedido.descuento.toLocaleString("es-CL")} · Envío: ${pedido.costoEnvio.toLocaleString("es-CL")}</p>
+                </div>}
                 <p className="fs-3 fw-bold text-end">Total: ${pedido.total.toLocaleString("es-CL")}</p>
             </article>
         </section>

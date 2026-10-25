@@ -1,3 +1,4 @@
+import HistorialCompras from "../components/HistorialCompras";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { obtenerSesion, cerrarSesion } from "../assets/js/usuarios";
 
@@ -21,7 +22,7 @@ function MiCuenta() {
     return (
         <main className="container py-5 cuenta-cliente">
             <header className="encabezado-cuenta-cliente">
-                <h1 className="letra-Titulos">Mi cuenta</h1>
+                <h1 className="letra-titulos">Mi cuenta</h1>
                 <p>Hola, {usuario.nombre}. Bienvenido a Mil Sabores.</p>
             </header>
 
@@ -57,6 +58,7 @@ function MiCuenta() {
                     </section>
                 </div>
             </div>
+            <HistorialCompras />
         </main>
     );
 }

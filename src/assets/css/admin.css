@@ -137,8 +137,7 @@ button.boton-admin:disabled:hover {
 
 .menu-admin a:focus-visible,
 .menu-admin button:focus-visible,
-.boton-admin:focus-visible,
-.flecha-volver-admin:focus-visible {
+.boton-admin:focus-visible {
     outline: 2px solid #970b0b;
     outline-offset: 3px;
 }
@@ -323,16 +322,14 @@ button.boton-admin:disabled:hover {
     box-shadow: none;
 }
 
-.catalogo-admin .boton-agregar,
-.boton-admin.boton-eliminar-producto {
+.catalogo-admin .boton-agregar {
     border-color: #970b0b;
     background-color: #970b0b;
     color: white;
     transition: transform 180ms ease, background-color 180ms ease;
 }
 
-.catalogo-admin .boton-agregar:hover,
-.boton-admin.boton-eliminar-producto:hover {
+.catalogo-admin .boton-agregar:hover {
     transform: translateY(-3px);
     border-color: #760808;
     background-color: #760808;
@@ -342,8 +339,7 @@ button.boton-admin:disabled:hover {
     .catalogo-admin .boton-detalle,
     .catalogo-admin .boton-detalle:hover,
     .catalogo-admin .boton-detalle:focus-visible,
-    .catalogo-admin .boton-agregar,
-    .boton-admin.boton-eliminar-producto {
+    .catalogo-admin .boton-agregar {
         transition: none;
         transform: none;
     }
@@ -383,29 +379,6 @@ button.boton-admin:disabled:hover {
     font-size: 22px;
 }
 
-.flecha-volver-admin {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    border: 1px solid #d8beb0;
-    border-radius: 50%;
-    background-color: #fffaf6;
-    color: #5d4037;
-    font-size: 32px;
-    line-height: 1;
-    text-decoration: none;
-}
-
-.flecha-volver-admin:hover {
-    background-color: #5d4037;
-    color: white;
-}
-
 .formulario-producto-admin .form-label {
     margin-bottom: 12px;
     color: #5d4037;
@@ -434,22 +407,6 @@ button.boton-admin:disabled:hover {
 .formulario-producto-admin .form-select:focus {
     border-color: #5d4037;
     box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
-}
-
-.formulario-producto-admin .form-text {
-    margin-top: 12px;
-    color: #5d4037;
-    font-size: 16px;
-}
-
-.foto-producto-admin {
-    display: block;
-    width: 300px;
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border: 1px solid #eadde2;
-    border-radius: 20px;
 }
 
 .acciones-formulario-admin {
@@ -487,109 +444,9 @@ button.boton-admin:disabled:hover {
     }
 }
 
-
 /* Administradores */
-.usuarios-admin .buscador-usuarios-admin {
-    min-height: 70px;
-    padding: 18px 24px;
-    border: 1px solid #d8beb0;
-    border-radius: 20px;
-    background-color: white;
-    color: #5d4037;
-    font-family: "Lato", sans-serif;
-    font-size: 20px;
-}
-
-.usuarios-admin .buscador-usuarios-admin:focus {
-    border-color: #5d4037;
-    box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
-}
-
-.usuarios-admin .boton-admin {
-    padding: 20px 28px;
-    font-size: 20px;
-}
-
-.usuarios-admin .tarjeta-usuario-admin {
-    width: 100%;
-    min-height: 260px;
-    padding: 36px;
-    border: 1px solid #eadde2;
-    border-radius: 28px;
-    background-color: white;
-    color: #5d4037;
-    box-shadow: 0 4px 12px rgba(93, 64, 55, 0.06);
-}
-
-.usuarios-admin .tarjeta-usuario-admin h2 {
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.usuarios-admin .tarjeta-usuario-admin p {
-    margin-bottom: 24px;
-    font-size: 21px;
-    line-height: 1.5;
-}
 
 /* Categorías */
-.buscador-categorias-admin {
-    min-height: 70px;
-    padding: 18px 24px;
-    border: 1px solid #d8beb0;
-    border-radius: 20px;
-    background-color: white;
-    color: #5d4037;
-    font-family: "Lato", sans-serif;
-    font-size: 20px;
-}
-
-.buscador-categorias-admin:focus {
-    border-color: #5d4037;
-    box-shadow: 0 0 0 3px rgba(93, 64, 55, 0.12);
-}
-
-.acciones-categoria-admin {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding-top: 20px;
-}
-
-.acciones-categoria-admin .boton-admin {
-    flex: 1;
-    padding: 14px 20px;
-    font-size: 18px;
-}
-
-.boton-admin.boton-eliminar-categoria {
-    border-color: #5d4037;
-    background-color: #5d4037;
-    color: white;
-    transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
-}
-
-.boton-admin.boton-eliminar-categoria:hover {
-    transform: translateY(-3px);
-    border-color: #402a23;
-    background-color: #402a23;
-    box-shadow: 0 6px 14px rgba(93, 64, 55, 0.2);
-}
-
-.boton-admin.boton-eliminar-categoria:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .boton-admin.boton-eliminar-categoria {
-        transition: none;
-    }
-    .boton-admin.boton-eliminar-categoria:hover {
-        transform: none;
-    }
-}
 
 /* Inicio del administrador */
 .inicio-admin {
@@ -606,13 +463,6 @@ button.boton-admin:disabled:hover {
 
 .inicio-admin .texto-inicio-admin {
     padding: 38px;
-}
-
-.inicio-admin .etiqueta-inicio-admin {
-    margin: 0 0 18px;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 3px;
 }
 
 .inicio-admin .saludo-inicio-admin {
@@ -657,8 +507,7 @@ button.boton-admin:disabled:hover {
     box-shadow: 0 4px 12px rgba(93, 64, 55, 0.04);
 }
 
-.inicio-admin .numero-inicio-admin h3,
-.inicio-admin .acceso-inicio-admin h3 {
+.inicio-admin .numero-inicio-admin h3 {
     margin: 0;
     font-size: 20px;
     font-weight: bold;
@@ -682,44 +531,12 @@ button.boton-admin:disabled:hover {
     line-height: 1.2;
 }
 
-.inicio-admin .detalle-inicio-admin {
-    margin: 0;
-    color: #80645a;
-    font-size: 16px;
-}
-
-.inicio-admin .acceso-inicio-admin {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding: 24px;
-    border: 1px solid #eadde2;
-    border-radius: 20px;
-    background-color: #fffaf6;
-    color: #5d4037;
-    text-decoration: none;
-}
-
-.inicio-admin .acceso-inicio-admin p {
-    margin: 10px 0 0;
-    color: #80645a;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.inicio-admin .acceso-inicio-admin>span {
-    font-size: 26px;
-}
-
-.inicio-admin .numero-inicio-admin:hover,
-.inicio-admin .acceso-inicio-admin:hover {
+.inicio-admin .numero-inicio-admin:hover {
     border-color: #b98e7c;
     background-color: #fbf1eb;
 }
 
-.inicio-admin .numero-inicio-admin:focus-visible,
-.inicio-admin .acceso-inicio-admin:focus-visible {
+.inicio-admin .numero-inicio-admin:focus-visible {
     outline: 2px solid #970b0b;
     outline-offset: 3px;
 }
@@ -729,7 +546,6 @@ button.boton-admin:disabled:hover {
         padding: 28px;
     }
 }
-
 
 /* Avisos de pedidos y ventas en Inicio */
 .inicio-admin .aviso-inicio-admin {
@@ -757,7 +573,6 @@ button.boton-admin:disabled:hover {
     font-size: 18px;
 }
 
-
 .inicio-admin .logo-bienvenida-inicio-admin {
     padding: 4px;
     text-align: center;
@@ -771,27 +586,6 @@ button.boton-admin:disabled:hover {
     margin: auto;
 }
 /* Confirmación de eliminación */
-.ventana-admin {
-    width: 480px;
-    max-width: calc(100% - 32px);
-    max-height: calc(100dvh - 40px);
-    margin: auto;
-    padding: 32px;
-    border: 1px solid #eadde2;
-    border-radius: 24px;
-    background: #fffaf6;
-    color: #5d4037;
-    text-align: center;
-}
-
-.ventana-admin::backdrop {
-    background: rgba(45, 26, 20, 0.5);
-}
-
-.ventana-admin h2 {
-    font-size: 26px;
-    margin-bottom: 20px;
-}
 
 .avatar-perfil-admin {
     width: 100px;
@@ -863,24 +657,32 @@ button.boton-admin:disabled:hover {
     border-radius: 16px;
 }
 
-/* Alinear los botones de stock, pedidos y ventas */
-.inicio-admin .tabla-stock-inicio th:last-child,
-.inicio-admin .tabla-stock-inicio td:last-child:not([colspan]) {
+/* Acciones de stock alineadas con los accesos del inicio */
+.encabezado-stock-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.tabla-stock-inicio th:last-child,
+.tabla-stock-inicio td:last-child:not([colspan]) {
     width: 230px;
     padding-right: 26px;
     text-align: right;
 }
-
-.inicio-admin .tabla-stock-inicio .boton-admin,
+.tabla-stock-inicio .boton-admin,
 .inicio-admin .aviso-inicio-admin > .boton-admin {
     width: 190px;
     max-width: 100%;
     flex-shrink: 0;
     white-space: nowrap;
 }
-
-.inicio-admin .aviso-inicio-admin > .boton-admin {
-    margin-left: auto;
+.inicio-admin .aviso-inicio-admin > .boton-admin { margin-left: auto; }
+@media (max-width: 767px) {
+    .tabla-stock-inicio { min-width: 640px; }
+    .encabezado-stock-admin span { font-size: 16px; }
 }
 
 /* Filtro de fechas de reportes */

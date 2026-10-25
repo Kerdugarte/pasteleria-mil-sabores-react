@@ -46,6 +46,7 @@ function MenuAdmin({ alCerrarSesion }) {
                         </NavLink>
                     </li>
 
+                    <li><NavLink to="/admin/historial">Historial de compras</NavLink></li>
                     <li>
                         <NavLink to="/admin/reportes">
                             Reportes

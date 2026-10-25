@@ -1,3 +1,4 @@
+import StockCritico from "../../components/StockCritico";
 import { Link } from "react-router-dom";
 import { obtenerPedidos } from "../../assets/js/pedidos";
 import { obtenerProductos } from "../../assets/js/Datos";
@@ -6,9 +7,6 @@ import { obtenerUsuarios, obtenerSesion } from "../../assets/js/usuarios";
 
 function PanelAdmin() {
     const producto = obtenerProductos();
-    const productosCriticos = producto
-        .filter((item) => item.stock <= 5)
-        .sort((a, b) => a.stock - b.stock);
     const categorias = obtenerCategorias();
     const usuarios = obtenerUsuarios();
     const usuario = obtenerSesion();
@@ -71,45 +69,7 @@ function PanelAdmin() {
             </div>
 
 
-            <section className="mt-4" aria-label="Productos con stock crítico">
-                <div className="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
-                    <h2 className="h4 mb-0">Productos con stock crítico</h2>
-                    <span>5 unidades o menos</span>
-                </div>
-                <div className="table-responsive tabla-admin">
-                    <table className="table align-middle tabla-stock-inicio" aria-label="Stock crítico">
-                        <thead>
-                            <tr>
-                                <th scope="col">Producto</th>
-                                <th scope="col">Stock</th>
-                                <th scope="col">Estado</th>
-                                <th scope="col">Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {productosCriticos.map((item) => (
-                                <tr key={item.id}>
-                                    <td>{item.nombre}</td>
-                                    <td>{item.stock}</td>
-                                    <td>{item.stock === 0 ? "Agotado" : "Stock bajo"}</td>
-                                    <td>
-                                        <Link to={`/admin/productos/${item.id}/editar`} className="boton-admin">
-                                            Actualizar stock
-                                        </Link>
-                                    </td>
-                                </tr>
-                            ))}
-                            {productosCriticos.length === 0 && (
-                                <tr>
-                                    <td colSpan={4} className="text-center py-4">
-                                        No hay productos con stock crítico.
-                                    </td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+            <StockCritico />
 
             <div className="aviso-inicio-admin">
                 <div role="status">

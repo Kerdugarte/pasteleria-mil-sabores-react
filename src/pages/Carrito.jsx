@@ -41,7 +41,7 @@ function Carrito() {
     return (
         <main className="container py-5 pagina-carrito">
             <header className="encabezado-carrito-cliente">
-                <h1 className="letra-Titulos">Mi carrito</h1>
+                <h1 className="letra-titulos">Mi carrito</h1>
                 <p>Un dulce momento está por comenzar.</p>
             </header>
 

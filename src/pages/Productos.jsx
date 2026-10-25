@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import TarjetaProducto from "../components/TarjetaProducto";
 import Paginacion from "../components/Paginacion";
 import FiltroProductos from "../components/FiltroProductos";
@@ -7,12 +8,13 @@ import { obtenerProductos } from "../assets/js/Datos";
 function Productos() {
     const producto = obtenerProductos();
     const [paginaActual, setPaginaActual] = useState(1);
-    const [categoriaActual, setCategoriaActual] = useState("");
+    const [parametros, setParametros] = useSearchParams();
+    const categoriaActual = parametros.get("categoria") || "";
 
     const productosPorPagina = 8;
 
     function cambiarCategoria(categoria) {
-        setCategoriaActual(categoria);
+        setParametros(categoria ? { categoria } : {});
         setPaginaActual(1);
     }
 
@@ -24,7 +26,8 @@ function Productos() {
         productosFiltrados.length / productosPorPagina
     );
 
-    const inicio = (paginaActual - 1) * productosPorPagina;
+    const paginaVisible = Math.min(paginaActual, Math.max(totalPaginas, 1));
+    const inicio = (paginaVisible - 1) * productosPorPagina;
 
     const productosVisibles = productosFiltrados.slice(
         inicio,
@@ -34,7 +37,7 @@ function Productos() {
     return (
         <main className="container py-5">
             <header className="encabezado-productos">
-                <h1 className="letra-Titulos">Nuestros Productos</h1>
+                <h1 className="letra-titulos">Nuestros Productos</h1>
 
                 <p className="texto-general">
                     Encuentra el dulce perfecto para cada ocasión
@@ -72,7 +75,7 @@ function Productos() {
 
             {totalPaginas > 1 && (
                 <Paginacion
-                    paginaActual={paginaActual}
+                    paginaActual={paginaVisible}
                     totalPaginas={totalPaginas}
                     cambiarPagina={setPaginaActual}
                 />

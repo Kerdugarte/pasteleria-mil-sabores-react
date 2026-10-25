@@ -25,6 +25,7 @@ function Cabecera() {
                         </NavLink>
                     </li>
 
+                    <li><NavLink to="/ofertas" className="texto-general">Ofertas</NavLink></li>
                     <li>
                         <NavLink to="/contacto" className="texto-general">
                             Contacto

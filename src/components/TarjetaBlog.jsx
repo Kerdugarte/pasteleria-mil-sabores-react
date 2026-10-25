@@ -1,4 +1,4 @@
-function TarjetaBlog({ publicacion, leerMas }) {
+function TarjetaBlog({ publicacion }) {
     return (
         <div className="col-12 col-md-6 col-lg-4">
             <article className="blog-tarjeta">
@@ -8,19 +8,19 @@ function TarjetaBlog({ publicacion, leerMas }) {
                     className="blog-imagen"
                 />
 
-                <div className="blog-contenido">
+                <div className="blog-contenido texto-general">
                     <span className="blog-categoria">
                         {publicacion.categoria}
                     </span>
 
-                    <h3>{publicacion.titulo}</h3>
+                    <h3 className="texto-general">{publicacion.titulo}</h3>
 
                     <p>{publicacion.descripcion}</p>
 
                     <button
                         type="button"
                         className="blog-boton"
-                        onClick={leerMas}
+                        disabled
                     >
                         Leer más
                     </button>

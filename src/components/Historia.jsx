@@ -4,7 +4,7 @@ function Historia() {
             <div className="historia-texto">
                 <p className="historia-mini">BIENVENIDOS A</p>
 
-                <h2 className="letra-Titulos">
+                <h2 className="letra-titulos">
                     Pastelería Mil Sabores
                 </h2>
 
