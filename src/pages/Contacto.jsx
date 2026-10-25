@@ -2,67 +2,67 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/contacto.css";
 function Contacto() {
-    const navigate = useNavigate();
-    const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
-    const [errorEnvio, setErrorEnvio] = useState("");
-    
-const enviarFormulario = (event) => {
-  event.preventDefault();
-  setErrorEnvio("");
+  const navigate = useNavigate();
+  const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
+  const [errorEnvio, setErrorEnvio] = useState("");
 
-  const formulario = event.currentTarget;
+  const enviarFormulario = (event) => {
+    event.preventDefault();
+    setErrorEnvio("");
 
-  if (!formulario.checkValidity()) {
-    formulario.reportValidity();
-    return;
-  }
+    const formulario = event.currentTarget;
 
-  const datos = new FormData(formulario);
-
-  const mensaje = {
-    id: crypto.randomUUID(),
-    nombre: datos.get("nombre").trim(),
-    correo: datos.get("correo").trim(),
-    telefono: datos.get("telefono").trim(),
-    asunto: datos.get("asunto"),
-    mensaje: datos.get("mensaje").trim(),
-    fecha: new Date().toISOString()
-  };
-
-  if (!mensaje.nombre || !mensaje.mensaje) {
-    setErrorEnvio("Completa los campos obligatorios.");
-    return;
-  }
-
-  try {
-    const guardados = JSON.parse(
-      localStorage.getItem("mensajesContacto") || "[]"
-    );
-
-    if (!Array.isArray(guardados)) {
-      throw new Error("Datos almacenados inválidos");
+    if (!formulario.checkValidity()) {
+      formulario.reportValidity();
+      return;
     }
 
-    localStorage.setItem(
-      "mensajesContacto",
-      JSON.stringify([...guardados, mensaje])
-    );
+    const datos = new FormData(formulario);
 
-    formulario.reset();
-    setMostrarConfirmacion(true);
-  } catch (error) {
-    console.error(error);
-    setErrorEnvio(
-      "No pudimos guardar tu mensaje. Inténtalo nuevamente."
-    );
-  }
-};
+    const mensaje = {
+      id: crypto.randomUUID(),
+      nombre: datos.get("nombre").trim(),
+      correo: datos.get("correo").trim(),
+      telefono: datos.get("telefono").trim(),
+      asunto: datos.get("asunto"),
+      mensaje: datos.get("mensaje").trim(),
+      fecha: new Date().toISOString()
+    };
+
+    if (!mensaje.nombre || !mensaje.mensaje) {
+      setErrorEnvio("Completa los campos obligatorios.");
+      return;
+    }
+
+    try {
+      const guardados = JSON.parse(
+        localStorage.getItem("mensajesContacto") || "[]"
+      );
+
+      if (!Array.isArray(guardados)) {
+        throw new Error("Datos almacenados inválidos");
+      }
+
+      localStorage.setItem(
+        "mensajesContacto",
+        JSON.stringify([...guardados, mensaje])
+      );
+
+      formulario.reset();
+      setMostrarConfirmacion(true);
+    } catch (error) {
+      console.error(error);
+      setErrorEnvio(
+        "No pudimos guardar tu mensaje. Inténtalo nuevamente."
+      );
+    }
+  };
 
   return (
     <main className="pagina-contacto container py-5">
-      <div className="text-center mb-5">
-        <h1>Contáctanos</h1>
-        <p>
+      <div className="encabezado-contacto">
+        <h1 className="letra-Titulos" > Contáctanos</h1>
+        <p className="texto-general">
           ¿Tienes alguna duda o un pedido especial?
           Estamos felices de ayudarte.
         </p>
@@ -170,57 +170,57 @@ const enviarFormulario = (event) => {
           </section>
         </div>
       </div>
-      
-{errorEnvio && (
-  <div className="alert alert-danger mt-3" role="alert">
-    {errorEnvio}
-  </div>
-)}
 
-{mostrarConfirmacion && (
-  <div className="contacto-modal-fondo">
-    <div
-      className="contacto-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="titulo-confirmacion"
-    >
-      <div className="contacto-modal-icono">
-        ✓
-      </div>
+      {errorEnvio && (
+        <div className="alert alert-danger mt-3" role="alert">
+          {errorEnvio}
+        </div>
+      )}
 
-      <h2 id="titulo-confirmacion">
-        ¡Mensaje enviado con éxito!
-      </h2>
+      {mostrarConfirmacion && (
+        <div className="contacto-modal-fondo">
+          <div
+            className="contacto-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-confirmacion"
+          >
+            <div className="contacto-modal-icono">
+              ✓
+            </div>
 
-      <p>
-        Tu mensaje fue guardado correctamente.
-        Gracias por contactarnos.
-      </p>
+            <h2 id="titulo-confirmacion">
+              ¡Mensaje enviado con éxito!
+            </h2>
 
-      <div className="contacto-modal-botones">
-        
-        <button
-        type="button"
-        onClick={() => {
-            navigate("/");
-            window.scrollTo({ top: 0, behavior: "instant" });
-        }}
-        >
+            <p>
+              Tu mensaje fue guardado correctamente.
+              Gracias por contactarnos.
+            </p>
 
-          Volver al inicio
-        </button>
+            <div className="contacto-modal-botones">
 
-        <button
-          type="button"
-          onClick={() => navigate("/productos")}
-        >
-          Seguir comprando
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+              <button
+                type="button"
+                onClick={() => {
+                  navigate("/");
+                  window.scrollTo({ top: 0, behavior: "instant" });
+                }}
+              >
+
+                Volver al inicio
+              </button>
+
+              <button
+                type="button"
+                onClick={() => navigate("/productos")}
+              >
+                Seguir comprando
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </main>
   );

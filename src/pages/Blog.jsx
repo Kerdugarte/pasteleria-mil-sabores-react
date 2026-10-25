@@ -43,7 +43,7 @@ function TarjetaBlog({ publicacion, onLeerMas }) {
         />
 
         <div className="blog-contenido">
-          <span className="blog-categoria">
+          <span className="">
             {publicacion.categoria}
           </span>
 
@@ -67,97 +67,96 @@ function TarjetaBlog({ publicacion, onLeerMas }) {
 
 
 function Blog() {
-    const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
-    const [filtro, setFiltro] = useState("Todos");
-    const publicacionesFiltradas = publicaciones.filter(
-  (publicacion) =>
-    filtro === "Todos" || publicacion.tipo === filtro
-);
+  const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
+  const [filtro, setFiltro] = useState("Todos");
+  const publicacionesFiltradas = publicaciones.filter(
+    (publicacion) =>
+      filtro === "Todos" || publicacion.tipo === filtro
+  );
   return (
     <main className="pagina-blog container py-5">
-      <div className="text-center mb-5">
-        <h1>El rincón dulce</h1>
-        <p>
+      <div className="encabezado-contacto">
+        <h1 className="letra-Titulos" >El rincón dulce</h1>
+        <p className="texto-general">
           Bienvenidos al blog de Pastelería Mil Sabores.
           Descubre recetas, consejos de repostería
           y novedades preparadas con mucho cariño.
         </p>
       </div>
 
-        <section>
+      <section>
         <h2 className="text-center mb-4">
-            Nuestras publicaciones
+          Nuestras publicaciones
         </h2>
-        
+
         <div className="blog-filtros">
-        {["Todos", "Blog", "Noticias"].map((tipo) => (
+          {["Todos", "Blog", "Noticias"].map((tipo) => (
             <button
-            key={tipo}
-            type="button"
-            className={`blog-filtro ${
-                filtro === tipo ? "activo" : ""
-            }`}
-            onClick={() => setFiltro(tipo)}
+              key={tipo}
+              type="button"
+              className={`blog-filtro ${filtro === tipo ? "activo" : ""
+                }`}
+              onClick={() => setFiltro(tipo)}
             >
-            {tipo}
+              {tipo}
             </button>
-        ))}
+          ))}
         </div>
 
 
         <div className="row g-4">
-            {publicacionesFiltradas.map((publicacion) => (
+          {publicacionesFiltradas.map((publicacion) => (
             <TarjetaBlog
-                key={publicacion.id}
-                publicacion={publicacion}
-                onLeerMas={() => setArticuloSeleccionado(publicacion)}
+              key={publicacion.id}
+              publicacion={publicacion}
+              onLeerMas={() => setArticuloSeleccionado(publicacion)}
             />
-            ))}
+          ))}
         </div>
 
         {publicacionesFiltradas.length === 0 && (
-        <p className="text-center mt-4">
+          <p className="text-center mt-4">
             Próximamente compartiremos nuevas publicaciones.
-        </p>
+          </p>
         )}
-        
-        </section>
-        
-        {articuloSeleccionado && (
+
+      </section>
+
+      {articuloSeleccionado && (
         <div className="blog-modal-fondo">
-            <div
+          <div
             className="blog-modal"
             role="dialog"
             aria-modal="true"
             aria-labelledby="blog-modal-titulo"
-            >
+          >
             <button
-                type="button"
-                className="blog-modal-cerrar"
-                aria-label="Cerrar artículo"
-                onClick={() => setArticuloSeleccionado(null)}
+              type="button"
+              className="blog-modal-cerrar"
+              aria-label="Cerrar artículo"
+              onClick={() => setArticuloSeleccionado(null)}
             >
-                ×
+              ×
             </button>
 
             <img
-                src={articuloSeleccionado.imagen}
-                alt={articuloSeleccionado.titulo}
-                className="blog-modal-imagen"
+              src={articuloSeleccionado.imagen}
+              alt={articuloSeleccionado.titulo}
+              className="blog-modal-imagen"
             />
 
             <span className="blog-categoria">
-                {articuloSeleccionado.categoria}
+              {articuloSeleccionado.categoria}
             </span>
 
             <h2 id="blog-modal-titulo">
-                {articuloSeleccionado.titulo}
+              {articuloSeleccionado.titulo}
             </h2>
 
             <p>{articuloSeleccionado.descripcion}</p>
-            </div>
+          </div>
         </div>
-        )}
+      )}
 
     </main>
   );
