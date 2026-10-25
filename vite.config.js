@@ -3,17 +3,15 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   plugins: [react()],
+  plugins: [react()],
   test: {
+    // Habilita variables globales como 'describe', 'test', 'expect' sin necesidad de importarlas
+    globals: true,
+    // Simula el entorno del navegador en Node.js
     environment: 'jsdom',
+    // Archivo que se ejecutará antes de cada test para preparar el entorno
     setupFiles: './src/setupTests.js',
-    coverage: {
-      provider: 'v8',
-      reporter: ['text', 'json', 'html'],
-      include: [
-        'src/components/TarjetaProducto.jsx',
-        'src/components/FiltroProductos.jsx',
-        'src/components/Paginacion.jsx',
-      ],
-    },
   },
 });
+
+
