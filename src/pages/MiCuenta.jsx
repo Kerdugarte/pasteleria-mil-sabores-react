@@ -1,6 +1,5 @@
 import { useNavigate, Link, Navigate } from "react-router-dom";
 import { obtenerSesion, cerrarSesion } from "../assets/js/usuarios";
-import HistorialCompras from "../components/HistorialCompras";
 function MiCuenta() {
     const usuario = obtenerSesion();
     const navigate = useNavigate();
@@ -57,7 +56,6 @@ function MiCuenta() {
                     </section>
                 </div>
             </div>
-            <HistorialCompras />
         </main>
     );
 }

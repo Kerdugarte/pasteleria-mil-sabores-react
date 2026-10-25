@@ -182,7 +182,7 @@ function Login() {
                             >
                                 Ingresar
                             </button>
-                            <p className="texto-general mt-3 mb-0">¿No tienes cuenta? <a href="#formRegistro">Regístrate</a></p>
+
                         </form>
                     </section>
                 </div>
