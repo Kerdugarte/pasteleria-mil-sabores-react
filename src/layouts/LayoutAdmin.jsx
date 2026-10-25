@@ -1,17 +1,13 @@
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { useNavigate, Navigate, Outlet } from "react-router-dom";
+import { obtenerSesion, cerrarSesion } from "../assets/js/usuarios";
 import MenuAdmin from "../components/MenuAdmin";
-import {
-  obtenerSesion,
-  cerrarSesion,
-} from "../assets/js/usuarios";
-
 function LayoutAdmin() {
-  const navigate = useNavigate();
   const usuario = obtenerSesion();
+  const navigate = useNavigate();
 
   function salir() {
-    cerrarSesion();
-    navigate("/login", { replace: true });
+      cerrarSesion();
+      navigate("/login", { replace: true });
   }
 
   if (!usuario || usuario.rol !== "admin") {

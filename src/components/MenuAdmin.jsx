@@ -26,8 +26,6 @@ function MenuAdmin({ alCerrarSesion }) {
                         </NavLink>
                     </li>
 
-
-
                     <li>
                         <NavLink to="/admin/productos">
                             Productos

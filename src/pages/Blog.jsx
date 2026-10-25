@@ -48,10 +48,11 @@ function Blog() {
         (publicacion) =>
             filtro === "Todos" || publicacion.tipo === filtro
     );
+
     return (
         <main className="pagina-blog container py-5">
             <header className="encabezado-productos">
-                <h1 className="letra-titulos">El rincón dulce</h1>
+                <h1 className="letra-titulos">El rincon dulce</h1>
                 <p className="texto-general">
                     Bienvenidos al blog de Pastelería Mil Sabores.
                     Descubre recetas, consejos de repostería
@@ -60,9 +61,6 @@ function Blog() {
             </header>
 
             <section>
-                <h2 className="letra-titulos mb-4">
-                    Nuestras publicaciones
-                </h2>
 
                 <div className="blog-filtros">
                     {["Todos", "Blog", "Noticias"].map((tipo) => (
@@ -77,7 +75,6 @@ function Blog() {
                         </button>
                     ))}
                 </div>
-
 
                 <div className="row g-4">
                     {publicacionesFiltradas.map((publicacion) => (
@@ -97,7 +94,6 @@ function Blog() {
             </section>
 
             <RecetasComunidad />
-
 
         </main>
     );

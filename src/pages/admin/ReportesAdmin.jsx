@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { obtenerPedidos } from "../../assets/js/pedidos";
-
 function ReportesAdmin() {
     const [desde, setDesde] = useState("");
     const [hasta, setHasta] = useState("");
@@ -37,6 +36,13 @@ function ReportesAdmin() {
 
     productosVendidos.sort((a, b) => b.cantidad - a.cantidad || b.total - a.total);
 
+    function cambiarDesde(evento) {
+        setDesde(evento.target.value);
+    }
+
+    function cambiarHasta(evento) {
+        setHasta(evento.target.value);
+    }
 
     return (
         <section>
@@ -48,18 +54,18 @@ function ReportesAdmin() {
             <div className="row g-3 mb-4 filtro-fechas-admin">
                 <div className="col-12 col-md-6">
                     <label htmlFor="ventasDesde" className="form-label">Desde</label>
-                    <input type="date" id="ventasDesde" className="form-control" value={desde} max={hasta || undefined} onChange={(event) => setDesde(event.target.value)} />
+                    <input type="date" id="ventasDesde" className="form-control" value={desde} max={hasta || undefined} onChange={cambiarDesde} />
                 </div>
                 <div className="col-12 col-md-6">
                     <label htmlFor="ventasHasta" className="form-label">Hasta</label>
-                    <input type="date" id="ventasHasta" className="form-control" value={hasta} min={desde || undefined} onChange={(event) => setHasta(event.target.value)} />
+                    <input type="date" id="ventasHasta" className="form-control" value={hasta} min={desde || undefined} onChange={cambiarHasta} />
                 </div>
             </div>
 
             <div className="row g-4 mb-4">
                 <div className="col-12 col-lg-4">
                     <article className="card resumen-admin h-100 p-4">
-                        <h2 className="h4">Total vendido (simulado)</h2>
+                        <h2 className="h4">Total vendido</h2>
                         <p className="fs-2 fw-bold mb-0">${totalVendido.toLocaleString("es-CL")}</p>
                     </article>
                 </div>

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { obtenerProductos } from "../assets/js/Datos";
 import TarjetaProducto from "../components/TarjetaProducto";
 import Paginacion from "../components/Paginacion";
 import FiltroProductos from "../components/FiltroProductos";
-import { obtenerProductos } from "../assets/js/Datos";
-
 function Productos() {
     const producto = obtenerProductos();
     const [paginaActual, setPaginaActual] = useState(1);

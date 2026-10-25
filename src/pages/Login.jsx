@@ -1,13 +1,6 @@
 import { useState } from "react";
-import { Navigate, useNavigate, useLocation } from "react-router-dom";
-import {
-    buscarUsuario,
-    guardarSesion,
-    obtenerSesion,
-    obtenerUsuarios,
-    guardarUsuarios,
-} from "../assets/js/usuarios";
-
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { buscarUsuario, guardarSesion, obtenerSesion, obtenerUsuarios, guardarUsuarios } from "../assets/js/usuarios";
 function Login() {
     const [formulario, setFormulario] = useState({
         email: "",

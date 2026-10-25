@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 function RecetasComunidad() {
     const recetas = [
         {
@@ -11,8 +10,14 @@ function RecetasComunidad() {
         }
     ];
     const [formulario, setFormulario] = useState({ autor: "", titulo: "", dificultad: "Fácil", contenido: "" });
+
     function cambiarCampo(evento) {
-        setFormulario({ ...formulario, [evento.target.name]: evento.target.value });
+        const { name, value } = evento.target;
+        setFormulario({ ...formulario, [name]: value });
+    }
+
+    function evitarEnvio(evento) {
+        evento.preventDefault();
     }
 
     return (
@@ -20,7 +25,7 @@ function RecetasComunidad() {
             <h2 id="titulo-comunidad" className="letra-titulos">Recetas de nuestra comunidad</h2>
             <div className="row g-4">
                 <div className="col-12 col-lg-6">
-                    <form className="blog-formulario texto-general" onSubmit={(evento) => evento.preventDefault()}>
+                    <form className="blog-formulario texto-general" onSubmit={evitarEnvio}>
                         <h3 className="texto-general">Comparte tu receta o consejo</h3>
                         <label htmlFor="receta-autor">Tu nombre</label>
                         <input id="receta-autor" name="autor" value={formulario.autor} onChange={cambiarCampo} required maxLength={80} />

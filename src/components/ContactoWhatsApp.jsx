@@ -21,9 +21,7 @@ function ContactoWhatsApp() {
                     Escribir por WhatsApp →
                 </a>
 
-
             </section>
-
 
         </>
 

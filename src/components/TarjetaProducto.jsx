@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
+import { agregarProducto, obtenerCarrito } from "../assets/js/carrito";
 import { Link } from "react-router-dom";
 import CantidadProducto from "./CantidadProducto";
-import { agregarProducto, obtenerCarrito } from "../assets/js/carrito";
-
 function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
     const ventana = useRef(null);
     const confirmacion = useRef(null);
@@ -44,6 +43,14 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
         } catch (error) {
             setErrorCantidad(error.message || "No se pudo guardar el carrito.");
         }
+    }
+
+    function cerrarCantidad() {
+        ventana.current.close();
+    }
+
+    function cerrarConfirmacion() {
+        confirmacion.current.close();
     }
 
     return (
@@ -97,9 +104,9 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
                                 Editar
                             </Link>
 
-                            <Link to={`/productos/${producto.id}`} className="boton-agregar">
-                                Ver detalle
-                            </Link>
+                            <button type="button" className="boton-agregar" disabled>
+                                Eliminar
+                            </button>
                         </>
                     ) : (
                         <>
@@ -137,7 +144,7 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
                     <p>{producto.nombre}</p>
                     <p>Cantidad agregada: {cantidadAgregada}</p>
                     <div className="acciones-cantidad-producto">
-                        <button type="button" onClick={() => confirmacion.current.close()}>
+                        <button type="button" onClick={cerrarConfirmacion}>
                             Seguir comprando
                         </button>
                         <Link to="/carrito">Ver mi carrito</Link>
@@ -164,7 +171,7 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
                             />
                             {errorCantidad && <p role="alert">{errorCantidad}</p>}
                             <div className="acciones-cantidad-producto">
-                                <button type="button" onClick={() => ventana.current.close()}>
+                                <button type="button" onClick={cerrarCantidad}>
                                     Cancelar
                                 </button>
                                 <button type="submit">Confirmar</button>
@@ -173,7 +180,7 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
                     ) : (
                         <>
                             <p>Este producto ya está en tu carrito con la cantidad máxima.</p>
-                            <button type="button" onClick={() => ventana.current.close()}>
+                            <button type="button" onClick={cerrarCantidad}>
                                 Cerrar
                             </button>
                         </>

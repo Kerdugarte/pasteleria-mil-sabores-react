@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { obtenerSesion } from "../assets/js/usuarios";
 import { obtenerCarrito } from "../assets/js/carrito";
 import { calcularCompra, realizarPagoSimulado } from "../assets/js/pago";
-
 function Pago() {
     const usuario = obtenerSesion();
     const carrito = obtenerCarrito();
@@ -12,10 +11,6 @@ function Pago() {
     const [error, setError] = useState("");
     const [procesando, setProcesando] = useState(false);
     const navigate = useNavigate();
-
-    if (!usuario) return <Navigate to="/login" state={{ volver: "/pago" }} replace />;
-    if (usuario.rol !== "cliente") return <Navigate to="/admin" replace />;
-    if (carrito.length === 0 && !procesando) return <Navigate to="/carrito" replace />;
 
     function cambiarCampo(evento) {
         setFormulario({ ...formulario, [evento.target.name]: evento.target.value });
@@ -36,7 +31,13 @@ function Pago() {
         }
     }
 
-    const resumen = calcularCompra(carrito, usuario.email, formulario.tipo, formulario.codigo);
+    const resumen = calcularCompra(carrito, usuario?.email, formulario.tipo, formulario.codigo);
+
+    if (!usuario) return <Navigate to="/login" state={{ volver: "/pago" }} replace />;
+
+    if (usuario.rol !== "cliente") return <Navigate to="/admin" replace />;
+
+    if (carrito.length === 0 && !procesando) return <Navigate to="/carrito" replace />;
 
     return (
         <main className="container py-5 pagina-pago">

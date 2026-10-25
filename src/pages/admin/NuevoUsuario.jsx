@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 function NuevoUsuario() {
     const [formulario, setFormulario] = useState({
         nombre: "",
@@ -14,13 +13,17 @@ function NuevoUsuario() {
         setFormulario({ ...formulario, [name]: value });
     }
 
+    function evitarEnvio(evento) {
+        evento.preventDefault();
+    }
+
     return (
         <section className="formulario-producto-admin">
             <header className="encabezado-admin">
                 <h1 className="letra-titulos">Nuevo administrador</h1>
                 <p className="texto-general">Vista de diseño: los cambios no se guardan en esta etapa.</p>
             </header>
-            <form className="texto-general" onSubmit={(evento) => evento.preventDefault()}>
+            <form className="texto-general" onSubmit={evitarEnvio}>
                 <div className="row g-4">
                     <div className="col-12 col-md-6">
                         <label htmlFor="nombre" className="form-label">Nombre completo</label>

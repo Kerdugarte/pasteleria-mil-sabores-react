@@ -1,11 +1,10 @@
-import StockCritico from "../../components/StockCritico";
 import { useState } from "react";
+import { obtenerProductos } from "../../assets/js/Datos";
 import { Link } from "react-router-dom";
+import StockCritico from "../../components/StockCritico";
 import TarjetaProducto from "../../components/TarjetaProducto";
 import FiltroProductos from "../../components/FiltroProductos";
 import Paginacion from "../../components/Paginacion";
-import { obtenerProductos } from "../../assets/js/Datos";
-
 function ProductosAdmin() {
     const productos = obtenerProductos();
     const [busqueda, setBusqueda] = useState("");

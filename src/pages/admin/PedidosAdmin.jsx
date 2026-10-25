@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { obtenerPedidos, guardarPedidos } from "../../assets/js/pedidos";
-
+import { Link } from "react-router-dom";
 function PedidosAdmin() {
     const [pedidos, setPedidos] = useState(obtenerPedidos);
     const [error, setError] = useState("");

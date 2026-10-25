@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { obtenerCarrito, guardarCarrito } from "../assets/js/carrito";
-
+import { Link } from "react-router-dom";
 function Carrito() {
     const [carrito, setCarrito] = useState(obtenerCarrito);
     const [mensaje, setMensaje] = useState("");

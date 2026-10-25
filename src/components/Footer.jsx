@@ -9,7 +9,6 @@ function Footer() {
                         alt="Pastelería Mil Sabores"
                     />
 
-
                 </div>
 
                 <div className="footer-columna">

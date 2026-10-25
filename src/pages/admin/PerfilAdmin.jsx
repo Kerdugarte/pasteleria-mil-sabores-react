@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-    obtenerSesion,
-    obtenerUsuarios,
-    guardarUsuarios,
-    guardarSesion,
-} from "../../assets/js/usuarios";
-
+import { obtenerSesion, obtenerUsuarios, guardarUsuarios, guardarSesion } from "../../assets/js/usuarios";
 function PerfilAdmin() {
     const [usuario, setUsuario] = useState(obtenerSesion);
     const [formulario, setFormulario] = useState(() => ({ nombre: obtenerSesion()?.nombre || "", email: obtenerSesion()?.email || "" }));
@@ -55,6 +49,11 @@ function PerfilAdmin() {
         }
     }
 
+    function cambiarCampo(evento) {
+        const { name, value } = evento.target;
+        setFormulario({ ...formulario, [name]: value });
+    }
+
     if (!usuario) {
         return <p>No hay una sesión iniciada.</p>;
     }
@@ -86,11 +85,11 @@ function PerfilAdmin() {
                         <form className="texto-general" onSubmit={guardarPerfil}>
                             <div className="mb-3">
                                 <label htmlFor="perfilNombre" className="form-label">Nombre completo</label>
-                                <input id="perfilNombre" name="nombre" className="form-control" value={formulario.nombre} onChange={(evento) => setFormulario({ ...formulario, nombre: evento.target.value })} autoComplete="name" required />
+                                <input id="perfilNombre" name="nombre" className="form-control" value={formulario.nombre} onChange={cambiarCampo} autoComplete="name" required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="perfilEmail" className="form-label">Correo electrónico</label>
-                                <input id="perfilEmail" type="email" name="email" className="form-control" value={formulario.email} onChange={(evento) => setFormulario({ ...formulario, email: evento.target.value })} autoComplete="email" required />
+                                <input id="perfilEmail" type="email" name="email" className="form-control" value={formulario.email} onChange={cambiarCampo} autoComplete="email" required />
                             </div>
                             <div className="acciones-formulario-admin">
                                 <button type="submit" className="boton-admin">Guardar cambios</button>

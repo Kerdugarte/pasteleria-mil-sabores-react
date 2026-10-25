@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { obtenerProductos, guardarProductos } from "../../assets/js/Datos";
 import { obtenerCategorias } from "../../assets/js/categorias";
-
 function NuevoProducto() {
     const { id } = useParams();
     const actual = obtenerProductos().find((item) => item.id === Number(id));
@@ -67,14 +66,11 @@ function NuevoProducto() {
                     <div className="col-12 col-md-6">
                         <label htmlFor="categoria" className="form-label">Categoría</label>
                         <select id="categoria" disabled={Boolean(actual)} name="categoria" className="form-select" value={formulario.categoria} onChange={cambiarCampo}>
-                                <option value="">Selecciona una categoría</option>
-                                {categorias.map((categoria) => <option key={categoria.id} value={categoria.valor}>{categoria.nombre}</option>)}
-                            </select>
+                            <option value="">Selecciona una categoría</option>
+                            {categorias.map((categoria) => <option key={categoria.id} value={categoria.valor}>{categoria.nombre}</option>)}
+                        </select>
                     </div>
-                    <div className="col-12 col-md-6">
-                        <label htmlFor="imagen" className="form-label">Foto del producto</label>
-                        <input id="imagen" disabled={Boolean(actual)} type="file" className="form-control" accept="image/*" />
-                    </div>
+
                     <div className="col-12 col-md-6">
                         <label htmlFor="tamano" className="form-label">Tamaño</label>
                         <input id="tamano" disabled={Boolean(actual)} name="tamano" type="text" className="form-control" value={formulario.tamano} onChange={cambiarCampo} />

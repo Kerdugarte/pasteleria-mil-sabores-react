@@ -1,7 +1,6 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { obtenerPedidos } from "../assets/js/pedidos";
 import { obtenerSesion, obtenerUsuarios } from "../assets/js/usuarios";
-
 function HistorialCompras({ esAdmin = false }) {
     const [parametros, setParametros] = useSearchParams();
     const usuario = obtenerSesion();
@@ -14,13 +13,17 @@ function HistorialCompras({ esAdmin = false }) {
     const compras = pedidos.filter((pedido) => pedido.email === email && pedido.pago === "pagado");
     const estados = { pendiente: "Pendiente", preparacion: "En preparación", listo: "Listo", entregado: "Entregado", cancelado: "Cancelado" };
 
+    function cambiarCliente(evento) {
+        setParametros(evento.target.value ? { cliente: evento.target.value } : {});
+    }
+
     return (
         <section className="mt-4" aria-label="Historial de compras">
             <h2 className="letra-titulos mb-4">Historial de compras</h2>
             {esAdmin && (
                 <div className="mb-4">
                     <label htmlFor="clienteHistorial" className="form-label">Cliente</label>
-                    <select id="clienteHistorial" className="form-select" value={email} onChange={(evento) => setParametros(evento.target.value ? { cliente: evento.target.value } : {})}>
+                    <select id="clienteHistorial" className="form-select" value={email} onChange={cambiarCliente}>
                         <option value="">Selecciona un cliente</option>
                         {clientes.map((correo) => <option key={correo} value={correo}>{correo}</option>)}
                     </select>

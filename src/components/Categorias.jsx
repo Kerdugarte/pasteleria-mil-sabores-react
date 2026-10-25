@@ -24,7 +24,7 @@ function Categorias() {
                     ))}
                 </div>
                 <div className="text-center mt-4">
-                    <Link to="/productos" className="boton-ver-mas">Ver más</Link>
+                    <Link to="/productos" className="boton-ver-mas">Ver mas</Link>
                 </div>
             </div>
         </section>

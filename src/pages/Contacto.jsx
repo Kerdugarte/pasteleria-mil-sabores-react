@@ -1,9 +1,14 @@
 import { useState } from "react";
-
 function Contacto() {
     const [formulario, setFormulario] = useState({ nombre: "", correo: "", telefono: "", asunto: "", mensaje: "" });
+
     function cambiarCampo(evento) {
-        setFormulario({ ...formulario, [evento.target.name]: evento.target.value });
+        const { name, value } = evento.target;
+        setFormulario({ ...formulario, [name]: value });
+    }
+
+    function evitarEnvio(evento) {
+        evento.preventDefault();
     }
 
     return (
@@ -22,7 +27,7 @@ function Contacto() {
                         <h2 className="letra-titulos mb-4">Envíanos un mensaje</h2>
                         <p className="texto-general">Formulario de diseño para esta etapa.</p>
 
-                        <form className="texto-general" onSubmit={(evento) => evento.preventDefault()}>
+                        <form className="texto-general" onSubmit={evitarEnvio}>
                             <div className="mb-3">
                                 <label htmlFor="nombre" className="form-label">
                                     Nombre completo *
