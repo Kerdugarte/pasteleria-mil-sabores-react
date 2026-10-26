@@ -100,6 +100,7 @@ body {
 .boton-ver-mas:hover {
     background-color: #970b0b;
     color: #ffffff;
+    transform: translateY(-2px) scale(1.01);
 }
 
 .boton-ver-mas {
@@ -113,6 +114,8 @@ body {
     font-weight: 600;
     text-decoration: none;
     transition: background-color 0.2s;
+
+
 }
 
 /* sección Historia */
@@ -185,6 +188,7 @@ body {
 .boton-visitanos:hover {
     background-color: #970b0b;
     color: white;
+    transform: translateY(-2px) scale(1.01);
 }
 
 /* LADO DERECHO */
@@ -265,6 +269,7 @@ body {
 .boton-ContactoWhat:hover {
     background-color: #5d4037;
     color: white;
+    transform: translateY(-2px) scale(1.01);
 }
 
 /* DISEÑO RESPONSIVO: móviles */
@@ -288,6 +293,7 @@ body {
         font-size: 16px;
     }
 }
+
 /* Botón de cada promoción */
 .boton-ofertas-carrusel {
     position: absolute;
@@ -337,11 +343,32 @@ body {
 }
 
 
-button:disabled { opacity: 0.55; cursor: not-allowed; }
-button:disabled:hover { transform: none; }
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    transform: none;
+}
+
 @media (max-width: 767px) {
-    .historia-inicio { flex-direction: column; gap: 24px; margin: 35px auto; }
-    .historia-texto, .historia-imagen { width: 100%; }
-    .historia-texto h2 { font-size: 36px; }
-    .historia-imagen img { height: auto; }
+    .historia-inicio {
+        flex-direction: column;
+        gap: 24px;
+        margin: 35px auto;
+    }
+
+    .historia-texto,
+    .historia-imagen {
+        width: 100%;
+    }
+
+    .historia-texto h2 {
+        font-size: 36px;
+    }
+
+    .historia-imagen img {
+        height: auto;
+    }
 }

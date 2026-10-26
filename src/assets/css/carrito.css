@@ -81,6 +81,7 @@
     color: #5d4037;
     font-size: 24px;
     cursor: pointer;
+    
 }
 
 .cantidad-carrito-cliente button:disabled {
@@ -152,11 +153,15 @@
 .confirmacion-carrito-producto .acciones-cantidad-producto a:hover {
     background: #970b0b;
     border-color: #970b0b;
+    
+    
 }
 
 .pagina-carrito button:focus-visible {
     outline: 2px solid #970b0b;
     outline-offset: 3px;
+    
+    
 }
 
 @media (max-width: 575px) {
@@ -259,6 +264,7 @@
 .pagina-pago button:disabled {
     opacity: 0.65;
     cursor: not-allowed;
+    
 }
 
 @media (max-width: 575px) {
