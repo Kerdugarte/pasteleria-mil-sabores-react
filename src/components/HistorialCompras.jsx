@@ -1,7 +1,9 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { obtenerPedidos } from "../assets/js/pedidos";
 import { obtenerSesion, obtenerUsuarios } from "../assets/js/usuarios";
+
 function HistorialCompras({ esAdmin = false }) {
+    
     const [parametros, setParametros] = useSearchParams();
     const usuario = obtenerSesion();
     const pedidos = obtenerPedidos();

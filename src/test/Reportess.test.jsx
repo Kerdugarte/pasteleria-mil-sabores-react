@@ -90,7 +90,7 @@ describe("Reportes", () => {
             within(fila).getAllByRole("cell").map((celda) => celda.textContent)
         );
 
-        // Galletas aparece primero por unidades, aunque Torta genera más importe.
+
         expect(datos).toEqual([
             ["Galletas", "10", "$10.000"],
             ["Torta", "5", "$15.000"],

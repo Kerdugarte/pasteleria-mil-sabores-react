@@ -65,14 +65,6 @@ function App() {
         <Route path="pedidos/:id/boleta" element={<BoletaAdmin />} />
         <Route path="reportes" element={<ReportesAdmin />} />
         <Route path="perfil" element={<PerfilAdmin />} />
-
-        <Route path="*" element={
-          <section>
-            <h1 className="letra-titulos">Página no disponible</h1>
-            <p className="texto-general">Esta sección administrativa todavía no está creada.</p>
-            <Link to="/admin">Volver al panel</Link>
-          </section>
-        } />
       </Route>
     </Routes>
   );

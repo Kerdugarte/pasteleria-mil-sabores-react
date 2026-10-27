@@ -9,7 +9,6 @@ function TarjetaProducto({ producto, esAdmin = false, esDetalle = false }) {
     const [cantidad, setCantidad] = useState(1);
     const [disponibles, setDisponibles] = useState(0);
     const [errorCantidad, setErrorCantidad] = useState("");
-
     const existente = obtenerCarrito().find((item) => item.id === producto.id);
     const cantidadEnCarrito = existente ? existente.cantidad : 0;
     const maximo = producto.stock - cantidadEnCarrito;
