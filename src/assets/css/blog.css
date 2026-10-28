@@ -2,7 +2,7 @@
 .blog-tarjeta {
     display: flex;
     flex-direction: column;
-    background-color: #fffaf6;
+    background-color: #ffffff;
     border: 1px solid #eadde2;
     border-radius: 22px;
     overflow: hidden;
@@ -119,7 +119,7 @@
     padding: 25px;
     border: 1px solid #eadde2;
     border-radius: 22px;
-    background-color: #fffaf6;
+    background-color: #ffffff;
     color: #5d4037;
 }
 

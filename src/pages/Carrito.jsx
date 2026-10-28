@@ -99,7 +99,6 @@ function Carrito() {
                                 <span>Total productos</span>
                                 <strong>${total.toLocaleString("es-CL")}</strong>
                             </div>
-                            <p className="nota-carrito-cliente">Continúa para revisar el pedido y probar el pago simulado, sin cobros reales.</p>
                             <Link to="/pago" className="boton-cliente w-100">Continuar compra</Link>
                         </section>
                     </div>

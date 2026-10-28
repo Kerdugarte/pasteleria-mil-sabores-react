@@ -12,20 +12,10 @@ function BoletaAdmin() {
         cancelado: "Cancelado",
     };
 
-    if (!pedido) {
-        return (
-            <section>
-                <h1 className="letra-titulos">Pedido no encontrado</h1>
-                <Link to="/admin/pedidos">Volver a pedidos</Link>
-            </section>
-        );
-    }
-
     return (
         <section className="boleta-admin">
             <header className="encabezado-admin">
                 <h1 className="letra-titulos">Boleta del pedido</h1>
-                <p className="texto-general">Comprobante de compra simulada.</p>
             </header>
             <div className="d-flex justify-content-between flex-wrap gap-3 mb-4 acciones-boleta-admin">
                 <Link to="/admin/pedidos" className="boton-admin">← Volver a pedidos</Link>

@@ -41,7 +41,9 @@ function Pago() {
 
     return (
         <main className="container py-5 pagina-pago">
-            <h1 className="letra-titulos mb-4">Confirmar compra</h1>
+            <header className="encabezado-carrito-cliente">
+                <h1 className="letra-titulos" >Confirmar compra</h1>
+            </header>
             <form className="row g-4 texto-general" onSubmit={pagar}>
                 <div className="col-12 col-lg-6">
                     <section className="panel-pago-cliente h-100">

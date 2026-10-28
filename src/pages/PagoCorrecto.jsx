@@ -43,7 +43,7 @@ function PagoCorrecto() {
                     <p><strong>Recibe:</strong> {pedido.entrega.nombre} — {pedido.entrega.telefono}</p>
                     <p>Productos: ${pedido.subtotal.toLocaleString("es-CL")} · Descuento: ${pedido.descuento.toLocaleString("es-CL")} · Envío: ${pedido.costoEnvio.toLocaleString("es-CL")}</p>
                 </div>}
-                <p>Pago simulado: no se realizó ningún cobro real.</p>
+
                 <div className="d-flex justify-content-center flex-wrap gap-3 mt-4">
                     <Link to="/mi-cuenta" className="boton-cliente">Ir a mi cuenta</Link>
                     <Link to="/productos" className="boton-cliente boton-cliente-secundario">Seguir comprando</Link>

@@ -133,7 +133,7 @@ function ReportesAdmin() {
                                 <td>{pedido.fecha}</td>
                                 <td>${pedido.total.toLocaleString("es-CL")}</td>
                                 <td>{pedido.estado === "preparacion" ? "En preparación" : pedido.estado}</td>
-                                <td>{pedido.pago === "pagado" ? "Correcto (simulado)" : "Sin confirmar"}</td>
+                                <td>{pedido.pago === "pagado" ? "Correcto" : "Sin confirmar"}</td>
                             </tr>
                         ))}
                         {pedidosFiltrados.length === 0 && (
